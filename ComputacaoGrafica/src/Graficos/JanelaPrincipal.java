@@ -25,7 +25,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         initComponents();
         openMenuReta(null);
         coordinatesSystem();
-        print();
     }
 
     /**
@@ -340,16 +339,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelGrafic;
     // End of variables declaration//GEN-END:variables
 
-    public void print(){
-        /*System.out.println("altura: "+ panelGrafico.getHeight());
-        System.out.println("largura: "+panelGrafico.getWidth());
-        System.out.println(panelGrafico.getLocation().getX());
-        System.out.println(panelGrafico.getLocation().getY());
-        System.out.println(this.getWidth());
-        System.out.println(this.getHeight());*/
-        System.out.println("Altura: "+pan1.getHeight());
-        System.out.println("Largura: "+pan1.getWidth());
-    }
     
     private void openMenuReta(java.awt.event.ActionEvent evt) {                              
         //panelMenuLeft.setVisible(true);
