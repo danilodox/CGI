@@ -121,10 +121,10 @@ public class PlanoCartesiano extends JPanel{
      * @param y - Coordenada y
      * @param color - Cor do pixel
      */
-    public void drawPixel(int x, int y, Color color) {
+    public void drawPixel(int x, int y) {
         // Pega instância do graphics para desenhar no plano cartesiano
         Graphics g = super.getGraphics();
-        g.setColor(color);
+        g.setColor(Color.BLACK);
         g.fillRect(x, y, 1, 1);
 
 //        bufferedImage = new BufferedImage(getLargura(),getAltura(),BufferedImage.TYPE_INT_RGB);
@@ -141,12 +141,12 @@ public class PlanoCartesiano extends JPanel{
      * @param y - Coordenada y
      * @param color - Cor do pixel
      */
-    public void drawPixel(double x, double y, Color color) {
+    public void drawPixel(double x, double y) {
         // Normalizando os pontos
         x = (x + PlanoCartesiano.getInstance().getValorCentroX());
         y = (PlanoCartesiano.getInstance().getValorCentroY() - y);
 
-        drawPixel(Math.round((float) x), Math.round((float) y), color);
+        drawPixel(Math.round((float) x), Math.round((float) y));
     }
 
     /**

@@ -7,9 +7,12 @@ package Graficos;
 
 import Opr.NormalizationsFunctions;
 import Opr.PlanoCartesiano;
+import Retas.Rasterizacao;
+import enums.RasterEnum;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import panels.PanelMenuRaster;
 import view.SubMenu2d;
 
 
@@ -428,4 +431,30 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                         .addComponent(component, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }
+    
+    public static void runResult(Object instance) {
+        if (instance instanceof PanelMenuRaster) {
+            processaRasterizacaoReta(PanelMenuRaster.getInstance());
+        } /*else if (instance instanceof PanelMenuCircunferencia) {
+            processaRasterizacaoCircunferencia(PanelMenuCircunferencia.getInstance());
+        } else if (instance instanceof PanelMenu2D) {
+            processaTransformacoes2D(PanelMenu2D.getInstance());
+        } else if (instance instanceof PanelMenu3D) {
+            processaTransformacoes3D(PanelMenu3D.getInstance());
+        } else if (instance instanceof PanelMenuImagem) {
+            processaTransformacoesImagem(PanelMenuImagem.getInstance());
+        }*/
+    }
+    
+    private static void processaRasterizacaoReta(PanelMenuRaster menu) {
+        Rasterizacao rast = Rasterizacao.getInstance();
+        PlanoCartesiano.getInstance().redesenha();
+
+        if (menu.getTipoAlgoritimo().equals(RasterEnum.DDA)) {
+            rast.dda(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
+        } else if (menu.getTipoAlgoritimo().equals(RasterEnum.PONTO_MEDIO)) {
+            rast.pm(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
+        }
+    }
+    
 }
