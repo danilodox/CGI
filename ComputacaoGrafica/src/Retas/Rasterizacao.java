@@ -59,12 +59,12 @@ public class Rasterizacao {
                 int cele_y;
                 double y = y1;
 
-                for (int x = (int) x1; x <= x2; x++) {
+                /*for (int x = (int) x1; x <= x2; x++) {
                     cele_y = (int) Math.round(y);
                     planoCartesiano.drawPixel(x, cele_y);
                     setIteracao(textAreaSolution, x, cele_y, ++count, null);
                     y += k;
-                }
+                }*/
             }
         } else if (y2 < y1) {
             double tmp = x2;

@@ -484,7 +484,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void changePanMenu(JPanel panel) {
         panMenu.removeAll();
         panMenu.repaint();
-
+        
         panMenu.setLayout(new GridLayout());
         panMenu.add(panel);
 
