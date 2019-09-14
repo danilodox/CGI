@@ -10,10 +10,11 @@ import Opr.PlanoCartesiano;
 import Retas.Rasterizacao;
 import enums.RasterEnum;
 import java.awt.Component;
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import javax.swing.JPanel;
 import panels.PanelMenuRaster;
-import view.SubMenu2d;
 
 
 
@@ -24,12 +25,14 @@ import view.SubMenu2d;
 public class JanelaPrincipal extends javax.swing.JFrame {
     
     PanelGrafico pg;
+    PanelMenuRaster panelMenuRaster;
     /**
      * Creates new form JanelaGrafica
      */
     public JanelaPrincipal() {
+        panelMenuRaster = PanelMenuRaster.getInstance();
         initComponents();
-        openMenuReta(null);
+        //openMenuReta(null);
         coordinatesSystem();
     }
 
@@ -57,9 +60,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         lab_Y = new javax.swing.JLabel();
         panelGrafic = Opr.PlanoCartesiano.getInstance();
         lab_cTela = new javax.swing.JLabel();
-        pan1 = new javax.swing.JPanel();
+        panMenu = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuDesenhar = new javax.swing.JMenu();
+        jm_reta = new javax.swing.JMenuItem();
         menuTransformacoes = new javax.swing.JMenu();
         subMenu2d = new javax.swing.JMenuItem();
 
@@ -227,18 +231,27 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             .addComponent(panelGrafic, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout pan1Layout = new javax.swing.GroupLayout(pan1);
-        pan1.setLayout(pan1Layout);
-        pan1Layout.setHorizontalGroup(
-            pan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panMenuLayout = new javax.swing.GroupLayout(panMenu);
+        panMenu.setLayout(panMenuLayout);
+        panMenuLayout.setHorizontalGroup(
+            panMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 231, Short.MAX_VALUE)
         );
-        pan1Layout.setVerticalGroup(
-            pan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panMenuLayout.setVerticalGroup(
+            panMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 669, Short.MAX_VALUE)
         );
 
         menuDesenhar.setText("Desenhar");
+
+        jm_reta.setText("Reta");
+        jm_reta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_retaActionPerformed(evt);
+            }
+        });
+        menuDesenhar.add(jm_reta);
+
         jMenuBar1.add(menuDesenhar);
 
         menuTransformacoes.setText("Transformações");
@@ -261,7 +274,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(panelBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -274,7 +287,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -290,10 +303,21 @@ public class JanelaPrincipal extends javax.swing.JFrame {
        
         
         
-        SubMenu2d view2d = new SubMenu2d();
-        pan1.add(view2d);
-        view2d.setVisible(true);
+        /*SubMenu2d view2d = new SubMenu2d();
+        panMenu.add(view2d);
+        view2d.setVisible(true);*/
     }//GEN-LAST:event_subMenu2dActionPerformed
+
+    private void jm_retaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_retaActionPerformed
+        panMenu.setVisible(true);
+
+        if (!panelFooter.isValid()) {
+            setDefaultBox();
+        } else {
+            PlanoCartesiano.getInstance().redesenha();
+        }
+        changePanMenu(panelMenuRaster);
+    }//GEN-LAST:event_jm_retaActionPerformed
     
     private void coordinatesSystem(){
         panelGrafic.addMouseMotionListener(new MouseMotionAdapter(){
@@ -365,6 +389,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JMenuItem jm_reta;
     private javax.swing.JLabel lab_DCX;
     private javax.swing.JLabel lab_DCY;
     private javax.swing.JLabel lab_NDCX;
@@ -374,7 +399,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lab_cTela;
     private javax.swing.JMenu menuDesenhar;
     private javax.swing.JMenu menuTransformacoes;
-    private javax.swing.JPanel pan1;
+    private javax.swing.JPanel panMenu;
     private javax.swing.JPanel panelBox;
     private javax.swing.JPanel panelFooter;
     private javax.swing.JPanel panelGrafic;
@@ -383,20 +408,19 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     
     private void openMenuReta(java.awt.event.ActionEvent evt) {                              
-        //panelMenuLeft.setVisible(true);
+        panMenu.setVisible(true);
 
         if (!panelFooter.isValid()) {
             setDefaultBox();
         } else {
             PlanoCartesiano.getInstance().redesenha();
         }
-        //changeMenuLeft(panelMenuRasterizacao);
+        changePanMenu(panelMenuRaster);
     }
     
     private void setDefaultBox() {
         if (!panelFooter.isVisible()) {
             panelBox.removeAll();
-            System.out.println("br.edu.uepb.cg.App.setDefaultBox()" + "ENTROU TBM<!");
             changePanelCentral(panelGrafic);
 
             javax.swing.GroupLayout panelBoxLayout = new javax.swing.GroupLayout(panelBox);
@@ -455,6 +479,16 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         } else if (menu.getTipoAlgoritimo().equals(RasterEnum.PONTO_MEDIO)) {
             rast.pm(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
         }
+    }
+    
+    private void changePanMenu(JPanel panel) {
+        panMenu.removeAll();
+        panMenu.repaint();
+
+        panMenu.setLayout(new GridLayout());
+        panMenu.add(panel);
+
+        panMenu.validate();
     }
     
 }

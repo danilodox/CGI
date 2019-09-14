@@ -8,6 +8,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Desenhar"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jm_reta">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reta"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jm_retaActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuTransformacoes">
           <Properties>
@@ -53,7 +63,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="pan1" min="-2" max="-2" attributes="0"/>
+              <Component id="panMenu" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="panelBox" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -69,7 +79,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="pan1" min="-2" max="-2" attributes="0"/>
+              <Component id="panMenu" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -339,7 +349,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="pan1">
+    <Container class="javax.swing.JPanel" name="panMenu">
 
       <Layout>
         <DimensionLayout dim="0">

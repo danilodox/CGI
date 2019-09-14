@@ -88,13 +88,13 @@ public class PanelMenuRaster extends javax.swing.JPanel {
 
         jLabel2.setText("Ponto 2:");
 
-        P1x.setModel(new javax.swing.SpinnerNumberModel());
+        P1x.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
-        P1y.setModel(new javax.swing.SpinnerNumberModel());
+        P1y.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
-        P2x.setModel(new javax.swing.SpinnerNumberModel());
+        P2x.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
-        P2y.setModel(new javax.swing.SpinnerNumberModel());
+        P2y.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -115,7 +115,7 @@ public class PanelMenuRaster extends javax.swing.JPanel {
                         .addComponent(P2x, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P2y, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
