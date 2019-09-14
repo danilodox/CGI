@@ -78,11 +78,11 @@ public class Rasterizacao {
 
         double k = dx / dy;
         double x = x1;
-        /*for (int y = (int) y1; y <= y2; y++) {
+        for (int y = (int) y1; y <= y2; y++) {
             planoCartesiano.drawPixel(x, y);
             setIteracao(textAreaSolution, x, y, ++count, null);
             x += k;
-        }*/
+        }
     }
     
     public void pm(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
