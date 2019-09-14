@@ -5,7 +5,7 @@
  */
 package panels;
 
-import Graficos.JanelaPrincipal;
+import view.JanelaPrincipal;
 import auxiliar.Ponto;
 import enums.RasterEnum;
 import javax.swing.JTextArea;
