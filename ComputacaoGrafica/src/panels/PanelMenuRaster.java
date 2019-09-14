@@ -53,13 +53,13 @@ public class PanelMenuRaster extends javax.swing.JPanel {
         textArea = new javax.swing.JTextArea();
         btn_desenhar = new javax.swing.JButton();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Algoritmo de Rasterizacao"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Algoritmo de Rasterização"));
 
         buttonGroup1.add(rb_dda);
         rb_dda.setText("DDA");
 
         buttonGroup1.add(rb_pm);
-        rb_pm.setText("Bresenham");
+        rb_pm.setText("Bresenham(não implementado)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,7 +135,7 @@ public class PanelMenuRaster extends javax.swing.JPanel {
 
         textArea.setColumns(20);
         textArea.setRows(5);
-        textArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Iteracoes"));
+        textArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Iterações"));
         jScrollPane1.setViewportView(textArea);
 
         btn_desenhar.setText("Desenhar");
