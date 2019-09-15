@@ -22,6 +22,7 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.JPanel;
 import panels.PanelMenuCircunferencia;
 import panels.PanelMenuRaster;
+import panels.SubMenuTransfor2d;
 
 
 
@@ -34,12 +35,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     //private final PanelGrafico pg;
     private final PanelMenuRaster panelMenuRaster;
     private final PanelMenuCircunferencia panelMenuCirc;
+    private final SubMenuTransfor2d subMenuTransfor;
     /**
      * Creates new form JanelaGrafica
      */
     public JanelaPrincipal() {
         panelMenuRaster = PanelMenuRaster.getInstance();
         panelMenuCirc = PanelMenuCircunferencia.getInstance();
+        subMenuTransfor = SubMenuTransfor2d.getInstance();
         initComponents();
         //openMenuReta(null);
         coordinatesSystem();
@@ -317,12 +320,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_panelBoxMouseMoved
 
     private void subMenu2dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenu2dActionPerformed
-       
+        subMenuTransfor.setVisible(true);
+        if (!panelFooter.isValid()) {
+        }else {
+            PlanoCartesiano.getInstance().redesenha();
+        }
+        changePanMenu(subMenuTransfor);
         
-        
-        /*SubMenu2d view2d = new SubMenu2d();
-        panMenu.add(view2d);
-        view2d.setVisible(true);*/
     }//GEN-LAST:event_subMenu2dActionPerformed
 
     private void jm_retaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_retaActionPerformed
