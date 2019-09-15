@@ -6,8 +6,8 @@
 package view;
 
 import Graficos.PanelGrafico;
-import Opr.NormalizationsFunctions;
-import Opr.PlanoCartesiano;
+import Operacoes.NormalizationsFunctions;
+import Operacoes.PlanoCartesiano;
 import Retas.Rasterizacao;
 import enums.RasterEnum;
 import java.awt.Component;
@@ -59,7 +59,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         lab_X = new javax.swing.JLabel();
         lab_Y = new javax.swing.JLabel();
-        panelGrafic = Opr.PlanoCartesiano.getInstance();
+        panelGrafic = Operacoes.PlanoCartesiano.getInstance();
         lab_cTela = new javax.swing.JLabel();
         panMenu = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();

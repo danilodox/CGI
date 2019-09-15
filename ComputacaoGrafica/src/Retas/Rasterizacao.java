@@ -5,7 +5,7 @@
  */
 package Retas;
 
-import Opr.PlanoCartesiano;
+import Operacoes.PlanoCartesiano;
 import auxiliar.Ponto;
 import java.awt.Color;
 import javax.swing.JTextArea;
@@ -83,6 +83,55 @@ public class Rasterizacao {
             setIteracao(textAreaSolution, x, y, ++count, null);
             x += k;
         }
+    }
+    
+    //algoritmo de ponto medio
+    public void bresenham(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
+        int x1 = (int)(pInicial.getX());
+        int x2 = (int)(pFinal.getX());
+        int y1 = (int)(pInicial.getY());
+        int y2 = (int)(pFinal.getY());
+        
+        if((x1==x2) && (y1==y2)){
+            planoCartesiano.drawPixel(x1, y1);
+        }else {
+            double dx = Math.abs(x2 - x1);
+            double dy = Math.abs(y2 - y1);
+            double rozdil = dx - dy;
+            int posun_x, posun_y;
+
+            if (x1 < x2) {
+                posun_x = 1;
+            } else {
+                posun_x = -1;
+            }
+            if (y1 < y2) {
+                posun_y = 1;
+            } else {
+                posun_y = -1;
+            }
+
+            int count = 0;
+            planoCartesiano.drawPixel((double) x1, (double) y1); // Pinta o primeiro ponto
+            setIteracao(textAreaSolution, x1, y1, ++count, null);
+
+            while ((x1 != x2) || (y1 != y2)) {
+                double p = 2 * rozdil;
+
+                if (p > -dy) {
+                    rozdil = rozdil - dy;
+                    x1 = x1 + posun_x;
+                }
+                if (p < dx) {
+                    rozdil = rozdil + dx;
+                    y1 = y1 + posun_y;
+                }
+
+                planoCartesiano.drawPixel((double) x1, (double) y1);
+                setIteracao(textAreaSolution, x1, y1, ++count, null);
+            }
+        }
+        
     }
     
     public void pm(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
