@@ -180,16 +180,16 @@ public class PanelMenuCircunferencia extends javax.swing.JPanel {
     private void btn_desenharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desenharActionPerformed
         setRaioX((float) raiox.getValue());
         
-        if (rb_pm.isSelected()) {
+        /*if (rb_pm.isSelected()) {
             setTipoAlgoritimo(CircEnum.PONTO_MEDIO);
-        } else if (rb_ee.isSelected()) {
+        } else*/ if (rb_ee.isSelected()) {
             setTipoAlgoritimo(CircEnum.EQUACAO_EXPLICITA);
         } else if (rb_trig.isSelected()) {
             setTipoAlgoritimo(CircEnum.TRIGONOMETRIA);
-        } else if (rb_elip.isSelected()) {
+        }/* else if (rb_elip.isSelected()) {
             setRaioY((float) raioy.getValue());
             setTipoAlgoritimo(CircEnum.ELIPSE);
-        }
+        }*/
         
         JanelaPrincipal.runResult(this);
     }//GEN-LAST:event_btn_desenharActionPerformed

@@ -46,4 +46,23 @@ public class Circunferencia {
             g.fillRect(i + planoCartesiano.getValorCentroX(), planoCartesiano.getValorCentroY() - (-1 * (int) Math.sqrt(raio * raio - i * i)), 1, 1);
         }
     }
+    
+    public void funcaoTrigonometrica(int raio){
+        for(int i = -raio ; i <= raio ; i++){
+            g.fillRect(((int) (raio * (double) Math.cos(Math.toRadians(i)))) + planoCartesiano.getValorCentroX(), planoCartesiano.getValorCentroY() - ((int) (raio * (double) Math.sin(Math.toRadians(i)))), 1, 1);
+            drawPoints(((int) (raio * (double) Math.cos(Math.toRadians(i)))), -((int) (raio * (double) Math.sin(Math.toRadians(i)))));
+        }
+    }
+    
+    public void drawPoints(int x, int y){
+        g.fillRect(planoCartesiano.getValorCentroX() - x, planoCartesiano.getValorCentroY() + y, 1, 1);
+        g.fillRect(planoCartesiano.getValorCentroX() + x, planoCartesiano.getValorCentroY() + y, 1, 1);
+        g.fillRect(planoCartesiano.getValorCentroX() + x, planoCartesiano.getValorCentroY() - y, 1, 1);
+        g.fillRect(planoCartesiano.getValorCentroX() - x, planoCartesiano.getValorCentroY() - y, 1, 1);
+        
+        g.fillRect(planoCartesiano.getValorCentroX() - y, planoCartesiano.getValorCentroY() + x, 1, 1);
+        g.fillRect(planoCartesiano.getValorCentroX() + y, planoCartesiano.getValorCentroY() + x, 1, 1);
+        g.fillRect(planoCartesiano.getValorCentroX() + y, planoCartesiano.getValorCentroY() - x, 1, 1);
+        g.fillRect(planoCartesiano.getValorCentroX() - y, planoCartesiano.getValorCentroY() - x, 1, 1);
+    }
 }

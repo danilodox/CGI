@@ -520,10 +520,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             case EQUACAO_EXPLICITA:
                 circ.funcaoExplicita((int) menu.getRaioX());
                 break;
-            /*case TRIGONOMETRIA:
-                circ.funcaoTrigonometria((int) menu.getRaioX());
+            case TRIGONOMETRIA:
+                circ.funcaoTrigonometrica((int) menu.getRaioX());
                 break;
-            case ELIPSE:
+            /*case ELIPSE:
                 circ.funcaoElipse((int) menu.getRaioX(), (int) menu.getRaioY());*/
             default:
                 break;
