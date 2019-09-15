@@ -96,29 +96,26 @@ public class Rasterizacao {
         }
         xin = dx/passos;
         yin = dy/passos;
-        if(pInicial.getX() > pFinal.getX()){
-            x = pInicial.getX();
-            y = pInicial.getY();
-            planoCartesiano.drawPixel(x, y);
-            setIteracao(textAreaSolution, x, y, ++cont, null);
-            while(x > pFinal.getX()){
+        x = pInicial.getX();
+        y = pInicial.getY();
+        planoCartesiano.drawPixel(x, y);
+        setIteracao(textAreaSolution, x, y, ++cont, null);
+        if(x < pFinal.getX()){
+            while(x < pFinal.getX()){
                 x = x + xin;
                 y = y + yin;
                 planoCartesiano.drawPixel(x, y);
                 setIteracao(textAreaSolution, x, y, ++cont, null);
             }
         } else {
-            x = pFinal.getX();
-            y = pFinal.getY();
-            planoCartesiano.drawPixel(x, y);
-            setIteracao(textAreaSolution, x, y, ++cont, null);
-            while(x > pInicial.getX()){
-                x = x - xin;
-                y = y - yin;
+            while(x > pFinal.getX()){
+                x = x + xin;
+                y = y + yin;
                 planoCartesiano.drawPixel(x, y);
                 setIteracao(textAreaSolution, x, y, ++cont, null);
             }
         }
+        
         
     }
     
