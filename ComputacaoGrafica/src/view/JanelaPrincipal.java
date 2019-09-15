@@ -8,13 +8,19 @@ package view;
 import Graficos.PanelGrafico;
 import Operacoes.NormalizationsFunctions;
 import Operacoes.PlanoCartesiano;
+import Retas.Circunferencia;
 import Retas.Rasterizacao;
+import static enums.CircEnum.ELIPSE;
+import static enums.CircEnum.EQUACAO_EXPLICITA;
+import static enums.CircEnum.TRIGONOMETRIA;
 import enums.RasterEnum;
+import static enums.RasterEnum.PONTO_MEDIO;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.JPanel;
+import panels.PanelMenuCircunferencia;
 import panels.PanelMenuRaster;
 
 
@@ -25,13 +31,15 @@ import panels.PanelMenuRaster;
  */
 public class JanelaPrincipal extends javax.swing.JFrame {
     
-    PanelGrafico pg;
-    PanelMenuRaster panelMenuRaster;
+    //private final PanelGrafico pg;
+    private final PanelMenuRaster panelMenuRaster;
+    private final PanelMenuCircunferencia panelMenuCirc;
     /**
      * Creates new form JanelaGrafica
      */
     public JanelaPrincipal() {
         panelMenuRaster = PanelMenuRaster.getInstance();
+        panelMenuCirc = PanelMenuCircunferencia.getInstance();
         initComponents();
         //openMenuReta(null);
         coordinatesSystem();
@@ -65,6 +73,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuDesenhar = new javax.swing.JMenu();
         jm_reta = new javax.swing.JMenuItem();
+        jm_circ = new javax.swing.JMenuItem();
         menuTransformacoes = new javax.swing.JMenu();
         subMenu2d = new javax.swing.JMenuItem();
 
@@ -253,6 +262,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
         menuDesenhar.add(jm_reta);
 
+        jm_circ.setText("Circunferencia");
+        jm_circ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_circActionPerformed(evt);
+            }
+        });
+        menuDesenhar.add(jm_circ);
+
         jMenuBar1.add(menuDesenhar);
 
         menuTransformacoes.setText("Transformações");
@@ -318,6 +335,17 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         }
         changePanMenu(panelMenuRaster);
     }//GEN-LAST:event_jm_retaActionPerformed
+
+    private void jm_circActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_circActionPerformed
+        panMenu.setVisible(true);
+        
+        if(!panelFooter.isValid()){
+            setDefaultBox();
+        } else {
+            PlanoCartesiano.getInstance().redesenha();
+        }
+        changePanMenu(panelMenuCirc);
+    }//GEN-LAST:event_jm_circActionPerformed
     
     private void coordinatesSystem(){
         panelGrafic.addMouseMotionListener(new MouseMotionAdapter(){
@@ -389,6 +417,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JMenuItem jm_circ;
     private javax.swing.JMenuItem jm_reta;
     private javax.swing.JLabel lab_DCX;
     private javax.swing.JLabel lab_DCY;
@@ -459,9 +488,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     public static void runResult(Object instance) {
         if (instance instanceof PanelMenuRaster) {
             processaRasterizacaoReta(PanelMenuRaster.getInstance());
-        } /*else if (instance instanceof PanelMenuCircunferencia) {
+        } else if (instance instanceof PanelMenuCircunferencia) {
             processaRasterizacaoCircunferencia(PanelMenuCircunferencia.getInstance());
-        } else if (instance instanceof PanelMenu2D) {
+        } /*else if (instance instanceof PanelMenu2D) {
             processaTransformacoes2D(PanelMenu2D.getInstance());
         } else if (instance instanceof PanelMenu3D) {
             processaTransformacoes3D(PanelMenu3D.getInstance());
@@ -478,6 +507,26 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             rast.dda(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
         } else if (menu.getTipoAlgoritimo().equals(RasterEnum.PONTO_MEDIO)) {
             rast.bresenham(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
+        }
+    }
+    
+    private static void processaRasterizacaoCircunferencia(PanelMenuCircunferencia menu) {
+        Circunferencia circ = Circunferencia.getInstance();
+
+        switch (menu.getTipoAlgoritimo()) {
+            /*case PONTO_MEDIO:
+                circ.funcaoPontoMedio((int) menu.getRaioX());
+                break;*/
+            case EQUACAO_EXPLICITA:
+                circ.funcaoExplicita((int) menu.getRaioX());
+                break;
+            /*case TRIGONOMETRIA:
+                circ.funcaoTrigonometria((int) menu.getRaioX());
+                break;
+            case ELIPSE:
+                circ.funcaoElipse((int) menu.getRaioX(), (int) menu.getRaioY());*/
+            default:
+                break;
         }
     }
     
