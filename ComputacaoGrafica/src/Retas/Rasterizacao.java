@@ -30,7 +30,7 @@ public class Rasterizacao {
         return instance;
     }
     
-    public void dda(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution) {
+    public void ddaT(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution) {
         double x1 = pInicial.getX();
         double x2 = pFinal.getX();
         double y1 = pInicial.getY();
@@ -82,6 +82,44 @@ public class Rasterizacao {
             setIteracao(textAreaSolution, x, y, ++count, null);
             x += k;
         }
+    }
+    
+    public void dda(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
+        int passos, cont = 0;
+        double x, y, xin, yin, dx, dy;
+        dx = (pFinal.getX() - pInicial.getX());
+        dy = (pFinal.getY() - pInicial.getY());
+        if(Math.abs(dx) > Math.abs(dy)){
+            passos = (int) Math.abs(dx);
+        } else {
+            passos = (int) Math.abs(dy);
+        }
+        xin = dx/passos;
+        yin = dy/passos;
+        if(pInicial.getX() > pFinal.getX()){
+            x = pInicial.getX();
+            y = pInicial.getY();
+            planoCartesiano.drawPixel(x, y);
+            setIteracao(textAreaSolution, x, y, ++cont, null);
+            while(x > pFinal.getX()){
+                x = x + xin;
+                y = y + yin;
+                planoCartesiano.drawPixel(x, y);
+                setIteracao(textAreaSolution, x, y, ++cont, null);
+            }
+        } else {
+            x = pFinal.getX();
+            y = pFinal.getY();
+            planoCartesiano.drawPixel(x, y);
+            setIteracao(textAreaSolution, x, y, ++cont, null);
+            while(x > pInicial.getX()){
+                x = x - xin;
+                y = y - yin;
+                planoCartesiano.drawPixel(x, y);
+                setIteracao(textAreaSolution, x, y, ++cont, null);
+            }
+        }
+        
     }
     
     //algoritmo de ponto medio
