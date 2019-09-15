@@ -7,7 +7,6 @@ package Retas;
 
 import Operacoes.PlanoCartesiano;
 import auxiliar.Ponto;
-import java.awt.Color;
 import javax.swing.JTextArea;
 
 /**
