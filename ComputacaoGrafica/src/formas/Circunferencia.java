@@ -48,9 +48,30 @@ public class Circunferencia {
     }
     
     public void funcaoTrigonometrica(int raio){
+        planoCartesiano.redesenha();
         for(int i = -raio ; i <= raio ; i++){
             g.fillRect(((int) (raio * (double) Math.cos(Math.toRadians(i)))) + planoCartesiano.getValorCentroX(), planoCartesiano.getValorCentroY() - ((int) (raio * (double) Math.sin(Math.toRadians(i)))), 1, 1);
             drawPoints(((int) (raio * (double) Math.cos(Math.toRadians(i)))), -((int) (raio * (double) Math.sin(Math.toRadians(i)))));
+        }
+    }
+    
+    public void funcaoPontoMedio(int raio){
+        planoCartesiano.redesenha();
+        
+        x = 0;
+        y = raio;
+        d_old = 1 - raio;
+        g.fillRect(planoCartesiano.getValorCentroX() + x, planoCartesiano.getValorCentroY() - y, 1, 1);
+        drawPoints(x, y);
+        while(y > x){
+            if(d_old < 0){
+                d_old += 2*x + 3;
+            } else if(d_old >= 0) {
+                d_old += 2*x - 2*y + 5;
+                y--;
+            }
+            x++;
+            drawPoints(x, y);
         }
     }
     

@@ -514,9 +514,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         Circunferencia circ = Circunferencia.getInstance();
 
         switch (menu.getTipoAlgoritimo()) {
-            /*case PONTO_MEDIO:
+            case PONTO_MEDIO:
                 circ.funcaoPontoMedio((int) menu.getRaioX());
-                break;*/
+                break;
             case EQUACAO_EXPLICITA:
                 circ.funcaoExplicita((int) menu.getRaioX());
                 break;
