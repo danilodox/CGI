@@ -29,7 +29,7 @@ public class Rasterizacao {
         }
         return instance;
     }
-    
+    //dda antigo
     public void ddaT(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution) {
         double x1 = pInicial.getX();
         double x2 = pFinal.getX();
@@ -83,7 +83,7 @@ public class Rasterizacao {
             x += k;
         }
     }
-    
+    //dda novo(baseado no codigo do slide)
     public void dda(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
         int passos, cont = 0;
         double x, y, xin, yin, dx, dy;
