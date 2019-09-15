@@ -5,11 +5,11 @@
  */
 package view;
 
-import Graficos.PanelGrafico;
-import Operacoes.NormalizationsFunctions;
-import Operacoes.PlanoCartesiano;
-import Retas.Circunferencia;
-import Retas.Rasterizacao;
+import graficos.PanelGrafico;
+import operacoes.NormalizationsFunctions;
+import operacoes.PlanoCartesiano;
+import formas.Circunferencia;
+import formas.Rasterizacao;
 import static enums.CircEnum.ELIPSE;
 import static enums.CircEnum.EQUACAO_EXPLICITA;
 import static enums.CircEnum.TRIGONOMETRIA;
@@ -67,7 +67,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         lab_X = new javax.swing.JLabel();
         lab_Y = new javax.swing.JLabel();
-        panelGrafic = Operacoes.PlanoCartesiano.getInstance();
+        panelGrafic = operacoes.PlanoCartesiano.getInstance();
         lab_cTela = new javax.swing.JLabel();
         panMenu = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();

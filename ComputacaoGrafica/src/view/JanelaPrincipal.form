@@ -323,7 +323,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="Operacoes.PlanoCartesiano.getInstance()"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="operacoes.PlanoCartesiano.getInstance()"/>
           </AuxValues>
 
           <Layout>

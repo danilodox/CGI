@@ -5,7 +5,7 @@
  */
 package view;
 
-import Graficos.JanelaGraficos;
+import graficos.JanelaGraficos;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
