@@ -477,7 +477,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         if (menu.getTipoAlgoritimo().equals(RasterEnum.DDA)) {
             rast.dda(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
         } else if (menu.getTipoAlgoritimo().equals(RasterEnum.PONTO_MEDIO)) {
-            rast.pm(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
+            rast.bresenham(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
         }
     }
     

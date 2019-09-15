@@ -131,11 +131,6 @@ public class Rasterizacao {
                 setIteracao(textAreaSolution, x1, y1, ++count, null);
             }
         }
-        
-    }
-    
-    public void pm(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
-        System.out.println("EM CONSTRUCAO");
     }
     
     public static void setIteracao(JTextArea textAreaSolution, double x, double y, int count, String d){
