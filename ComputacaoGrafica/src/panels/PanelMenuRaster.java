@@ -59,7 +59,12 @@ public class PanelMenuRaster extends javax.swing.JPanel {
         rb_dda.setText("DDA");
 
         buttonGroup1.add(rb_pm);
-        rb_pm.setText("Bresenham(não implementado)");
+        rb_pm.setText("Bresenham");
+        rb_pm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_pmActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -188,6 +193,10 @@ public class PanelMenuRaster extends javax.swing.JPanel {
         }
         JanelaPrincipal.runResult(this);
     }//GEN-LAST:event_btn_desenharActionPerformed
+
+    private void rb_pmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_pmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rb_pmActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
