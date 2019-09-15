@@ -29,6 +29,8 @@ public class PanelMenuCircunferencia extends javax.swing.JPanel {
      */
     public PanelMenuCircunferencia() {
         initComponents();
+        rb_elip.setVisible(false);
+        raioy.setEnabled(false);
     }
 
     /**
@@ -129,10 +131,10 @@ public class PanelMenuCircunferencia extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(raiox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(raioy, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(raiox, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(raioy, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,12 +160,11 @@ public class PanelMenuCircunferencia extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_desenhar, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_desenhar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,19 +197,19 @@ public class PanelMenuCircunferencia extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_desenharActionPerformed
 
     private void rb_pmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_pmActionPerformed
-        raioy.setVisible(false);
+        raioy.setEnabled(false);
     }//GEN-LAST:event_rb_pmActionPerformed
 
     private void rb_eeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_eeActionPerformed
-        raioy.setVisible(false);
+        raioy.setEnabled(false);
     }//GEN-LAST:event_rb_eeActionPerformed
 
     private void rb_trigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_trigActionPerformed
-        raioy.setVisible(false);
+        raioy.setEnabled(false);
     }//GEN-LAST:event_rb_trigActionPerformed
 
     private void rb_elipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_elipActionPerformed
-        raioy.setVisible(true);
+        raioy.setEnabled(true);
     }//GEN-LAST:event_rb_elipActionPerformed
     
     
