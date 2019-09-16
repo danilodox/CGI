@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package oprMatrizes;
+package operacaoMatrizes;
 
 /**
  *
@@ -11,7 +11,7 @@ package oprMatrizes;
  */
 public class MultiplicarMatriz {
     
-    public double[][] multM(double[][] m1, double[][] m2){
+    public static double[][] multiplicaMatrizes(double[][] m1, double[][] m2){
         int n = m1[0].length; //A.columns = B.rows
         //Verfica se A.columns = B.rows
         int rows = m1.length; //A.rows
