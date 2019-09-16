@@ -155,12 +155,11 @@ public class PlanoCartesiano extends JPanel{
      * @param color
      * @param matrizObjeto
      */
-    public void drawObjeto2D(double[][] matrizObjeto, Color color) {
+    public void drawObjeto2D(double[][] matrizObjeto) {
         redesenha();
 
         // Pega instância do graphics para desenhar no plano cartesiano
         Graphics g = this.getGraphics();
-        g.setColor(color);
 
         g.drawLine(this.getValorCentroX() + (int) matrizObjeto[0][0], this.getValorCentroY() - (int) matrizObjeto[1][0], this.getValorCentroX() + (int) matrizObjeto[0][1], this.getValorCentroY() - (int) matrizObjeto[1][1]);
         g.drawLine(this.getValorCentroX() + (int) matrizObjeto[0][1], this.getValorCentroY() - (int) matrizObjeto[1][1], this.getValorCentroX() + (int) matrizObjeto[0][2], this.getValorCentroY() - (int) matrizObjeto[1][2]);

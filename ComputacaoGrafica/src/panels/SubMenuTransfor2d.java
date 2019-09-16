@@ -9,7 +9,15 @@ import panels.*;
 import view.JanelaPrincipal;
 import auxiliar.Ponto;
 import enums.RasterEnum;
+import enums.TransformEnum;
+import java.awt.Color;
+import java.awt.geom.Rectangle2D;
+import java.util.Stack;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import operacoes.PlanoCartesiano;
+import static panels.PanelMenu2D.matrizObject;
 import view.JanelaPrincipal;
 
 /**
@@ -18,17 +26,39 @@ import view.JanelaPrincipal;
  */
 public class SubMenuTransfor2d extends javax.swing.JPanel {
     
-    public static SubMenuTransfor2d instance;
+    private static SubMenuTransfor2d instance;
+    public static double[][] matrizObject;
+    public Stack<double[][]> listaDeTransformacoes;
+
+    private Rectangle2D.Double rect;
+    private double valorX, valorY; // usando na translacao, escala, cisalhamento
+    private Ponto ponto;
+    private double angulo; // usado na  rotacao
+    private String eixo; // usado na reflexao
+
+    private Color color;
+    private TransformEnum tipoAlgoritimo;
+    private final DefaultListModel<String> modelList;
     
-    private RasterEnum tipoAlgoritimo;
-    
-    private Ponto p1, p2;
+    public static synchronized SubMenuTransfor2d getInstance() {
+        if (instance == null) {
+            instance = new SubMenuTransfor2d();
+        }
+        return instance;
+    }
     
     /**
      * Creates new form PanelMenuRaster
      */
     public SubMenuTransfor2d() {
+        modelList = new DefaultListModel();
+        listaDeTransformacoes = new Stack<>();
         initComponents();
+        pan_dados1.setEnabled(false);
+        valorDDX.setEnabled(false);
+        valorDDY.setEnabled(false);
+        lab_dd1.setEnabled(false);
+        lab_dd2.setEnabled(false);
     }
 
     /**
@@ -41,28 +71,33 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         btn_desenhar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        P1x = new javax.swing.JSpinner();
+        sp_width = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
-        P2x = new javax.swing.JSpinner();
+        sp_pointX = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
-        P1y = new javax.swing.JSpinner();
+        sp_height = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
-        P2y = new javax.swing.JSpinner();
+        sp_pointY = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        rb_translac = new javax.swing.JRadioButton();
+        rb_escal = new javax.swing.JRadioButton();
+        rb_rot = new javax.swing.JRadioButton();
+        rb_reflex = new javax.swing.JRadioButton();
+        rb_cisa = new javax.swing.JRadioButton();
+        pan_dados1 = new javax.swing.JPanel();
+        valorDDX = new javax.swing.JSpinner();
+        valorDDY = new javax.swing.JSpinner();
+        lab_dd1 = new javax.swing.JLabel();
+        lab_dd2 = new javax.swing.JLabel();
+        btn_applyTransf = new javax.swing.JButton();
+        pan_dados2 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jPanel2 = new javax.swing.JPanel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         btn_desenhar.setText("Desenhar");
         btn_desenhar.addActionListener(new java.awt.event.ActionListener() {
@@ -73,19 +108,19 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Desenhar Objeto 2D"));
 
-        P1x.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+        sp_width.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
         jLabel3.setText("W");
 
-        P2x.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+        sp_pointX.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
         jLabel4.setText("X");
 
-        P1y.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+        sp_height.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
         jLabel5.setText("H");
 
-        P2y.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+        sp_pointY.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
         jLabel6.setText("Y");
 
@@ -100,17 +135,17 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(P2x, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sp_pointX, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(P2y, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sp_pointY, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(P1x, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sp_width, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(P1y, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(sp_height, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22))
         );
         jPanel3Layout.setVerticalGroup(
@@ -118,35 +153,60 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(P1x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sp_width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(P1y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sp_height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(P2x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sp_pointX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(P2y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sp_pointY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(21, 21, 21))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Transformações"));
 
-        jRadioButton1.setText("Translação");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rb_translac);
+        rb_translac.setText("Translação");
+        rb_translac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                transformacaoSelecionada(evt);
             }
         });
 
-        jRadioButton2.setText("Escala");
+        buttonGroup1.add(rb_escal);
+        rb_escal.setText("Escala");
+        rb_escal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transformacaoSelecionada(evt);
+            }
+        });
 
-        jRadioButton3.setText("Rotação");
+        buttonGroup1.add(rb_rot);
+        rb_rot.setText("Rotação");
+        rb_rot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transformacaoSelecionada(evt);
+            }
+        });
 
-        jRadioButton4.setText("Reflexão");
+        buttonGroup1.add(rb_reflex);
+        rb_reflex.setText("Reflexão");
+        rb_reflex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transformacaoSelecionada(evt);
+            }
+        });
 
-        jRadioButton5.setText("Cisalhamento");
+        buttonGroup1.add(rb_cisa);
+        rb_cisa.setText("Cisalhamento");
+        rb_cisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transformacaoSelecionada(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,84 +215,121 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton5))
+                    .addComponent(rb_translac)
+                    .addComponent(rb_escal)
+                    .addComponent(rb_rot)
+                    .addComponent(rb_reflex)
+                    .addComponent(rb_cisa))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jRadioButton1)
+                .addComponent(rb_translac)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(rb_escal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(rb_rot)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton4)
+                .addComponent(rb_reflex)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton5))
+                .addComponent(rb_cisa))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
+        pan_dados1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
 
-        jLabel1.setText("X");
+        valorDDX.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
-        jLabel2.setText("Y");
+        valorDDY.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel1)))
+        lab_dd1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_dd1.setText("X");
+
+        lab_dd2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_dd2.setText("Y");
+
+        javax.swing.GroupLayout pan_dados1Layout = new javax.swing.GroupLayout(pan_dados1);
+        pan_dados1.setLayout(pan_dados1Layout);
+        pan_dados1Layout.setHorizontalGroup(
+            pan_dados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_dados1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pan_dados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(valorDDX, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(lab_dd1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(26, 26, 26)))
+                .addGroup(pan_dados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(valorDDY, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(lab_dd2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(42, 42, 42))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+        pan_dados1Layout.setVerticalGroup(
+            pan_dados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_dados1Layout.createSequentialGroup()
+                .addGroup(pan_dados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lab_dd1)
+                    .addComponent(lab_dd2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(jSpinner1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pan_dados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(valorDDY)
+                    .addComponent(valorDDX, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jButton1.setText("Aplicar Transformação");
+        btn_applyTransf.setText("Aplicar Transformação");
+        btn_applyTransf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_applyTransfActionPerformed(evt);
+            }
+        });
+
+        pan_dados2.setBorder(javax.swing.BorderFactory.createTitledBorder("Eixo"));
+
+        buttonGroup2.add(jRadioButton1);
+        jRadioButton1.setText("Reflexão em X");
+
+        buttonGroup2.add(jRadioButton2);
+        jRadioButton2.setText("Reflexão em Y");
+
+        buttonGroup2.add(jRadioButton3);
+        jRadioButton3.setText("Reflexão em X e Y");
+
+        javax.swing.GroupLayout pan_dados2Layout = new javax.swing.GroupLayout(pan_dados2);
+        pan_dados2.setLayout(pan_dados2Layout);
+        pan_dados2Layout.setHorizontalGroup(
+            pan_dados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_dados2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pan_dados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2)
+                    .addComponent(jRadioButton3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pan_dados2Layout.setVerticalGroup(
+            pan_dados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_dados2Layout.createSequentialGroup()
+                .addComponent(jRadioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton3))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pan_dados2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_applyTransf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pan_dados1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(btn_desenhar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -244,95 +341,216 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
                 .addComponent(btn_desenhar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addComponent(pan_dados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pan_dados2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_applyTransf, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.getAccessibleContext().setAccessibleName("Desenhar Objeto 2D");
         jPanel3.getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_desenharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desenharActionPerformed
-       /* textArea.setText("");
-        
-        setPontoInicial(new Ponto((double)P1x.getValue(), (double)P1y.getValue()));
-        setPontoFinal(new Ponto((double)P2x.getValue(), (double)P2y.getValue()));
-        
-        if(rb_dda.isSelected()){
-            setTipoAlgoritimo(RasterEnum.DDA);
-        } else if(rb_pm.isSelected()){
-            setTipoAlgoritimo(RasterEnum.PONTO_MEDIO);
-        }
-        JanelaPrincipal.runResult(this);*/
+       desenharObjeto();
     }//GEN-LAST:event_btn_desenharActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    private void btn_applyTransfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_applyTransfActionPerformed
+        if(rb_translac.isSelected()){
+            setTipoAlgoritimo(TransformEnum.TRANSLACAO);
+            setValorX((double) valorDDX.getValue());
+            setValorY((double) valorDDY.getValue());
+        } else if(rb_escal.isSelected()){
+            setTipoAlgoritimo(TransformEnum.ESCALA);
+            setValorX((double) valorDDX.getValue());
+            setValorY((double) valorDDY.getValue());
+        } else if(rb_rot.isSelected()){
+            setTipoAlgoritimo(TransformEnum.ROTACAO);
+            double t = (double) valorDDX.getValue();
+            setAngulo(t);
+        } else if(rb_reflex.isSelected()){
+            setTipoAlgoritimo(TransformEnum.REFLEXAO);
+            if (rb_translac.isSelected()) {
+                setEixo("x");
+            } else if (rb_escal.isSelected()) {
+                setEixo("y");
+            } else if (rb_rot.isSelected()) {
+                setEixo("xy");
+            }
+        } else if(rb_cisa.isSelected()){
+            setTipoAlgoritimo(TransformEnum.CISALHAMENTO);
+            setValorX((double) valorDDX.getValue());
+            setValorY((double) valorDDY.getValue());
+        }
+        
+        if (matrizObject == null) {
+            JOptionPane.showMessageDialog(this.getRootPane(), "Não há objeto no plano cartesiano!\nPor favor, desenhe o objeto primeiro...", "Aplicar Transformação?", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JanelaPrincipal.runResult(this);
+        }
+    }//GEN-LAST:event_btn_applyTransfActionPerformed
+
+    private void transformacaoSelecionada(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transformacaoSelecionada
+        pan_dados1.setEnabled(true);
+        valorDDX.setEnabled(true);
+        valorDDY.setEnabled(true);
+        lab_dd1.setEnabled(true);
+        lab_dd2.setEnabled(true);
+        
+        pan_dados2.setEnabled(false);
+        jRadioButton1.setEnabled(false);
+        jRadioButton2.setEnabled(false);
+        jRadioButton3.setEnabled(false);
+
+        valorDDX.setValue(0D);
+        valorDDY.setValue(0D);
+
+        if (rb_rot.isSelected()) {
+            lab_dd1.setText("Ângulo");
+            lab_dd2.setEnabled(false);
+            valorDDY.setEnabled(false);
+        } else if (rb_reflex.isSelected()) {
+            pan_dados1.setEnabled(false);
+            pan_dados2.setEnabled(true);
+            jRadioButton1.setEnabled(true);
+            jRadioButton2.setEnabled(true);
+            jRadioButton3.setEnabled(true);
+        } else {
+            lab_dd1.setText("X");
+            lab_dd2.setEnabled(true);
+            valorDDY.setEnabled(true);
+        }
+    }//GEN-LAST:event_transformacaoSelecionada
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner P1x;
-    private javax.swing.JSpinner P1y;
-    private javax.swing.JSpinner P2x;
-    private javax.swing.JSpinner P2y;
+    private javax.swing.JButton btn_applyTransf;
     private javax.swing.JButton btn_desenhar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JLabel lab_dd1;
+    private javax.swing.JLabel lab_dd2;
+    private javax.swing.JPanel pan_dados1;
+    private javax.swing.JPanel pan_dados2;
+    private javax.swing.JRadioButton rb_cisa;
+    private javax.swing.JRadioButton rb_escal;
+    private javax.swing.JRadioButton rb_reflex;
+    private javax.swing.JRadioButton rb_rot;
+    private javax.swing.JRadioButton rb_translac;
+    private javax.swing.JSpinner sp_height;
+    private javax.swing.JSpinner sp_pointX;
+    private javax.swing.JSpinner sp_pointY;
+    private javax.swing.JSpinner sp_width;
+    private javax.swing.JSpinner valorDDX;
+    private javax.swing.JSpinner valorDDY;
     // End of variables declaration//GEN-END:variables
     
-    public static synchronized SubMenuTransfor2d getInstance() {
-        if (instance == null) {
-            instance = new SubMenuTransfor2d();
-        }
-        return instance;
+    public Ponto getPonto() {
+        return ponto;
+    }
+
+    public void setPonto(Ponto ponto) {
+        this.ponto = ponto;
+    }
+
+    public double getValorX() {
+        return valorX;
+    }
+
+    public void setValorX(double valorX) {
+        this.valorX = valorX;
+    }
+
+    public double getValorY() {
+        return valorY;
+    }
+
+    public void setValorY(double valorY) {
+        this.valorY = valorY;
+    }
+
+    public double getAngulo() {
+        return angulo;
+    }
+
+    public void setAngulo(double raio) {
+        this.angulo = raio;
+    }
+
+    public Rectangle2D.Double getRect() {
+        return rect;
+    }
+
+    public void setRect(Rectangle2D.Double rect) {
+        this.rect = rect;
+    }
+
+    public String getEixo() {
+        return eixo;
+    }
+
+    public void setEixo(String eixo) {
+        this.eixo = eixo;
     }
     
-    public Ponto getPontoInicial(){
-        return p1;
-    }
-    
-    public void setPontoInicial(Ponto p1){
-        this.p1 = p1;
-    }
-    
-    public Ponto getPontoFinal(){
-        return p2;
-    }
-    
-    public void setPontoFinal(Ponto p2){
-        this.p2 = p2;
-    }
-    
-    public RasterEnum getTipoAlgoritimo() {
+    public TransformEnum getTipoAlgoritimo() {
         return tipoAlgoritimo;
     }
 
-    public void setTipoAlgoritimo(RasterEnum tipoAlgoritimo) {
+    public void setTipoAlgoritimo(TransformEnum tipoAlgoritimo) {
         this.tipoAlgoritimo = tipoAlgoritimo;
     }
     
-    //public JTextArea getTextAreaResult() {
-       // return textArea;
-    //}
+    private void desenharObjeto() {
+
+        double width = (double) sp_width.getValue();
+        double height = (double) sp_height.getValue();
+
+        /**
+         * Pegando as coordenadas iniciais do objeto
+         */
+        double px = (double) sp_pointX.getValue();
+        double py = (double) sp_pointY.getValue();
+
+        if (width > 0 && height > 0) {
+
+            matrizObject = new double[3][4];
+
+            // PONTO A
+            matrizObject[0][0] = px;
+            matrizObject[1][0] = py;
+            matrizObject[2][0] = 1;
+
+            // PONTO B
+            matrizObject[0][1] = width + px;
+            matrizObject[1][1] = 0 + py;
+            matrizObject[2][1] = 1;
+
+            // PONTO C
+            matrizObject[0][2] = width + px;
+            matrizObject[1][2] = height + py;
+            matrizObject[2][2] = 1;
+
+            // PONTO D
+            matrizObject[0][3] = 0 + px;
+            matrizObject[1][3] = height + py;
+            matrizObject[2][3] = 1;
+
+            PlanoCartesiano.getInstance().drawObjeto2D(matrizObject);
+        } else {
+            JOptionPane.showMessageDialog(this.getRootPane(), "Faltou você definir a largura (W) e altura (H) do objeto!", "Desenhar Objeto?", JOptionPane.WARNING_MESSAGE);
+        }
+    }
     
 }

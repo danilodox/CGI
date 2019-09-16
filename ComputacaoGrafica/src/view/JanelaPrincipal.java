@@ -5,16 +5,13 @@
  */
 package view;
 
-import graficos.PanelGrafico;
 import operacoes.NormalizationsFunctions;
 import operacoes.PlanoCartesiano;
 import formas.Circunferencia;
 import formas.Rasterizacao;
-import static enums.CircEnum.ELIPSE;
 import static enums.CircEnum.EQUACAO_EXPLICITA;
 import static enums.CircEnum.TRIGONOMETRIA;
 import enums.RasterEnum;
-import static enums.RasterEnum.PONTO_MEDIO;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
@@ -23,6 +20,7 @@ import javax.swing.JPanel;
 import panels.PanelMenuCircunferencia;
 import panels.PanelMenuRaster;
 import panels.SubMenuTransfor2d;
+import transformacoes.Transformacoes2D;
 
 
 
@@ -494,9 +492,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             processaRasterizacaoReta(PanelMenuRaster.getInstance());
         } else if (instance instanceof PanelMenuCircunferencia) {
             processaRasterizacaoCircunferencia(PanelMenuCircunferencia.getInstance());
-        } /*else if (instance instanceof PanelMenu2D) {
-            processaTransformacoes2D(PanelMenu2D.getInstance());
-        } else if (instance instanceof PanelMenu3D) {
+        } else if (instance instanceof SubMenuTransfor2d) {
+            processaTransformacoes2D(SubMenuTransfor2d.getInstance());
+        } /*else if (instance instanceof PanelMenu3D) {
             processaTransformacoes3D(PanelMenu3D.getInstance());
         } else if (instance instanceof PanelMenuImagem) {
             processaTransformacoesImagem(PanelMenuImagem.getInstance());
@@ -511,6 +509,55 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             rast.dda(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
         } else if (menu.getTipoAlgoritimo().equals(RasterEnum.PONTO_MEDIO)) {
             rast.bresenham(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
+        }
+    }
+    
+    private static void processaTransformacoes2D(SubMenuTransfor2d menu) {
+        if (SubMenuTransfor2d.matrizObject != null) {
+            Transformacoes2D trans2D = Transformacoes2D.getInstance();
+
+            /**
+             * Matriz objeto original. Ela é atualizada em cada transformação
+             * aplicada.
+             */
+            double[][] matrizObjeto = SubMenuTransfor2d.matrizObject;
+
+            /**
+             * Fatores de translação.
+             */
+            double tx = SubMenuTransfor2d.matrizObject[0][0], ty = SubMenuTransfor2d.matrizObject[1][0];
+
+            switch (menu.getTipoAlgoritimo()) {
+                case TRANSLACAO:
+                    // Aplica translação
+                    matrizObjeto = trans2D.translacao(matrizObjeto, menu.getValorX(), menu.getValorY());
+                    break;
+                case ESCALA:
+                    // Aplica escala de acordo com Sx e Sy
+                    matrizObjeto = trans2D.escala(matrizObjeto, menu.getValorX(), menu.getValorY());
+                    break;
+                case ROTACAO:
+                    // Aplica rotação de acordo com o ângulo
+                    matrizObjeto = trans2D.rotacao(matrizObjeto, menu.getAngulo());
+                    break;
+                case REFLEXAO:
+                    // Aplica reflexão de acordo com o eixo selecionado
+                    matrizObjeto = trans2D.reflexao(matrizObjeto, menu.getEixo());
+                    break;
+                case CISALHAMENTO:
+                    // Aplica cisalhamento de acordo com o valor de a e b
+                    matrizObjeto = trans2D.cisalhamento(matrizObjeto, menu.getValorX(), menu.getValorY());
+                    break;
+                /*MODO DE FAZER COM TRANSFORMAÇÕES COMPOSTAS
+                    case COMPOSTA:
+                    matrizObjeto = trans2D.composta(menu.listaDeTransformacoes, matrizObjeto);
+                    break;*/
+                default:
+                    break;
+            }
+
+            // Desenha o objeto
+            PlanoCartesiano.getInstance().drawObjeto2D(matrizObjeto);
         }
     }
     
