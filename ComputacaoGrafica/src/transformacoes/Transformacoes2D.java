@@ -7,7 +7,7 @@ package transformacoes;
 
 import enums.Eixo;
 import operacaoMatrizes.MultiplicarMatriz;
-import panels.PanelMenu2D;
+import panels.SubMenuTransfor2d;
 
 /**
  *
@@ -34,7 +34,7 @@ public class Transformacoes2D {
         
         try{
             matrizResult = MultiplicarMatriz.multiplicaMatrizes(geraMatrizTranslacao(tx, ty), matrizObject);
-            PanelMenu2D.matrizObject = matrizResult;
+            SubMenuTransfor2d.matrizObject = matrizResult;
         }catch(Exception e){
             System.err.println("Ocorreu um erro na tranformacao");
         }
@@ -53,7 +53,7 @@ public class Transformacoes2D {
             matrizResult = MultiplicarMatriz.multiplicaMatrizes(matrizM, matrizObject);
 
             ///FALTA CRIAR ESSE CAMPO NO PanelMenu2D
-            PanelMenu2D.matrizObject = matrizResult;
+            SubMenuTransfor2d.matrizObject = matrizResult;
             
         }catch(Exception e){
             System.err.println("Ocorreu um erro na tranformacao");
@@ -74,7 +74,7 @@ public class Transformacoes2D {
             matrizResult = MultiplicarMatriz.multiplicaMatrizes(matrizM, matrizObject);
 
             ///FALTA CRIAR ESSE CAMPO NO PanelMenu2D
-            PanelMenu2D.matrizObject = matrizResult;
+            SubMenuTransfor2d.matrizObject = matrizResult;
             
         } catch (Exception e) {
             System.err.println("Ocorreu um erro na transformacao!");
@@ -90,7 +90,7 @@ public class Transformacoes2D {
             matrizResult = MultiplicarMatriz.multiplicaMatrizes(geraMatrizReflexao(eixo), matrizObject);
            
             ///FALTA CRIAR ESSE CAMPO NO PanelMenu2D
-            PanelMenu2D.matrizObject = matrizResult;
+            SubMenuTransfor2d.matrizObject = matrizResult;
             
         } catch (Exception e) {
             System.err.println("Ocorreu um erro na reflexao em: " + eixo + "!");
@@ -109,7 +109,7 @@ public class Transformacoes2D {
             matrizResult = MultiplicarMatriz.multiplicaMatrizes(matrizM, matrizObject);
 
             ///FALTA CRIAR ESSE CAMPO NO PanelMenu2D
-            PanelMenu2D.matrizObject = matrizResult;
+            SubMenuTransfor2d.matrizObject = matrizResult;
         } catch (Exception e) {
             System.err.println("Ocorreu um erro no cisalhamento!");
         }

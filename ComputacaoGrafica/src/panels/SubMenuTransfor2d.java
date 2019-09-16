@@ -17,7 +17,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import operacoes.PlanoCartesiano;
-import static panels.PanelMenu2D.matrizObject;
 import view.JanelaPrincipal;
 
 /**
@@ -95,9 +94,9 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
         lab_dd2 = new javax.swing.JLabel();
         btn_applyTransf = new javax.swing.JButton();
         pan_dados2 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rb_refX = new javax.swing.JRadioButton();
+        rb_refY = new javax.swing.JRadioButton();
+        rb_refXY = new javax.swing.JRadioButton();
 
         btn_desenhar.setText("Desenhar");
         btn_desenhar.addActionListener(new java.awt.event.ActionListener() {
@@ -284,14 +283,14 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
 
         pan_dados2.setBorder(javax.swing.BorderFactory.createTitledBorder("Eixo"));
 
-        buttonGroup2.add(jRadioButton1);
-        jRadioButton1.setText("Reflexão em X");
+        buttonGroup2.add(rb_refX);
+        rb_refX.setText("Reflexão em X");
 
-        buttonGroup2.add(jRadioButton2);
-        jRadioButton2.setText("Reflexão em Y");
+        buttonGroup2.add(rb_refY);
+        rb_refY.setText("Reflexão em Y");
 
-        buttonGroup2.add(jRadioButton3);
-        jRadioButton3.setText("Reflexão em X e Y");
+        buttonGroup2.add(rb_refXY);
+        rb_refXY.setText("Reflexão em X e Y");
 
         javax.swing.GroupLayout pan_dados2Layout = new javax.swing.GroupLayout(pan_dados2);
         pan_dados2.setLayout(pan_dados2Layout);
@@ -300,19 +299,19 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
             .addGroup(pan_dados2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pan_dados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                    .addComponent(rb_refX)
+                    .addComponent(rb_refY)
+                    .addComponent(rb_refXY))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pan_dados2Layout.setVerticalGroup(
             pan_dados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pan_dados2Layout.createSequentialGroup()
-                .addComponent(jRadioButton1)
+                .addComponent(rb_refX)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(rb_refY)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3))
+                .addComponent(rb_refXY))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -372,11 +371,11 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
             setAngulo(t);
         } else if(rb_reflex.isSelected()){
             setTipoAlgoritimo(TransformEnum.REFLEXAO);
-            if (rb_translac.isSelected()) {
+            if (rb_refX.isSelected()) {
                 setEixo("x");
-            } else if (rb_escal.isSelected()) {
+            } else if (rb_refY.isSelected()) {
                 setEixo("y");
-            } else if (rb_rot.isSelected()) {
+            } else if (rb_refXY.isSelected()) {
                 setEixo("xy");
             }
         } else if(rb_cisa.isSelected()){
@@ -400,9 +399,9 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
         lab_dd2.setEnabled(true);
         
         pan_dados2.setEnabled(false);
-        jRadioButton1.setEnabled(false);
-        jRadioButton2.setEnabled(false);
-        jRadioButton3.setEnabled(false);
+        rb_refX.setEnabled(false);
+        rb_refY.setEnabled(false);
+        rb_refXY.setEnabled(false);
 
         valorDDX.setValue(0D);
         valorDDY.setValue(0D);
@@ -413,10 +412,14 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
             valorDDY.setEnabled(false);
         } else if (rb_reflex.isSelected()) {
             pan_dados1.setEnabled(false);
+            valorDDX.setEnabled(false);
+            valorDDY.setEnabled(false);
+            lab_dd1.setEnabled(false);
+            lab_dd2.setEnabled(false);
             pan_dados2.setEnabled(true);
-            jRadioButton1.setEnabled(true);
-            jRadioButton2.setEnabled(true);
-            jRadioButton3.setEnabled(true);
+            rb_refX.setEnabled(true);
+            rb_refY.setEnabled(true);
+            rb_refXY.setEnabled(true);
         } else {
             lab_dd1.setText("X");
             lab_dd2.setEnabled(true);
@@ -436,15 +439,15 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JLabel lab_dd1;
     private javax.swing.JLabel lab_dd2;
     private javax.swing.JPanel pan_dados1;
     private javax.swing.JPanel pan_dados2;
     private javax.swing.JRadioButton rb_cisa;
     private javax.swing.JRadioButton rb_escal;
+    private javax.swing.JRadioButton rb_refX;
+    private javax.swing.JRadioButton rb_refXY;
+    private javax.swing.JRadioButton rb_refY;
     private javax.swing.JRadioButton rb_reflex;
     private javax.swing.JRadioButton rb_rot;
     private javax.swing.JRadioButton rb_translac;
