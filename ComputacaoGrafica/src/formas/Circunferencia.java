@@ -40,16 +40,29 @@ public class Circunferencia {
     
     public void funcaoExplicita(int raio) {
         planoCartesiano.redesenha();
+        int passosD = 0, passosU = 0;
+        if(raio % 2 == 0){
+            passosD = Math.floorDiv(raio + 1, 2);
+            passosU = (int) (((raio + 1)/2) + ((raio + 1) % 2));
+        } else {
+            passosD = Math.floorDiv(raio, 2);
+            passosU = (int) ((raio /2) + (raio % 2));
+        }
         
-        for (int i = -raio; i < raio; i++) {
-            g.fillRect(i + planoCartesiano.getValorCentroX(), planoCartesiano.getValorCentroY() - ((int) Math.sqrt(raio * raio - i * i)), 1, 1);
-            g.fillRect(i + planoCartesiano.getValorCentroX(), planoCartesiano.getValorCentroY() - (-1 * (int) Math.sqrt(raio * raio - i * i)), 1, 1);
+        int i=0, i2 = passosU;
+        while(i<passosD){
+            int yAux = (int) Math.sqrt((raio * raio) - (i * i));
+            int yAux2 = (int) Math.sqrt((raio * raio) - (i2 * i2));
+            drawPoints2(i, yAux);
+            drawPoints2(i2, yAux2);
+            i++;
+            i2++;
         }
     }
     
     public void funcaoTrigonometrica(int raio){
         planoCartesiano.redesenha();
-        for(int i = -raio ; i <= raio ; i++){
+        for(int i = 0 ; i <= 45 ; i++){
             g.fillRect(((int) (raio * (double) Math.cos(Math.toRadians(i)))) + planoCartesiano.getValorCentroX(), planoCartesiano.getValorCentroY() - ((int) (raio * (double) Math.sin(Math.toRadians(i)))), 1, 1);
             drawPoints(((int) (raio * (double) Math.cos(Math.toRadians(i)))), -((int) (raio * (double) Math.sin(Math.toRadians(i)))));
         }
@@ -85,5 +98,12 @@ public class Circunferencia {
         g.fillRect(planoCartesiano.getValorCentroX() + y, planoCartesiano.getValorCentroY() + x, 1, 1);
         g.fillRect(planoCartesiano.getValorCentroX() + y, planoCartesiano.getValorCentroY() - x, 1, 1);
         g.fillRect(planoCartesiano.getValorCentroX() - y, planoCartesiano.getValorCentroY() - x, 1, 1);
+    }
+    
+    public void drawPoints2(int x, int y){
+        g.fillRect(planoCartesiano.getValorCentroX() + x, planoCartesiano.getValorCentroY() + y, 1, 1);
+        g.fillRect(planoCartesiano.getValorCentroX() - x, planoCartesiano.getValorCentroY() + y, 1, 1);
+        g.fillRect(planoCartesiano.getValorCentroX() + x, planoCartesiano.getValorCentroY() - y, 1, 1);
+        g.fillRect(planoCartesiano.getValorCentroX() - x, planoCartesiano.getValorCentroY() - y, 1, 1);
     }
 }
