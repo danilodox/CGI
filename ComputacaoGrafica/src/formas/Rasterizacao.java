@@ -120,7 +120,9 @@ public class Rasterizacao {
     }
     
     //algoritmo de ponto medio
-    public void bresenham(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
+    /*
+    código antigo, deixado como legado apenas para caso haja algum problema
+    public void bresenham2(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
         int x1 = (int)(pInicial.getX());
         int x2 = (int)(pFinal.getX());
         int y1 = (int)(pInicial.getY());
@@ -164,6 +166,42 @@ public class Rasterizacao {
                 planoCartesiano.drawPixel((double) x1, (double) y1);
                 setIteracao(textAreaSolution, x1, y1, ++count, null);
             }
+        }
+    }*/
+    
+    
+    //Codigo de bresenhan novo baseado no slide
+    public void bresenham(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
+        int x1 = (int)(pInicial.getX());
+        int x2 = (int)(pFinal.getX());
+        int y1 = (int)(pInicial.getY());
+        int y2 = (int)(pFinal.getY());
+        double dx = Math.abs(x2 - x1), dy = Math.abs(y2 - y1);
+        double x, y;
+        double p = 2 * dy - dx;
+        double twoDy = 2 * dy, twoDyMinusDx = 2* (dy - dx);
+        
+        if(x1 > x2){
+            x = x2;
+            y = y2;
+            x2 = x1;
+        } else {
+            x = x1;
+            y = y1;
+        }
+        int count = 0;
+        planoCartesiano.drawPixel(x, y);
+        setIteracao(textAreaSolution, x, y, ++count, null);
+        while(x < x2){
+            x++;
+            if( p < 0){
+                p += twoDy;
+            } else {
+                y++;
+                p += twoDyMinusDx;
+            }
+            planoCartesiano.drawPixel(x, y);
+            setIteracao(textAreaSolution, x, y, ++count, null);
         }
     }
     
