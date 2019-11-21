@@ -171,7 +171,7 @@ public class Rasterizacao {
     
     
     //Codigo de bresenhan novo baseado no slide
-    public void bresenham(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
+    /*public void bresenham(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
         int x1 = (int)(pInicial.getX());
         int x2 = (int)(pFinal.getX());
         int y1 = (int)(pInicial.getY());
@@ -205,6 +205,41 @@ public class Rasterizacao {
             planoCartesiano.drawPixel(x, y);
             setIteracao(textAreaSolution, x, y, ++count, null);
         }
+    }*/
+    
+    public void bresenham(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
+        int x1 = (int)pInicial.getX();
+        int x2 = (int)pFinal.getX();
+        int y1 = (int)pInicial.getY();
+        int y2 = (int)pFinal.getY();
+        int dx = x2 - x1;
+        int dy = y2 - y1;
+        int d = 2 * dy - dx;
+        
+        int incE = 2 * dy;
+        int incNE = 2 * (dy - dx);
+        
+        double x = x1;
+        double y = y1;
+        
+        int count = 0;
+        
+        planoCartesiano.drawPixel(x, y);
+        setIteracao(textAreaSolution, x, y, ++count, null);
+        
+        while(x < x2){
+            if(d <= 0){
+                d += incE;
+                x++;
+            }else{
+                d += incNE;
+                x++;
+                y++;
+            }
+            planoCartesiano.drawPixel(x, y);
+            setIteracao(textAreaSolution, x, y, ++count, null);
+        }
+        
     }
     
     public static void setIteracao(JTextArea textAreaSolution, double x, double y, int count, String d){
