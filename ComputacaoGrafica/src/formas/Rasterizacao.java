@@ -242,6 +242,13 @@ public class Rasterizacao {
         
     }
     
+    //DESCOBRIR COMOTESTAR OS OCTANTES
+    /*private int octante(Ponto pInicial, Ponto pFinal){
+        if((pFinal.getX()-pInicial.getX()) < (pFinal.getY()-pInicial.getY())){
+            return 2;
+        }
+    }*/
+    
     public static void setIteracao(JTextArea textAreaSolution, double x, double y, int count, String d){
         if (textAreaSolution != null) {
             StringBuilder solution = new StringBuilder();
