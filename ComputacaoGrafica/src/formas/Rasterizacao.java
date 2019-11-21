@@ -120,9 +120,9 @@ public class Rasterizacao {
     }
     
     //algoritmo de ponto medio
-    /*
-    código antigo, deixado como legado apenas para caso haja algum problema
-    public void bresenham2(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
+    
+    //código antigo, deixado como legado apenas para caso haja algum problema
+    /*public void bresenham(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
         int x1 = (int)(pInicial.getX());
         int x2 = (int)(pFinal.getX());
         int y1 = (int)(pInicial.getY());
@@ -193,12 +193,14 @@ public class Rasterizacao {
         planoCartesiano.drawPixel(x, y);
         setIteracao(textAreaSolution, x, y, ++count, null);
         while(x < x2){
-            x++;
+            //x++;
+            System.out.println(p);
             if( p < 0){
+                x++;
                 p += twoDy;
             } else {
                 y++;
-                p += twoDyMinusDx;
+                p -= twoDyMinusDx;
             }
             planoCartesiano.drawPixel(x, y);
             setIteracao(textAreaSolution, x, y, ++count, null);

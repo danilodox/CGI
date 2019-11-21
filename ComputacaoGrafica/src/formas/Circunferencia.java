@@ -63,6 +63,7 @@ public class Circunferencia {
     public void funcaoTrigonometrica(int raio){
         planoCartesiano.redesenha();
         for(int i = 0 ; i <= 45 ; i++){
+            System.out.println(raio* (double) Math.cos(Math.toRadians(i)));
             g.fillRect(((int) (raio * (double) Math.cos(Math.toRadians(i)))) + planoCartesiano.getValorCentroX(), planoCartesiano.getValorCentroY() - ((int) (raio * (double) Math.sin(Math.toRadians(i)))), 1, 1);
             drawPoints(((int) (raio * (double) Math.cos(Math.toRadians(i)))), -((int) (raio * (double) Math.sin(Math.toRadians(i)))));
         }
