@@ -122,7 +122,7 @@ public class Rasterizacao {
     //algoritmo de ponto medio
     
     //código antigo, deixado como legado apenas para caso haja algum problema
-    /*public void bresenham(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
+    /*public void bresenhamX(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
         int x1 = (int)(pInicial.getX());
         int x2 = (int)(pFinal.getX());
         int y1 = (int)(pInicial.getY());
@@ -171,7 +171,7 @@ public class Rasterizacao {
     
     
     //Codigo de bresenhan novo baseado no slide
-    /*public void bresenham(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
+    /*public void bresenhamX(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
         int x1 = (int)(pInicial.getX());
         int x2 = (int)(pFinal.getX());
         int y1 = (int)(pInicial.getY());
@@ -207,11 +207,7 @@ public class Rasterizacao {
         }
     }*/
     
-    public void bresenham(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
-        int x1 = (int)pInicial.getX();
-        int x2 = (int)pFinal.getX();
-        int y1 = (int)pInicial.getY();
-        int y2 = (int)pFinal.getY();
+    public void bresenhamX(int x1, int x2, int y1, int y2, JTextArea textAreaSolution){
         int dx = x2 - x1;
         int dy = y2 - y1;
         int d = 2 * dy - dx;
@@ -242,12 +238,77 @@ public class Rasterizacao {
         
     }
     
-    //DESCOBRIR COMOTESTAR OS OCTANTES
-    /*private int octante(Ponto pInicial, Ponto pFinal){
-        if((pFinal.getX()-pInicial.getX()) < (pFinal.getY()-pInicial.getY())){
-            return 2;
+     public void bresenhamY(int x1, int x2, int y1, int y2, JTextArea textAreaSolution){
+        int dx = x2 - x1;
+        int dy = y2 - y1;
+        int d = 2 * dx - dy;
+        
+        int incE = 2 * dx;
+        int incNE = 2 * (dx - dy);
+        
+        double x = x1;
+        double y = y1;
+        
+        int count = 0;
+        
+        planoCartesiano.drawPixel(x, y);
+        setIteracao(textAreaSolution, x, y, ++count, null);
+        
+        while(y < y2){
+            if(d <= 0){
+                d += incE;
+                y++;
+            }else{
+                d += incNE;
+                x++;
+                y++;
+            }
+            planoCartesiano.drawPixel(x, y);
+            setIteracao(textAreaSolution, x, y, ++count, null);
         }
-    }*/
+        
+    }
+    
+    //DESCOBRIR COMOTESTAR OS OCTANTES
+    public void octante(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
+        
+        if(Math.abs(pFinal.getX()-pInicial.getX()) > Math.abs(pFinal.getY()-pInicial.getY())){
+            System.out.println("Entrou no if");
+            if(pFinal.getX() < pInicial.getX() && pFinal.getY() > pInicial.getY()){
+                //TALVEZ INVERTER OS 2 PONTOS
+                System.out.println("Entrou no if2");
+                bresenhamX((int)pFinal.getX(), (int)pInicial.getX(), (int)pInicial.getY(), (int)pFinal.getY(), textAreaSolution);
+            }else if(pFinal.getX() < pInicial.getX() && pFinal.getY() < pInicial.getY()){
+                //REVER
+                System.out.println("Entrou no if3");
+                bresenhamX((int)pFinal.getX(), (int)pInicial.getX(), (int)pInicial.getY(), (int)pFinal.getY(), textAreaSolution);
+            }else if(pFinal.getX() > pInicial.getX() && pFinal.getY() > pInicial.getY()){
+                System.out.println("Entrou no if4");
+                bresenhamX((int)pInicial.getX(), (int)pFinal.getX(), (int)pInicial.getY(), (int)pFinal.getY(), textAreaSolution);
+            }else if(pFinal.getX() > pInicial.getX() && pFinal.getY() < pInicial.getY()){
+                //REVER
+                System.out.println("Entrou no if5");
+                bresenhamX((int)pInicial.getX(), (int)pFinal.getX(), (int)pInicial.getY(), (int)pFinal.getY(), textAreaSolution);
+            }
+        }else if(Math.abs(pFinal.getX()-pInicial.getX()) < Math.abs(pFinal.getY()-pInicial.getY())){
+            if(pFinal.getX() < pInicial.getX() && pFinal.getY() > pInicial.getY()){
+               //REVER
+                System.out.println("Entrou no if6");
+                bresenhamY((int)pInicial.getX(), (int)pFinal.getX(), (int)pInicial.getY(), (int)pFinal.getY(), textAreaSolution);
+            }else if(pFinal.getX() < pInicial.getX() && pFinal.getY() < pInicial.getY()){
+                //REVER
+                System.out.println("Entrou no if7");
+                bresenhamY((int)pInicial.getX(), (int)pFinal.getX(), (int)pFinal.getY(), (int)pInicial.getY(), textAreaSolution);
+            }else if(pFinal.getX() > pInicial.getX() && pFinal.getY() > pInicial.getY()){
+                System.out.println("Entrou no if8");
+                bresenhamY((int)pInicial.getX(), (int)pFinal.getX(), (int)pInicial.getY(), (int)pFinal.getY(), textAreaSolution);
+            }else if(pFinal.getX() > pInicial.getX() && pFinal.getY() < pInicial.getY()){
+                //TALVEZ INVERTER OS 2 PONTOS
+                System.out.println("Entrou no if9");
+                bresenhamY((int)pInicial.getX(), (int)pFinal.getX(), (int)pFinal.getY(), (int)pInicial.getY(), textAreaSolution);
+            }
+        }
+    }
     
     public static void setIteracao(JTextArea textAreaSolution, double x, double y, int count, String d){
         if (textAreaSolution != null) {
