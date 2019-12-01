@@ -180,7 +180,7 @@ public class Transformacoes2D {
         double[][] matriz = new double[3][3];
 
         eixo = eixo.toUpperCase();
-
+        
         matriz[0][0] = -1;
         matriz[1][0] = 0;
         matriz[2][0] = 0;
@@ -193,10 +193,16 @@ public class Transformacoes2D {
         matriz[1][2] = 0;
         matriz[2][2] = 1;
 
-        if (eixo.equals(Eixo.X.getValue())) {
+        if(eixo.equals(Eixo.X.getValue())) {
             matriz[0][0] = 1;
         } else if (eixo.equals(Eixo.Y.getValue())) {
             matriz[1][1] = 1;
+        } else if (eixo.equals(Eixo.XY.getValue())) {
+            matriz[0][0] = 0;
+            matriz[1][0] = 1;
+            
+            matriz[0][1] = 1;
+            matriz[1][1] = 0;
         }
 
         return matriz;

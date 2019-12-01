@@ -268,10 +268,9 @@ public class Rasterizacao {
         }
         
     }
-    
-    //DESCOBRIR COMOTESTAR OS OCTANTES
-    public void octante(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
-        
+     
+    /*public void octante(Ponto pInicial, Ponto pFinal, JTextArea textAreaSolution){
+       //maior variancia no X
         if(Math.abs(pFinal.getX()-pInicial.getX()) > Math.abs(pFinal.getY()-pInicial.getY())){
             System.out.println("Entrou no if");
             if(pFinal.getX() < pInicial.getX() && pFinal.getY() > pInicial.getY()){
@@ -290,6 +289,7 @@ public class Rasterizacao {
                 System.out.println("Entrou no if5");
                 bresenhamX((int)pInicial.getX(), (int)pFinal.getX(), (int)pInicial.getY(), (int)pFinal.getY(), textAreaSolution);
             }
+            //maior variancia no Y
         }else if(Math.abs(pFinal.getX()-pInicial.getX()) < Math.abs(pFinal.getY()-pInicial.getY())){
             if(pFinal.getX() < pInicial.getX() && pFinal.getY() > pInicial.getY()){
                //REVER
@@ -308,6 +308,78 @@ public class Rasterizacao {
                 bresenhamY((int)pInicial.getX(), (int)pFinal.getX(), (int)pFinal.getY(), (int)pInicial.getY(), textAreaSolution);
             }
         }
+    }*/
+    
+    public void octante(Ponto p1, Ponto p2, JTextArea textAreaSolution){
+	double x1, y1, x2, y2;
+        int count = 0;
+        int dx = Math.abs((int)p2.getX() - (int)p1.getX());
+	int dy = Math.abs((int)p2.getY() - (int)p1.getY());
+
+	//	oitantes 1, 4, 5, 8
+	if (dy < dx) {
+            int yInc;
+            if (p2.getX() < p1.getX()){
+                Ponto pAux = p1;
+                p1 = p2;
+                p2 = pAux;
+            }
+            x1 = p1.getX();
+            x2 = p2.getX();
+            y1 = p1.getY();
+            y2 = p2.getY();
+            if(y2 < y1){
+                yInc = -1;
+            } else {
+                yInc = 1;
+            }
+            int p = 2*dy - dx;
+            planoCartesiano.drawPixel(x1, y1);
+            setIteracao(textAreaSolution, x1, y1, ++count, null);
+            while (x1 < x2){
+                if (p < 0){
+                        p += 2*dy;
+                }else{
+                        p += 2*(dy-dx);
+                        y1 += yInc;
+                }
+                x1++;
+                planoCartesiano.drawPixel(x1, y1);
+                setIteracao(textAreaSolution, x1, y1, ++count, null);
+            }
+	}else{	//	oitantes 2, 3, 6 e 7
+            int xInc;
+            if (p2.getY() < p1.getY()){
+                Ponto pAux = p1;
+                p1 = p2;
+                p2 = pAux;
+            }
+            x1 = (int)p1.getX();
+            x2 = (int)p2.getX();
+            y1 = (int)p1.getY();
+            y2 = (int)p2.getY();
+            //	Inclinação negativa => xInc = -1
+            if(x2 < x1){
+                xInc = -1;
+            } else {
+                xInc = 1;
+            }
+            int p = 2*dx - dy;
+
+            planoCartesiano.drawPixel(x1, y1);
+            setIteracao(textAreaSolution, x1, y1, ++count, null);
+            while (y1 < y2){
+                if (p < 0){
+                        p += 2*dx;
+                }else{
+                        p += 2*(dx-dy);
+                        x1 += xInc;
+                }
+                y1++;
+                planoCartesiano.drawPixel(x1, y1);
+                setIteracao(textAreaSolution, x1, y1, ++count, null);
+            }
+	}
     }
     
     public static void setIteracao(JTextArea textAreaSolution, double x, double y, int count, String d){
