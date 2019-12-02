@@ -29,23 +29,24 @@ public class PanelGrafico extends JPanel{
     }
     
     @Override
-	public void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
-		super.paintComponents(g);
-		
-		//g.drawImage((Image)imageView, 0, 0, null);
-		g.drawLine(480, 0, 480, 400); //x
-		g.drawLine(0, 300, 600, 300);
-		
-	}
-        
-        public void limpaPainel(){
-            for(int i=0; i<600; i++){
-                for(int j=0; j<400; j++){
-                    imageView.setRGB(i, j, Color.WHITE.getRGB() );
-                }
+    public void paintComponent(Graphics g) {
+        // TODO Auto-generated method stub
+        super.paintComponents(g);
+
+        //g.drawImage((Image)imageView, 0, 0, null);
+        g.drawLine(480, 0, 480, 400); //x
+        g.drawLine(0, 300, 600, 300);
+
+    }
+
+    public void limpaPainel(){
+        for(int i=0; i<600; i++){
+            for(int j=0; j<400; j++){
+                imageView.setRGB(i, j, Color.WHITE.getRGB() );
             }
-            repaint();
-	}
+        }
+        repaint();
+    }
+    
     
 }

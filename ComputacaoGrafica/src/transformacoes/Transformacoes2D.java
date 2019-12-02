@@ -6,7 +6,7 @@
 package transformacoes;
 
 import enums.Eixo;
-import operacaoMatrizes.MultiplicarMatriz;
+import operacaoMatrizes.Matriz;
 import panels.SubMenuTransfor2d;
 
 /**
@@ -33,7 +33,7 @@ public class Transformacoes2D {
         double[][] matrizResult = new double[matrizObject.length][matrizObject[0].length];
         
         try{
-            matrizResult = MultiplicarMatriz.multiplicaMatrizes(geraMatrizTranslacao(tx, ty), matrizObject);
+            matrizResult = Matriz.multiplicaMatrizes(geraMatrizTranslacao(tx, ty), matrizObject);
             SubMenuTransfor2d.matrizObject = matrizResult;
         }catch(Exception e){
             System.err.println("Ocorreu um erro na tranformacao");
@@ -48,9 +48,9 @@ public class Transformacoes2D {
         double ty = matrizObject[1][0];
         
         try{
-            matrizM = MultiplicarMatriz.multiplicaMatrizes(geraMatrizTranslacao(tx, ty), geraMatrizEscala(sx, sy));
-            matrizM = MultiplicarMatriz.multiplicaMatrizes(matrizM, geraMatrizTranslacao(-tx, -ty));
-            matrizResult = MultiplicarMatriz.multiplicaMatrizes(matrizM, matrizObject);
+            matrizM = Matriz.multiplicaMatrizes(geraMatrizTranslacao(tx, ty), geraMatrizEscala(sx, sy));
+            matrizM = Matriz.multiplicaMatrizes(matrizM, geraMatrizTranslacao(-tx, -ty));
+            matrizResult = Matriz.multiplicaMatrizes(matrizM, matrizObject);
 
             ///FALTA CRIAR ESSE CAMPO NO PanelMenu2D
             SubMenuTransfor2d.matrizObject = matrizResult;
@@ -69,9 +69,9 @@ public class Transformacoes2D {
 
         try {
 
-            matrizM = MultiplicarMatriz.multiplicaMatrizes(geraMatrizTranslacao(tx, ty), geraMatrizRotacao(angulo));
-            matrizM = MultiplicarMatriz.multiplicaMatrizes(matrizM, geraMatrizTranslacao(-tx, -ty));
-            matrizResult = MultiplicarMatriz.multiplicaMatrizes(matrizM, matrizObject);
+            matrizM = Matriz.multiplicaMatrizes(geraMatrizTranslacao(tx, ty), geraMatrizRotacao(angulo));
+            matrizM = Matriz.multiplicaMatrizes(matrizM, geraMatrizTranslacao(-tx, -ty));
+            matrizResult = Matriz.multiplicaMatrizes(matrizM, matrizObject);
 
             ///FALTA CRIAR ESSE CAMPO NO PanelMenu2D
             SubMenuTransfor2d.matrizObject = matrizResult;
@@ -87,7 +87,7 @@ public class Transformacoes2D {
         eixo = eixo.toUpperCase();
 
         try {
-            matrizResult = MultiplicarMatriz.multiplicaMatrizes(geraMatrizReflexao(eixo), matrizObject);
+            matrizResult = Matriz.multiplicaMatrizes(geraMatrizReflexao(eixo), matrizObject);
            
             ///FALTA CRIAR ESSE CAMPO NO PanelMenu2D
             SubMenuTransfor2d.matrizObject = matrizResult;
@@ -104,9 +104,9 @@ public class Transformacoes2D {
 
         try {
            
-            matrizM = MultiplicarMatriz.multiplicaMatrizes(geraMatrizTranslacao(tx, ty), geraMatrizCisalhamento(cx, cy));
-            matrizM = MultiplicarMatriz.multiplicaMatrizes(matrizM, geraMatrizTranslacao(-tx, -ty));
-            matrizResult = MultiplicarMatriz.multiplicaMatrizes(matrizM, matrizObject);
+            matrizM = Matriz.multiplicaMatrizes(geraMatrizTranslacao(tx, ty), geraMatrizCisalhamento(cx, cy));
+            matrizM = Matriz.multiplicaMatrizes(matrizM, geraMatrizTranslacao(-tx, -ty));
+            matrizResult = Matriz.multiplicaMatrizes(matrizM, matrizObject);
 
             ///FALTA CRIAR ESSE CAMPO NO PanelMenu2D
             SubMenuTransfor2d.matrizObject = matrizResult;

@@ -17,10 +17,13 @@ import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.JPanel;
+import operacaoMatrizes.Matriz;
+import panels.PanelMenu3D;
 import panels.PanelMenuCircunferencia;
 import panels.PanelMenuRaster;
 import panels.SubMenuTransfor2d;
 import transformacoes.Transformacoes2D;
+import transformacoes.Transformacoes3D;
 
 
 
@@ -34,6 +37,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private final PanelMenuRaster panelMenuRaster;
     private final PanelMenuCircunferencia panelMenuCirc;
     private final SubMenuTransfor2d subMenuTransfor;
+    private final PanelMenu3D panelMenu3D;
     /**
      * Creates new form JanelaGrafica
      */
@@ -41,6 +45,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelMenuRaster = PanelMenuRaster.getInstance();
         panelMenuCirc = PanelMenuCircunferencia.getInstance();
         subMenuTransfor = SubMenuTransfor2d.getInstance();
+        panelMenu3D = PanelMenu3D.getInstance();
         initComponents();
         //openMenuReta(null);
         coordinatesSystem();
@@ -57,19 +62,19 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         panelBox = new javax.swing.JPanel();
         panelFooter = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        lab_DCX = new javax.swing.JLabel();
-        lab_DCY = new javax.swing.JLabel();
+        panelGrafic = operacoes.PlanoCartesiano.getInstance();
+        lab_cTela = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        lab_X = new javax.swing.JLabel();
+        lab_Y = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lab_NDCX = new javax.swing.JLabel();
         lab_NDCY = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        lab_X = new javax.swing.JLabel();
-        lab_Y = new javax.swing.JLabel();
-        panelGrafic = operacoes.PlanoCartesiano.getInstance();
-        lab_cTela = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lab_DCX = new javax.swing.JLabel();
+        lab_DCY = new javax.swing.JLabel();
         panMenu = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuDesenhar = new javax.swing.JMenu();
@@ -77,6 +82,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jm_circ = new javax.swing.JMenuItem();
         menuTransformacoes = new javax.swing.JMenu();
         subMenu2d = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -87,72 +93,36 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Coordenadas de entrada"));
+        javax.swing.GroupLayout panelFooterLayout = new javax.swing.GroupLayout(panelFooter);
+        panelFooter.setLayout(panelFooterLayout);
+        panelFooterLayout.setHorizontalGroup(
+            panelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelFooterLayout.setVerticalGroup(
+            panelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 669, Short.MAX_VALUE)
+        );
 
-        lab_DCX.setText("DCX:");
+        panelGrafic.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lab_DCY.setText("DCY:");
+        lab_cTela.setText("Tela: 800x600");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lab_DCX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lab_DCY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout panelGraficLayout = new javax.swing.GroupLayout(panelGrafic);
+        panelGrafic.setLayout(panelGraficLayout);
+        panelGraficLayout.setHorizontalGroup(
+            panelGraficLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGraficLayout.createSequentialGroup()
+                .addContainerGap(720, Short.MAX_VALUE)
+                .addComponent(lab_cTela, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lab_DCX)
-                .addGap(18, 18, 18)
-                .addComponent(lab_DCY)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Coordenadas normalizadas"));
-
-        jLabel1.setText("NDCX:");
-
-        jLabel2.setText("NDCY:");
-
-        lab_NDCX.setText("0.0");
-
-        lab_NDCY.setText("0.0");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lab_NDCX, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lab_NDCY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        panelGraficLayout.setVerticalGroup(
+            panelGraficLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGraficLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lab_cTela)
                 .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lab_NDCX))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lab_NDCY))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Coordenadas de saída"));
@@ -182,49 +152,72 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout panelFooterLayout = new javax.swing.GroupLayout(panelFooter);
-        panelFooter.setLayout(panelFooterLayout);
-        panelFooterLayout.setHorizontalGroup(
-            panelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFooterLayout.createSequentialGroup()
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Coordenadas normalizadas"));
+
+        jLabel1.setText("NDCX:");
+
+        jLabel2.setText("NDCY:");
+
+        lab_NDCX.setText("0.0");
+
+        lab_NDCY.setText("0.0");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lab_NDCX, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lab_NDCY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        panelFooterLayout.setVerticalGroup(
-            panelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFooterLayout.createSequentialGroup()
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lab_NDCX))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lab_NDCY))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelGrafic.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Coordenadas de entrada"));
 
-        lab_cTela.setText("Tela: 800x600");
+        lab_DCX.setText("DCX:");
 
-        javax.swing.GroupLayout panelGraficLayout = new javax.swing.GroupLayout(panelGrafic);
-        panelGrafic.setLayout(panelGraficLayout);
-        panelGraficLayout.setHorizontalGroup(
-            panelGraficLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGraficLayout.createSequentialGroup()
-                .addContainerGap(690, Short.MAX_VALUE)
-                .addComponent(lab_cTela, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+        lab_DCY.setText("DCY:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lab_DCX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lab_DCY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        panelGraficLayout.setVerticalGroup(
-            panelGraficLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGraficLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lab_cTela)
-                .addContainerGap())
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lab_DCX)
+                .addGap(18, 18, 18)
+                .addComponent(lab_DCY)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelBoxLayout = new javax.swing.GroupLayout(panelBox);
@@ -232,21 +225,34 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelBoxLayout.setHorizontalGroup(
             panelBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBoxLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(panelGrafic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelFooter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelBoxLayout.setVerticalGroup(
             panelBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelFooter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelGrafic, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelGrafic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelBoxLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panMenuLayout = new javax.swing.GroupLayout(panMenu);
         panMenu.setLayout(panMenuLayout);
         panMenuLayout.setHorizontalGroup(
             panMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 241, Short.MAX_VALUE)
+            .addGap(0, 261, Short.MAX_VALUE)
         );
         panMenuLayout.setVerticalGroup(
             panMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,6 +289,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
         menuTransformacoes.add(subMenu2d);
 
+        jMenuItem1.setText("3D");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuTransformacoes.add(jMenuItem1);
+
         jMenuBar1.add(menuTransformacoes);
 
         setJMenuBar(jMenuBar1);
@@ -293,9 +307,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(panelBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,6 +361,18 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         }
         changePanMenu(panelMenuCirc);
     }//GEN-LAST:event_jm_circActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        panMenu.setVisible(true);
+        
+        if (!panelFooter.isValid()) {
+            setDefaultBox();
+        } else {
+            PlanoCartesiano.getInstance().redesenha3D();
+        }
+
+        changePanMenu(panelMenu3D);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     
     private void coordinatesSystem(){
         panelGrafic.addMouseMotionListener(new MouseMotionAdapter(){
@@ -416,6 +441,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -494,9 +520,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             processaRasterizacaoCircunferencia(PanelMenuCircunferencia.getInstance());
         } else if (instance instanceof SubMenuTransfor2d) {
             processaTransformacoes2D(SubMenuTransfor2d.getInstance());
-        } /*else if (instance instanceof PanelMenu3D) {
+        } else if (instance instanceof PanelMenu3D) {
             processaTransformacoes3D(PanelMenu3D.getInstance());
-        } else if (instance instanceof PanelMenuImagem) {
+        } /*else if (instance instanceof PanelMenuImagem) {
             processaTransformacoesImagem(PanelMenuImagem.getInstance());
         }*/
     }
@@ -508,7 +534,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         if (menu.getTipoAlgoritimo().equals(RasterEnum.DDA)) {
             rast.dda(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
         } else if (menu.getTipoAlgoritimo().equals(RasterEnum.PONTO_MEDIO)) {
-            rast.octante(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
+            rast.bresenham(menu.getPontoInicial(), menu.getPontoFinal(), menu.getTextAreaResult());
         }
     }
     
@@ -558,6 +584,62 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
             // Desenha o objeto
             PlanoCartesiano.getInstance().drawObjeto2D(matrizObjeto);
+        }
+    }
+    
+    /**
+     * Processa o pedido vindo da tela de transformações 3D.
+     *
+     * @param menu
+     */
+    private static void processaTransformacoes3D(PanelMenu3D menu) {
+        if (PanelMenu3D.matrizObjeto3D != null) {
+            Transformacoes3D trans3D = Transformacoes3D.getInstance();
+
+            /**
+             * Matriz objeto original. Ela é atualizada em cada transformação
+             * aplicada.
+             */
+            double[][] matrizObjeto3D = PanelMenu3D.matrizObjeto3D;
+
+            /**
+             * Fatores de translação.
+             */
+            double tx = PanelMenu3D.matrizObjeto3D[0][0], ty = PanelMenu3D.matrizObjeto3D[1][0];
+
+            switch (menu.getTipoAlgoritmo()) {
+                case TRANSLACAO:
+                    // Aplica translação
+                    matrizObjeto3D = trans3D.translacao(matrizObjeto3D, menu.getValorX(), menu.getValorY(), menu.getValorZ());
+                    break;
+                case ESCALA:
+                    // Aplica escala de acordo com Sx e Sy
+                    matrizObjeto3D = trans3D.escala(matrizObjeto3D, menu.getValorX(), menu.getValorY(), menu.getValorZ());
+                    break;
+                case ROTACAO:
+                    // Aplica rotação de acordo com o ângulo
+                    matrizObjeto3D = trans3D.rotacao(matrizObjeto3D, menu.getAngulo(), menu.getEixo());
+                    break;
+                case REFLEXAO:
+                    // Aplica reflexão de acordo com o eixo selecionado
+                    matrizObjeto3D = trans3D.reflexao(matrizObjeto3D, menu.getEixo());
+                    break;
+                case CISALHAMENTO:
+                    // Aplica cisalhamento de acordo com o valor de a e b
+                    matrizObjeto3D = trans3D.cisalhamento(matrizObjeto3D, menu.getValorX(), menu.getAlignmentY(), menu.getEixo());
+                    break;
+                case COMPOSTA:
+                    matrizObjeto3D = trans3D.composta(menu.listaTransformacoes, matrizObjeto3D);
+                    break;
+                default:
+                    break;
+            }
+
+            // Desenha o objeto
+            Matriz.printMatriz(matrizObjeto3D, "Result");
+
+            // Desenha o objeto
+            PlanoCartesiano.getInstance().drawObjeto3D(matrizObjeto3D);
         }
     }
     

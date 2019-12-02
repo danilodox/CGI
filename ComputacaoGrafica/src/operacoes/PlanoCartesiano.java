@@ -5,6 +5,8 @@
  */
 package operacoes;
 
+import auxiliar.Ponto;
+import formas.Rasterizacao;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -165,6 +167,59 @@ public class PlanoCartesiano extends JPanel{
         g.drawLine(this.getValorCentroX() + (int) matrizObjeto[0][1], this.getValorCentroY() - (int) matrizObjeto[1][1], this.getValorCentroX() + (int) matrizObjeto[0][2], this.getValorCentroY() - (int) matrizObjeto[1][2]);
         g.drawLine(this.getValorCentroX() + (int) matrizObjeto[0][2], this.getValorCentroY() - (int) matrizObjeto[1][2], this.getValorCentroX() + (int) matrizObjeto[0][3], this.getValorCentroY() - (int) matrizObjeto[1][3]);
         g.drawLine(this.getValorCentroX() + (int) matrizObjeto[0][3], this.getValorCentroY() - (int) matrizObjeto[1][3], this.getValorCentroX() + (int) matrizObjeto[0][0], this.getValorCentroY() - (int) matrizObjeto[1][0]);
+    }
+    
+    /**
+     * Desenha o eixo Z no plano cartesiano.
+     */
+    public void desenhaEixoZ() {
+        // Desenha a reta do eixo Z
+        //(Ponto pInicial, Ponto pFinal, Color cor, JTextArea textAreaSolution)
+        Rasterizacao.getInstance().bresenham(new Ponto(0, 0), new Ponto(-getAltura(), -getAltura()), null);
+        Rasterizacao.getInstance().bresenham(new Ponto(0, 0), new Ponto(getAltura(), getAltura()), null);
+    }
+    
+    public void redesenha3D() {
+        redesenha();
+        desenhaEixoZ();
+    }
+    
+    /**
+     * Desenha objeto 3D no plano cartesiano.
+     *
+     * @param color
+     * @param matrizObjeto3D
+     */
+    public void drawObjeto3D(double[][] matrizObjeto3D) {
+        redesenha3D();
+        Rasterizacao rast = Rasterizacao.getInstance();
+
+        double fatorCentroCubo = 25;//matrizObjeto3D[0][4]/2; // (profundidade / 2)/2
+        Ponto A = new Ponto(matrizObjeto3D[0][0] - fatorCentroCubo, matrizObjeto3D[1][0] - fatorCentroCubo, matrizObjeto3D[2][0] - fatorCentroCubo);
+        Ponto B = new Ponto(matrizObjeto3D[0][1] - fatorCentroCubo, matrizObjeto3D[1][1] - fatorCentroCubo, matrizObjeto3D[2][1] - fatorCentroCubo);
+        Ponto C = new Ponto(matrizObjeto3D[0][2] - fatorCentroCubo, matrizObjeto3D[1][2] - fatorCentroCubo, matrizObjeto3D[2][2] - fatorCentroCubo);
+        Ponto D = new Ponto(matrizObjeto3D[0][3] - fatorCentroCubo, matrizObjeto3D[1][3] - fatorCentroCubo, matrizObjeto3D[2][3] - fatorCentroCubo);
+        Ponto E = new Ponto(matrizObjeto3D[0][4] - fatorCentroCubo, matrizObjeto3D[1][4] - fatorCentroCubo, matrizObjeto3D[2][4] - fatorCentroCubo);
+        Ponto F = new Ponto(matrizObjeto3D[0][5] - fatorCentroCubo, matrizObjeto3D[1][5] - fatorCentroCubo, matrizObjeto3D[2][5] - fatorCentroCubo);
+        Ponto G = new Ponto(matrizObjeto3D[0][6] - fatorCentroCubo, matrizObjeto3D[1][6] - fatorCentroCubo, matrizObjeto3D[2][6] - fatorCentroCubo);
+        Ponto H = new Ponto(matrizObjeto3D[0][7] - fatorCentroCubo, matrizObjeto3D[1][7] - fatorCentroCubo, matrizObjeto3D[2][7] - fatorCentroCubo);
+
+        /**
+         * Desenha usando o algoritmo de rasterização do Ponto Médio
+         */
+        rast.bresenham(A, B, null);
+        rast.bresenham(B, C, null);
+        rast.bresenham(C, D, null);
+        rast.bresenham(D, A, null);
+        rast.bresenham(E, F, null);
+        rast.bresenham(F, G, null);
+        rast.bresenham(G, H, null);
+        rast.bresenham(H, E, null);
+        rast.bresenham(A, E, null);
+        rast.bresenham(B, F, null);
+        rast.bresenham(C, G, null);
+        rast.bresenham(D, H, null);
+
     }
 
     /**

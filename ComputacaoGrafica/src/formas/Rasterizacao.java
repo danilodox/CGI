@@ -310,7 +310,7 @@ public class Rasterizacao {
         }
     }*/
     
-    public void octante(Ponto p1, Ponto p2, JTextArea textAreaSolution){
+    public void bresenham(Ponto p1, Ponto p2, JTextArea textAreaSolution){
 	double x1, y1, x2, y2;
         int count = 0;
         int dx = Math.abs((int)p2.getX() - (int)p1.getX());
