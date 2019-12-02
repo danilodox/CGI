@@ -39,6 +39,7 @@ public class Transformacoes3D {
      * @return double[][] - Matriz resultado.
      */
     public double[][] translacao(double[][] matrizObjeto, double tx, double ty, double tz) {
+        //NÃO ESTA FAZENDO TRANSLAÇÃO EM Z
         double[][] matrizResult = new double[matrizObjeto.length][matrizObjeto[0].length];
 
         try {

@@ -187,7 +187,6 @@ public class PlanoCartesiano extends JPanel{
     /**
      * Desenha objeto 3D no plano cartesiano.
      *
-     * @param color
      * @param matrizObjeto3D
      */
     public void drawObjeto3D(double[][] matrizObjeto3D) {

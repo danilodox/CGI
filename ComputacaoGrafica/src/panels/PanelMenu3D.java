@@ -49,7 +49,7 @@ public class PanelMenu3D extends javax.swing.JPanel {
 
         initComponents();
         
-        pan_eixo.setVisible(false);
+        panelEixo.setVisible(false);
     }
 
     /**
@@ -77,12 +77,14 @@ public class PanelMenu3D extends javax.swing.JPanel {
         rb_rotacao = new javax.swing.JRadioButton();
         rb_reflexao = new javax.swing.JRadioButton();
         rb_cisalhamento = new javax.swing.JRadioButton();
-        jPanel3 = new javax.swing.JPanel();
+        panelDados1 = new javax.swing.JPanel();
         js_DDx = new javax.swing.JSpinner();
         js_DDy = new javax.swing.JSpinner();
         js_DDz = new javax.swing.JSpinner();
-        jLabel4 = new javax.swing.JLabel();
-        pan_eixo = new javax.swing.JPanel();
+        lab_X = new javax.swing.JLabel();
+        lab_Y = new javax.swing.JLabel();
+        lab_Z = new javax.swing.JLabel();
+        panelEixo = new javax.swing.JPanel();
         rb_refXY = new javax.swing.JRadioButton();
         rb_refYZ = new javax.swing.JRadioButton();
         rb_refXZ = new javax.swing.JRadioButton();
@@ -144,18 +146,43 @@ public class PanelMenu3D extends javax.swing.JPanel {
 
         btG_transformacoes.add(rb_translacao);
         rb_translacao.setText("Translação");
+        rb_translacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_translacaoActionPerformed(evt);
+            }
+        });
 
         btG_transformacoes.add(rb_escala);
         rb_escala.setText("Escala");
+        rb_escala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_escalaActionPerformed(evt);
+            }
+        });
 
         btG_transformacoes.add(rb_rotacao);
         rb_rotacao.setText("Rotação");
+        rb_rotacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_rotacaoActionPerformed(evt);
+            }
+        });
 
         btG_transformacoes.add(rb_reflexao);
         rb_reflexao.setText("Reflexão");
+        rb_reflexao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_reflexaoActionPerformed(evt);
+            }
+        });
 
         btG_transformacoes.add(rb_cisalhamento);
         rb_cisalhamento.setText("Cisalhamento");
+        rb_cisalhamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_cisalhamentoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -187,40 +214,53 @@ public class PanelMenu3D extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
+        panelDados1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
 
-        jLabel4.setText("      X                      Y                    Z");
+        lab_X.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_X.setText("X");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        lab_Y.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_Y.setText("Y");
+
+        lab_Z.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_Z.setText("Z");
+
+        javax.swing.GroupLayout panelDados1Layout = new javax.swing.GroupLayout(panelDados1);
+        panelDados1.setLayout(panelDados1Layout);
+        panelDados1Layout.setHorizontalGroup(
+            panelDados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDados1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(js_DDx, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(js_DDy, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(js_DDz, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(panelDados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lab_X, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(js_DDx, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelDados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(js_DDy, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(lab_Y, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panelDados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(js_DDz, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(lab_Z, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        panelDados1Layout.setVerticalGroup(
+            panelDados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDados1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addGroup(panelDados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lab_X)
+                    .addComponent(lab_Y)
+                    .addComponent(lab_Z))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(js_DDx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(js_DDz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(js_DDy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        pan_eixo.setBorder(javax.swing.BorderFactory.createTitledBorder("Eixo"));
+        panelEixo.setBorder(javax.swing.BorderFactory.createTitledBorder("Eixo"));
 
         btG_eixo.add(rb_refXY);
         rb_refXY.setText("Reflexão em XY");
@@ -231,21 +271,21 @@ public class PanelMenu3D extends javax.swing.JPanel {
         btG_eixo.add(rb_refXZ);
         rb_refXZ.setText("Reflexão em XZ");
 
-        javax.swing.GroupLayout pan_eixoLayout = new javax.swing.GroupLayout(pan_eixo);
-        pan_eixo.setLayout(pan_eixoLayout);
-        pan_eixoLayout.setHorizontalGroup(
-            pan_eixoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pan_eixoLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelEixoLayout = new javax.swing.GroupLayout(panelEixo);
+        panelEixo.setLayout(panelEixoLayout);
+        panelEixoLayout.setHorizontalGroup(
+            panelEixoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEixoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pan_eixoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelEixoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rb_refXY)
                     .addComponent(rb_refYZ)
                     .addComponent(rb_refXZ))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pan_eixoLayout.setVerticalGroup(
-            pan_eixoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pan_eixoLayout.createSequentialGroup()
+        panelEixoLayout.setVerticalGroup(
+            panelEixoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEixoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(rb_refXY)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -288,10 +328,10 @@ public class PanelMenu3D extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_AplicarTC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_addListaT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_addListaT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                     .addComponent(btn_AplicarT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pan_eixo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelEixo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelDados1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_CriarObj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -308,9 +348,9 @@ public class PanelMenu3D extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelDados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pan_eixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelEixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_AplicarT, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -340,6 +380,7 @@ public class PanelMenu3D extends javax.swing.JPanel {
             setValorX(((Integer) js_DDx.getValue()).doubleValue());
             setValorY(((Integer) js_DDy.getValue()).doubleValue());
             setValorZ(((Integer) js_DDz.getValue()).doubleValue());
+            System.out.println(((Integer) js_DDz.getValue()).doubleValue());
         } else if (rb_escala.isSelected()) {
             setTipoAlgoritimo(TransformEnum.ESCALA);
             setValorX(((Integer) js_DDx.getValue()).doubleValue());
@@ -384,6 +425,145 @@ public class PanelMenu3D extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_AplicarTCActionPerformed
 
+    private void rb_translacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_translacaoActionPerformed
+        panelDados1.setVisible(true);
+        panelEixo.setVisible(false);
+
+        js_DDx.setValue(0D);
+        js_DDy.setValue(0D);
+        js_DDz.setValue(0D);
+
+        if (rb_rotacao.isSelected()) {
+            lab_X.setText("Ângulo");
+            lab_Y.setVisible(false);
+            js_DDy.setVisible(false);
+        } else if (rb_reflexao.isSelected()) {
+            panelDados1.setVisible(false);
+            panelEixo.setVisible(true);
+        } else {
+            lab_X.setText("X");
+            lab_Y.setText("Y");
+            lab_Z.setText("Z");
+            lab_Y.setVisible(true);
+            lab_Z.setVisible(true);
+            js_DDy.setVisible(true);
+            js_DDz.setVisible(true);
+        }
+    }//GEN-LAST:event_rb_translacaoActionPerformed
+
+    private void rb_escalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_escalaActionPerformed
+        panelDados1.setVisible(true);
+        panelEixo.setVisible(false);
+
+        js_DDx.setValue(1D);
+        js_DDy.setValue(1D);
+        js_DDz.setValue(1D);
+
+        if (rb_rotacao.isSelected()) {
+            lab_X.setText("Ângulo");
+            lab_Y.setVisible(false);
+            js_DDy.setVisible(false);
+        } else if (rb_reflexao.isSelected()) {
+            panelDados1.setVisible(false);
+            panelEixo.setVisible(true);
+        } else {
+            lab_X.setText("X");
+            lab_Y.setText("Y");
+            lab_Z.setText("Z");
+            lab_Y.setVisible(true);
+            lab_Z.setVisible(true);
+            js_DDy.setVisible(true);
+            js_DDz.setVisible(true);
+        }
+    }//GEN-LAST:event_rb_escalaActionPerformed
+
+    private void rb_rotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_rotacaoActionPerformed
+        panelDados1.setVisible(true);
+        panelEixo.setVisible(true);
+
+        js_DDx.setValue(0D);
+        js_DDy.setValue(0D);
+        js_DDz.setValue(0D);
+
+        if (rb_rotacao.isSelected()) {
+            lab_X.setText("Ângulo");
+            lab_Y.setVisible(false);
+            lab_Z.setVisible(false);
+            js_DDy.setVisible(false);
+            js_DDz.setVisible(false);
+
+            rb_refXY.setText("Rotação em X");
+            rb_refYZ.setText("Rotação em Y");
+            rb_refXZ.setText("Rotação em Z");
+        } else if (rb_reflexao.isSelected()) {
+            panelDados1.setVisible(false);
+            panelEixo.setVisible(true);
+        } else {
+            lab_X.setText("X");
+            lab_Y.setVisible(true);
+            lab_Z.setVisible(true);
+            js_DDy.setVisible(true);
+            js_DDz.setVisible(true);
+        }
+    }//GEN-LAST:event_rb_rotacaoActionPerformed
+
+    private void rb_reflexaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_reflexaoActionPerformed
+        panelDados1.setVisible(true);
+        panelEixo.setVisible(false);
+
+        js_DDx.setValue(0D);
+        js_DDy.setValue(0D);
+        js_DDz.setValue(0D);
+
+        if (rb_rotacao.isSelected()) {
+            lab_X.setText("Ângulo");
+            lab_Y.setVisible(false);
+            js_DDy.setVisible(false);
+        } else if (rb_reflexao.isSelected()) {
+            panelDados1.setVisible(false);
+            panelEixo.setVisible(true);
+
+            rb_refXY.setText("Reflexão em XY");
+            rb_refYZ.setText("Reflexão em YZ");
+            rb_refXZ.setText("Reflexão em XZ");
+        } else {
+            lab_X.setText("X");
+            lab_Y.setVisible(true);
+            lab_Z.setVisible(true);
+            js_DDy.setVisible(true);
+            js_DDz.setVisible(true);
+        }
+    }//GEN-LAST:event_rb_reflexaoActionPerformed
+
+    private void rb_cisalhamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_cisalhamentoActionPerformed
+        panelDados1.setVisible(true);
+        panelEixo.setVisible(true);
+
+        js_DDx.setValue(0D);
+        js_DDy.setValue(0D);
+        js_DDz.setValue(0D);
+
+        if (rb_rotacao.isSelected()) {
+            lab_X.setText("Ângulo");
+            lab_Y.setVisible(false);
+            js_DDy.setVisible(false);
+        } else if (rb_reflexao.isSelected()) {
+            panelDados1.setVisible(false);
+            panelEixo.setVisible(true);
+        } else {
+            lab_X.setText("a");
+            lab_Y.setText("b");
+            lab_Y.setVisible(true);
+            js_DDy.setVisible(true);
+            lab_Z.setVisible(false);
+            js_DDz.setVisible(false);
+
+            rb_refXY.setText("Cisalhamento em X");
+            rb_refYZ.setText("Cisalhamento em Y");
+            rb_refXZ.setText("Cisalhamento em Z");
+        }
+    }//GEN-LAST:event_rb_cisalhamentoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btG_eixo;
@@ -395,10 +575,8 @@ public class PanelMenu3D extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> jl_listaT;
     private javax.swing.JSpinner js_DDx;
@@ -407,7 +585,11 @@ public class PanelMenu3D extends javax.swing.JPanel {
     private javax.swing.JSpinner js_depth;
     private javax.swing.JSpinner js_height;
     private javax.swing.JSpinner js_width;
-    private javax.swing.JPanel pan_eixo;
+    private javax.swing.JLabel lab_X;
+    private javax.swing.JLabel lab_Y;
+    private javax.swing.JLabel lab_Z;
+    private javax.swing.JPanel panelDados1;
+    private javax.swing.JPanel panelEixo;
     private javax.swing.JRadioButton rb_cisalhamento;
     private javax.swing.JRadioButton rb_escala;
     private javax.swing.JRadioButton rb_refXY;
@@ -534,7 +716,7 @@ public class PanelMenu3D extends javax.swing.JPanel {
             PlanoCartesiano.getInstance().drawObjeto3D(matrizObjeto3D);
             Matriz.printMatriz(matrizObjeto3D, "Matriz original");
         } else {
-            JOptionPane.showMessageDialog(this.getRootPane(), "Faltou você definir a largura (W), altura (H) e profundidade (L) do objeto!", "Desenhar Objeto 3D?", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this.getRootPane(), "Faltou você definir a largura (W), altura (H) e profundidade (D) do objeto!", "Desenhar Objeto 3D?", JOptionPane.WARNING_MESSAGE);
         }
     }
 
