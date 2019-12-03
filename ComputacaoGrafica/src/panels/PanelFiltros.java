@@ -5,6 +5,14 @@
  */
 package panels;
 
+import filtros.FiltroAltoReforco;
+import filtros.FiltroMedia;
+import filtros.FiltroMediana;
+import filtros.FiltroPassaAlta;
+import filtros.FiltroPrewitt;
+import filtros.FiltroRoberts;
+import filtros.FiltroRobertsCruzado;
+import filtros.FiltroSobel;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -234,7 +242,30 @@ public class PanelFiltros extends javax.swing.JPanel {
     private void btn_aplyFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aplyFActionPerformed
         PanelMenuFiltros menuFiltros = PanelMenuFiltros.getInstance();
         switch (menuFiltros.getTipoAlgoritimo()) {
-            
+            case MEDIA:
+                panel_imagemF.getGraphics().drawImage(new FiltroMedia(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
+                break;
+            case MEDIANA:
+                panel_imagemF.getGraphics().drawImage(new FiltroMediana(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
+                break;
+            case PASSA_ALTA_BASICO:
+                panel_imagemF.getGraphics().drawImage(new FiltroPassaAlta(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
+                break;
+            case OPERADOR_ROBERTS:
+                panel_imagemF.getGraphics().drawImage(new FiltroRoberts(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
+                break;
+            case OPERADOR_ROBERTS_CRUZADO:
+                panel_imagemF.getGraphics().drawImage(new FiltroRobertsCruzado(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
+                break;
+            case OPERADOR_PEWITT:
+                panel_imagemF.getGraphics().drawImage(new FiltroPrewitt(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
+                break;
+            case OPERADOR_SOBEL:
+                panel_imagemF.getGraphics().drawImage(new FiltroSobel(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
+                break;
+            case ALTO_REFORCO:
+                panel_imagemF.getGraphics().drawImage(new FiltroAltoReforco(imagemMatriz, menuFiltros.getA() ,getImgWidth(), getImgHeight()).run(), 0, 0, null);
+                break;
         }
     }//GEN-LAST:event_btn_aplyFActionPerformed
 
