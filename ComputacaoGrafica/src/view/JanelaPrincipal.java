@@ -18,8 +18,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.JPanel;
 import operacaoMatrizes.Matriz;
+import panels.PanelFiltros;
 import panels.PanelMenu3D;
 import panels.PanelMenuCircunferencia;
+import panels.PanelMenuFiltros;
 import panels.PanelMenuRaster;
 import panels.SubMenuTransfor2d;
 import transformacoes.Transformacoes2D;
@@ -38,6 +40,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private final PanelMenuCircunferencia panelMenuCirc;
     private final SubMenuTransfor2d subMenuTransfor;
     private final PanelMenu3D panelMenu3D;
+    private final PanelMenuFiltros panelMenuFiltros;
+    private final PanelFiltros panelFiltros;
     /**
      * Creates new form JanelaGrafica
      */
@@ -46,6 +50,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelMenuCirc = PanelMenuCircunferencia.getInstance();
         subMenuTransfor = SubMenuTransfor2d.getInstance();
         panelMenu3D = PanelMenu3D.getInstance();
+        panelMenuFiltros = PanelMenuFiltros.getInstance();
+        panelFiltros = PanelFiltros.getInstance();
         initComponents();
         //openMenuReta(null);
         coordinatesSystem();
@@ -83,6 +89,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menuTransformacoes = new javax.swing.JMenu();
         subMenu2d = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        menuFiltros = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -299,6 +311,35 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuTransformacoes);
 
+        jMenu1.setText("Processamento de Imagem");
+
+        menuFiltros.setText("Filtros");
+        menuFiltros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFiltrosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuFiltros);
+
+        jMenuItem3.setText("Operações");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Gato Arnold");
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("Transformação");
+        jMenu1.add(jMenuItem5);
+
+        jMenuItem6.setText("Equalização/Histograma");
+        jMenu1.add(jMenuItem6);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -373,6 +414,22 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         changePanMenu(panelMenu3D);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void menuFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFiltrosActionPerformed
+        /**
+         * Removendo os panels que não serão utilizados
+         */
+        panelFooter.setVisible(false);
+        panMenu.setVisible(true);
+        panelBox.removeAll();
+
+        changePanelCentral(panelFiltros);
+        changePanMenu(panelMenuFiltros);
+    }//GEN-LAST:event_menuFiltrosActionPerformed
     
     private void coordinatesSystem(){
         panelGrafic.addMouseMotionListener(new MouseMotionAdapter(){
@@ -440,8 +497,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -455,6 +517,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lab_Y;
     private javax.swing.JLabel lab_cTela;
     private javax.swing.JMenu menuDesenhar;
+    private javax.swing.JMenuItem menuFiltros;
     private javax.swing.JMenu menuTransformacoes;
     private javax.swing.JPanel panMenu;
     private javax.swing.JPanel panelBox;
@@ -478,21 +541,22 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void setDefaultBox() {
         if (!panelFooter.isVisible()) {
             panelBox.removeAll();
+            System.out.println("br.edu.uepb.cg.App.setDefaultBox()" + "ENTROU TBM<!");
             changePanelCentral(panelGrafic);
 
             javax.swing.GroupLayout panelBoxLayout = new javax.swing.GroupLayout(panelBox);
             panelBox.setLayout(panelBoxLayout);
             panelBoxLayout.setHorizontalGroup(
-                    panelBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelBoxLayout.createSequentialGroup()
-                                    .addComponent(panelGrafic, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(panelFooter, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                panelBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBoxLayout.createSequentialGroup()
+                        .addComponent(panelGrafic, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelFooter, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
             panelBoxLayout.setVerticalGroup(
-                    panelBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelGrafic, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
-                            .addComponent(panelFooter, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                panelBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelGrafic, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                    .addComponent(panelFooter, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
             );
             panelFooter.setVisible(true);
         }
