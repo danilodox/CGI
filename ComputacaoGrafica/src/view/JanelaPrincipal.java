@@ -454,7 +454,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelFooter.setVisible(false);
         panMenu.setVisible(false);
         panelBox.removeAll();
-
+        
         changePanelCentral(panelGatoArnold);
     }//GEN-LAST:event_menu_gatoArnoldActionPerformed
     

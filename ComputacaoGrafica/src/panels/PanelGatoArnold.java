@@ -59,6 +59,8 @@ public class PanelGatoArnold extends javax.swing.JPanel {
      * Construtor
      */
     private PanelGatoArnold() {
+        panel_imagemF.removeAll();
+        panel_imagemF.repaint();
         initComponents();
     }
 
