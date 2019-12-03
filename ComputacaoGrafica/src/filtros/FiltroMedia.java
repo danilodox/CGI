@@ -6,7 +6,7 @@ import processamentoDeImagem.Normalizacao;
 /**
  * Filtro de Média. Suavização de Imagens no Domínio Espacial.
  *
- * @author Douglas Rafael
+ * @author EquipeCGI
  */
 public class FiltroMedia {
 

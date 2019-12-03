@@ -10,7 +10,7 @@ import processamentoDeImagem.Normalizacao;
 
 /**
  *
- * @author netoe
+ * @author Equipe CGI
  */
 public class FiltroAltoReforco {
 

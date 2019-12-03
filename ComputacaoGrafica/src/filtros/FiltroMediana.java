@@ -6,7 +6,7 @@ import processamentoDeImagem.Normalizacao;
 
 /**
  *
- * @author geovanniovinhas
+ * @author EquipeCGI
  */
 public class FiltroMediana {
 

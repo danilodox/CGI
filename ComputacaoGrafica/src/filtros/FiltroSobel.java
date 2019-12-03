@@ -6,7 +6,7 @@ import processamentoDeImagem.Normalizacao;
 
 /**
  *
- * @author Douglas Rafael
+ * @author EquipeCGI
  */
 public class FiltroSobel {
 
