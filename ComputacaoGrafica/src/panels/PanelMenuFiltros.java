@@ -39,6 +39,7 @@ public class PanelMenuFiltros extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gBtn_filtros = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         rb_media = new javax.swing.JRadioButton();
         rb_mediana = new javax.swing.JRadioButton();
@@ -54,26 +55,69 @@ public class PanelMenuFiltros extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtros"));
 
+        gBtn_filtros.add(rb_media);
         rb_media.setText("Média");
         rb_media.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_mediaActionPerformed(evt);
+                selecionarFiltro(evt);
             }
         });
 
+        gBtn_filtros.add(rb_mediana);
         rb_mediana.setText("Mediana");
+        rb_mediana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarFiltro(evt);
+            }
+        });
 
+        gBtn_filtros.add(rb_passaAltaB);
         rb_passaAltaB.setText("Passa Alta Básico");
+        rb_passaAltaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarFiltro(evt);
+            }
+        });
 
+        gBtn_filtros.add(rb_roberts);
         rb_roberts.setText("Operador de Robert's");
+        rb_roberts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarFiltro(evt);
+            }
+        });
 
+        gBtn_filtros.add(rb_robertsC);
         rb_robertsC.setText("Operador de Robert's Cruzado");
+        rb_robertsC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarFiltro(evt);
+            }
+        });
 
+        gBtn_filtros.add(rb_prewitt);
         rb_prewitt.setText("Operador de Prewitt");
+        rb_prewitt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarFiltro(evt);
+            }
+        });
 
+        gBtn_filtros.add(rb_altoReforco);
         rb_altoReforco.setText("Alto Reforço (High Boost)");
+        rb_altoReforco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarFiltro(evt);
+            }
+        });
 
+        gBtn_filtros.add(rb_sobel);
         rb_sobel.setText("Operador de Sobel");
+        rb_sobel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarFiltro(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,7 +200,7 @@ public class PanelMenuFiltros extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rb_mediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_mediaActionPerformed
+    private void selecionarFiltro(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarFiltro
         JRadioButton radio = (JRadioButton) evt.getSource();
         PanelFiltros.getInstance().setTitle("Filtro de " + radio.getText());
 
@@ -165,10 +209,11 @@ public class PanelMenuFiltros extends javax.swing.JPanel {
         } else {
             panelDados.setVisible(false);
         }
-    }//GEN-LAST:event_rb_mediaActionPerformed
+    }//GEN-LAST:event_selecionarFiltro
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup gBtn_filtros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner js_a;

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="gBtn_filtros">
+    </Component>
+  </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -87,46 +91,91 @@
       <SubComponents>
         <Component class="javax.swing.JRadioButton" name="rb_media">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="gBtn_filtros"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="M&#xe9;dia"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_mediaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarFiltro"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_mediana">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="gBtn_filtros"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Mediana"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarFiltro"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_passaAltaB">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="gBtn_filtros"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Passa Alta B&#xe1;sico"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarFiltro"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_roberts">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="gBtn_filtros"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Operador de Robert&apos;s"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarFiltro"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_robertsC">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="gBtn_filtros"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Operador de Robert&apos;s Cruzado"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarFiltro"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_prewitt">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="gBtn_filtros"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Operador de Prewitt"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarFiltro"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_altoReforco">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="gBtn_filtros"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Alto Refor&#xe7;o (High Boost)"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarFiltro"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_sobel">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="gBtn_filtros"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Operador de Sobel"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarFiltro"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
