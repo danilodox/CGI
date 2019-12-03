@@ -22,7 +22,9 @@ import panels.PanelFiltros;
 import panels.PanelMenu3D;
 import panels.PanelMenuCircunferencia;
 import panels.PanelMenuFiltros;
+import panels.PanelMenuOperacoes;
 import panels.PanelMenuRaster;
+import panels.PanelOperacoes;
 import panels.SubMenuTransfor2d;
 import transformacoes.Transformacoes2D;
 import transformacoes.Transformacoes3D;
@@ -42,6 +44,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private final PanelMenu3D panelMenu3D;
     private final PanelMenuFiltros panelMenuFiltros;
     private final PanelFiltros panelFiltros;
+    private final PanelOperacoes panelOperacoes;
+    private final PanelMenuOperacoes panelMenuOperacoes;
     /**
      * Creates new form JanelaGrafica
      */
@@ -52,6 +56,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelMenu3D = PanelMenu3D.getInstance();
         panelMenuFiltros = PanelMenuFiltros.getInstance();
         panelFiltros = PanelFiltros.getInstance();
+        panelOperacoes = PanelOperacoes.getInstance();
+        panelMenuOperacoes = PanelMenuOperacoes.getInstance();
         initComponents();
         //openMenuReta(null);
         coordinatesSystem();
@@ -91,7 +97,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         menuFiltros = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menu_operacoes = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -321,13 +327,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(menuFiltros);
 
-        jMenuItem3.setText("Operações");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        menu_operacoes.setText("Operações");
+        menu_operacoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                menu_operacoesActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(menu_operacoes);
 
         jMenuItem4.setText("Gato Arnold");
         jMenu1.add(jMenuItem4);
@@ -415,9 +421,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         changePanMenu(panelMenu3D);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void menu_operacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_operacoesActionPerformed
+        panelFooter.setVisible(false);
+        panMenu.setVisible(true);
+        panelBox.removeAll();
+
+        changePanelCentral(panelOperacoes);
+        changePanMenu(panelMenuOperacoes);
+    }//GEN-LAST:event_menu_operacoesActionPerformed
 
     private void menuFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFiltrosActionPerformed
         /**
@@ -500,7 +511,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
@@ -519,6 +529,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuDesenhar;
     private javax.swing.JMenuItem menuFiltros;
     private javax.swing.JMenu menuTransformacoes;
+    private javax.swing.JMenuItem menu_operacoes;
     private javax.swing.JPanel panMenu;
     private javax.swing.JPanel panelBox;
     private javax.swing.JPanel panelFooter;
