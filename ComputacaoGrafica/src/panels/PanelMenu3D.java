@@ -377,18 +377,18 @@ public class PanelMenu3D extends javax.swing.JPanel {
          */
         if (rb_translacao.isSelected()) {
             setTipoAlgoritimo(TransformEnum.TRANSLACAO);
-            setValorX(((Integer) js_DDx.getValue()).doubleValue());
-            setValorY(((Integer) js_DDy.getValue()).doubleValue());
-            setValorZ(((Integer) js_DDz.getValue()).doubleValue());
+            setValorX((double) js_DDx.getValue());
+            setValorY((double) js_DDy.getValue());
+            setValorZ((double) js_DDz.getValue());
             System.out.println(((Integer) js_DDz.getValue()).doubleValue());
         } else if (rb_escala.isSelected()) {
             setTipoAlgoritimo(TransformEnum.ESCALA);
-            setValorX(((Integer) js_DDx.getValue()).doubleValue());
-            setValorY(((Integer) js_DDy.getValue()).doubleValue());
-            setValorZ(((Integer) js_DDz.getValue()).doubleValue());
+            setValorX((double) js_DDx.getValue());
+            setValorY((double) js_DDy.getValue());
+            setValorZ((double) js_DDz.getValue());
         } else if (rb_rotacao.isSelected()) {
             setTipoAlgoritimo(TransformEnum.ROTACAO);
-            setAngulo(((Integer) js_DDx.getValue()).doubleValue());
+            setAngulo((double) js_DDx.getValue());
 
             if (rb_refXY.isSelected()) {
                 setEixo("x");
@@ -408,9 +408,9 @@ public class PanelMenu3D extends javax.swing.JPanel {
             }
         } else if (rb_cisalhamento.isSelected()) {
             setTipoAlgoritimo(TransformEnum.CISALHAMENTO);
-            setValorX(((Integer) js_DDx.getValue()).doubleValue());
-            setValorY(((Integer) js_DDy.getValue()).doubleValue());
-            setValorZ(((Integer) js_DDz.getValue()).doubleValue());
+            setValorX((double) js_DDx.getValue());
+            setValorY((double) js_DDy.getValue());
+            setValorZ((double) js_DDz.getValue());
         }
 
         if (matrizObjeto3D == null) {
