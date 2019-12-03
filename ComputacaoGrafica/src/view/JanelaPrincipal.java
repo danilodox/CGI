@@ -102,7 +102,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menuFiltros = new javax.swing.JMenuItem();
         menu_operacoes = new javax.swing.JMenuItem();
         menu_gatoArnold = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        menu_transformacoes = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -346,8 +346,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(menu_gatoArnold);
 
-        jMenuItem5.setText("Transformação");
-        jMenu1.add(jMenuItem5);
+        menu_transformacoes.setText("Transformação");
+        menu_transformacoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_transformacoesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_transformacoes);
 
         jMenuItem6.setText("Equalização/Histograma");
         jMenu1.add(jMenuItem6);
@@ -457,6 +462,15 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         
         changePanelCentral(panelGatoArnold);
     }//GEN-LAST:event_menu_gatoArnoldActionPerformed
+
+    private void menu_transformacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_transformacoesActionPerformed
+        panelFooter.setVisible(false);
+        panMenu.setVisible(true);
+        panelBox.removeAll();
+
+//        changePanelCentral(panelTransformacoes);
+//        changeMenuLeft(panelMenuTransformacoes);
+    }//GEN-LAST:event_menu_transformacoesActionPerformed
     
     private void coordinatesSystem(){
         panelGrafic.addMouseMotionListener(new MouseMotionAdapter(){
@@ -527,7 +541,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
@@ -546,6 +559,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuTransformacoes;
     private javax.swing.JMenuItem menu_gatoArnold;
     private javax.swing.JMenuItem menu_operacoes;
+    private javax.swing.JMenuItem menu_transformacoes;
     private javax.swing.JPanel panMenu;
     private javax.swing.JPanel panelBox;
     private javax.swing.JPanel panelFooter;
