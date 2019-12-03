@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import processamentoDeImagem.GatoArnold;
 
 /**
  *
@@ -181,9 +183,8 @@ public class PanelGatoArnold extends javax.swing.JPanel {
                 .addGap(47, 47, 47)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btn_selecImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                        .addComponent(panel_imagemO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btn_selecImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                    .addComponent(panel_imagemO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addComponent(btn_aplyF, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(160, 160, 160)
@@ -221,7 +222,7 @@ public class PanelGatoArnold extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -235,7 +236,7 @@ public class PanelGatoArnold extends javax.swing.JPanel {
             int returnVal = fileChooser.showOpenDialog(btn_selecImagem);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 panel_imagemF.repaint();
-
+                panel_imagemF.removeAll();
                 populaImgInPanel(criaImagem(fileChooser.getSelectedFile()), panel_imagemO);
                 btn_aplyF.setEnabled(true);
             }
@@ -245,33 +246,23 @@ public class PanelGatoArnold extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_selecImagemActionPerformed
 
     private void btn_aplyFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aplyFActionPerformed
-        PanelMenuFiltros menuFiltros = PanelMenuFiltros.getInstance();
-        switch (menuFiltros.getTipoAlgoritimo()) {
-            case MEDIA:
-                panel_imagemF.getGraphics().drawImage(new FiltroMedia(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
-                break;
-            case MEDIANA:
-                panel_imagemF.getGraphics().drawImage(new FiltroMediana(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
-                break;
-            case PASSA_ALTA_BASICO:
-                panel_imagemF.getGraphics().drawImage(new FiltroPassaAlta(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
-                break;
-            case OPERADOR_ROBERTS:
-                panel_imagemF.getGraphics().drawImage(new FiltroRoberts(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
-                break;
-            case OPERADOR_ROBERTS_CRUZADO:
-                panel_imagemF.getGraphics().drawImage(new FiltroRobertsCruzado(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
-                break;
-            case OPERADOR_PEWITT:
-                panel_imagemF.getGraphics().drawImage(new FiltroPrewitt(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
-                break;
-            case OPERADOR_SOBEL:
-                panel_imagemF.getGraphics().drawImage(new FiltroSobel(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
-                break;
-            case ALTO_REFORCO:
-                panel_imagemF.getGraphics().drawImage(new FiltroAltoReforco(imagemMatriz, menuFiltros.getA() ,getImgWidth(), getImgHeight()).run(), 0, 0, null);
-                break;
-        }
+        Thread minhaThread = new Thread() {
+            @Override
+            public void run() {
+                for (int i = 0; i < getImgHeight(); i++) {
+                    GatoArnold gatoDeArnold = new GatoArnold(imagemMatriz, getImgWidth(), getImgHeight());
+
+                    gatoDeArnold.run();
+
+                    try {
+                        sleep(50);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        minhaThread.start();
     }//GEN-LAST:event_btn_aplyFActionPerformed
 
 
@@ -282,7 +273,7 @@ public class PanelGatoArnold extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lab_title;
-    private javax.swing.JPanel panel_imagemF;
+    public static javax.swing.JPanel panel_imagemF;
     private javax.swing.JPanel panel_imagemO;
     // End of variables declaration//GEN-END:variables
     

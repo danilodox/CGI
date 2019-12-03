@@ -19,6 +19,7 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.JPanel;
 import operacaoMatrizes.Matriz;
 import panels.PanelFiltros;
+import panels.PanelGatoArnold;
 import panels.PanelMenu3D;
 import panels.PanelMenuCircunferencia;
 import panels.PanelMenuFiltros;
@@ -46,6 +47,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private final PanelFiltros panelFiltros;
     private final PanelOperacoes panelOperacoes;
     private final PanelMenuOperacoes panelMenuOperacoes;
+    private final PanelGatoArnold panelGatoArnold;
     /**
      * Creates new form JanelaGrafica
      */
@@ -58,6 +60,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelFiltros = PanelFiltros.getInstance();
         panelOperacoes = PanelOperacoes.getInstance();
         panelMenuOperacoes = PanelMenuOperacoes.getInstance();
+        panelGatoArnold = PanelGatoArnold.getInstance();
         initComponents();
         //openMenuReta(null);
         coordinatesSystem();
@@ -452,7 +455,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panMenu.setVisible(false);
         panelBox.removeAll();
 
-        //changePanelCentral(panelGatoArnold);
+        changePanelCentral(panelGatoArnold);
     }//GEN-LAST:event_menu_gatoArnoldActionPerformed
     
     private void coordinatesSystem(){
