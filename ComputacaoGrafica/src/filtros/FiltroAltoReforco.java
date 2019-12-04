@@ -100,19 +100,6 @@ public class FiltroAltoReforco {
                 matriz_Resultado[y - 1][x - 1] = alto_reforco_aux;
             }
         }
-        
-        /*int matriz_Resultado[][] = new int[getWidth()][getHeight()];
-
-        for (int i = 1; i < getWidth() - 1; i++) {
-            for (int j = 1; j < getHeight() - 1; j++) {
-                 double alto_reforco = -imagem[y - 1][x - 1] - imagem[y - 1][x]
-                        - imagem[y - 1][x + 1] - imagem[y][x + 1] + (coeficienteW * imagem[y][x])
-                        - imagem[y + 1][x + 1] - imagem[y + 1][x] - imagem[y][x - 1]
-                        - imagem[y + 1][x - 1];
-                
-                matrizImagem[i][j] = Normalizacao.normalizaPixel(altoReforco);
-            }
-        }*/
 
         return Normalizacao.matrizToBufferedImage(matriz_Resultado, 255);
     }

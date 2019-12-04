@@ -53,13 +53,18 @@ public class Gamma {
     }
 
     public BufferedImage run() {
-        int matrizImagem[][] = new int[width][height];
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                matrizImagem[i][j] = Normalizacao.normalizaPixel((int) (2 * (Math.pow(imagem[i][j], gamma))));
+        int[][] matrizImagemNegativa = new int[width][height];
+        int c = 1;
+        // percorre toda imagem pixel a pixel para realizar efeito (negativo)
+        for (int y = 0; y < width; y++) {
+            for (int x = 0; x < height; x++) {
+
+                // pega o nivel de cor de um pixel
+                // retornara o inverso do valor do pixel
+                matrizImagemNegativa[x][y] = (int) Math.round(c * Math.pow(imagem[x][y], gamma));
             }
         }
 
-        return Normalizacao.matrizToBufferedImage(matrizImagem, 255);
+        return Normalizacao.matrizToBufferedImage(matrizImagemNegativa, 255);
     }
 }
