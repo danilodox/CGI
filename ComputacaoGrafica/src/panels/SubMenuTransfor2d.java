@@ -99,7 +99,7 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
         rb_refY = new javax.swing.JRadioButton();
         rb_refXY = new javax.swing.JRadioButton();
         btn_addLista = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_applyTransfC = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
 
@@ -326,7 +326,12 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("jButton2");
+        btn_applyTransfC.setText("Aplicar transformações");
+        btn_applyTransfC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_applyTransfCActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de transformações"));
 
@@ -350,7 +355,7 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_desenhar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_applyTransfC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -373,7 +378,7 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btn_applyTransfC)
                 .addContainerGap())
         );
 
@@ -486,14 +491,23 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_addListaActionPerformed
 
+    private void btn_applyTransfCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_applyTransfCActionPerformed
+        if (!listaDeTransformacoes.isEmpty()) {
+            setTipoAlgoritimo(TransformEnum.COMPOSTA);
+            JanelaPrincipal.runResult(this);
+        } else {
+            JOptionPane.showMessageDialog(this.getRootPane(), "Você não adicionou nenhum tipo de transformação na lista.\nPor favor, adicione e tente novamente...", "Aplicar Transformações Compostas?", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_applyTransfCActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_addLista;
     private javax.swing.JButton btn_applyTransf;
+    private javax.swing.JButton btn_applyTransfC;
     private javax.swing.JButton btn_desenhar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
