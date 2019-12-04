@@ -220,6 +220,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="js_a">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

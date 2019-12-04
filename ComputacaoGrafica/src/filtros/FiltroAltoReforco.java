@@ -3,6 +3,7 @@
  */
 package filtros;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import processamentoDeImagem.Normalizacao;
 
@@ -65,6 +66,10 @@ public class FiltroAltoReforco {
     public void setHeight(int height) {
         this.height = height;
     }
+    
+    public static int getCorPixel(int corRGB) {
+        return new Color(corRGB, corRGB, corRGB).getRGB();
+    }
 
     /*
     * A imagem com a passa alta pode ser computada como a diferença
@@ -73,26 +78,42 @@ public class FiltroAltoReforco {
     */
     
     public BufferedImage run() {
-        int matrizImagem[][] = new int[getWidth()][getHeight()];
-
-        for (int i = 1; i < getWidth() - 1; i++) {
-            for (int j = 1; j < getHeight() - 1; j++) {
-                int mask1 = imagem[i - 1][j - 1] * -1;
-                int mask2 = imagem[i - 1][j] * -1;
-                int mask3 = imagem[i - 1][j + 1] * -1;
-                int mask4 = imagem[i][j - 1] * -1;
-                int mask5 = (int) (imagem[i][j] * (9 * this.coeficienteA - 1));
-                int mask6 = imagem[i][j + 1] * -1;
-                int mask7 = imagem[i + 1][j - 1] * -1;
-                int mask8 = imagem[i + 1][j] * -1;
-                int mask9 = imagem[i + 1][j + 1] * -1;
-
-                int altoReforco = mask1 + mask2 + mask3 + mask4 + mask5 + mask6 + mask7 + mask8 + mask9;
-                
-                matrizImagem[i][j] = Normalizacao.normalizaPixel(altoReforco);
+        width = width + 2;
+        height = height + 2;
+        int[][] matriz_Resultado = new int[height][width];
+        int matriz_auxiliar[][] = new int[width][height];
+        // inclui em uma imagem auxilar mais uma linha de "zeros" em todas as laterais
+        for (int i = 1; i < height - 1; i++) {
+            for (int j = 1; j < width - 1; j++) {
+                matriz_auxiliar[i][j] = imagem[i - 1][j - 1];
             }
         }
 
-        return Normalizacao.matrizToBufferedImage(matrizImagem);
+        for (int y = 1; y < height - 1; y++) {
+            for (int x = 1; x < width - 1; x++) {
+
+                double alto_reforco = -matriz_auxiliar[y - 1][x - 1] - matriz_auxiliar[y - 1][x]
+                        - matriz_auxiliar[y - 1][x + 1] - matriz_auxiliar[y][x + 1] + (coeficienteW * matriz_auxiliar[y][x])
+                        - matriz_auxiliar[y + 1][x + 1] - matriz_auxiliar[y + 1][x] - matriz_auxiliar[y][x - 1]
+                        - matriz_auxiliar[y + 1][x - 1];
+                int alto_reforco_aux = (int) Math.round(alto_reforco);
+                matriz_Resultado[y - 1][x - 1] = alto_reforco_aux;
+            }
+        }
+        
+        /*int matriz_Resultado[][] = new int[getWidth()][getHeight()];
+
+        for (int i = 1; i < getWidth() - 1; i++) {
+            for (int j = 1; j < getHeight() - 1; j++) {
+                 double alto_reforco = -imagem[y - 1][x - 1] - imagem[y - 1][x]
+                        - imagem[y - 1][x + 1] - imagem[y][x + 1] + (coeficienteW * imagem[y][x])
+                        - imagem[y + 1][x + 1] - imagem[y + 1][x] - imagem[y][x - 1]
+                        - imagem[y + 1][x - 1];
+                
+                matrizImagem[i][j] = Normalizacao.normalizaPixel(altoReforco);
+            }
+        }*/
+
+        return Normalizacao.matrizToBufferedImage(matriz_Resultado, 255);
     }
 }

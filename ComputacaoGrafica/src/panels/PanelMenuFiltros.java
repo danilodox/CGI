@@ -156,6 +156,8 @@ public class PanelMenuFiltros extends javax.swing.JPanel {
 
         jLabel1.setText("Valor de A");
 
+        js_a.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+
         javax.swing.GroupLayout panelDadosLayout = new javax.swing.GroupLayout(panelDados);
         panelDados.setLayout(panelDadosLayout);
         panelDadosLayout.setHorizontalGroup(
@@ -249,7 +251,7 @@ public class PanelMenuFiltros extends javax.swing.JPanel {
     }
     
     public double getA() {
-        return ((Integer) js_a.getValue()).doubleValue();
+        return (double) js_a.getValue();
     }
     
 }
