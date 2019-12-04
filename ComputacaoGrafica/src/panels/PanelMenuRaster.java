@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Painel do menu de rasterização da reta.
  */
 package panels;
 
@@ -10,10 +8,6 @@ import auxiliar.Ponto;
 import enums.RasterEnum;
 import javax.swing.JTextArea;
 
-/**
- *
- * @author Peu
- */
 public class PanelMenuRaster extends javax.swing.JPanel {
     
     public static PanelMenuRaster instance;

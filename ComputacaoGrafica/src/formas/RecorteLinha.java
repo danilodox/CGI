@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * 
  */
 package formas;
 
@@ -11,10 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import operacoes.PlanoCartesiano;
 
-/**
- *
- * @author Peu
- */
 public class RecorteLinha {
     static RecorteLinha instance;
     private final PlanoCartesiano planoCartesiano;
@@ -105,12 +99,7 @@ public class RecorteLinha {
 
         posicao = codigo.indexOf("1");
 //        procure a posicao 1 no codigo
-//        for (int i = 0; i > codigo.length(); i++) {
-//            if (codigo.charAt(i) == '1') {
-//                posicao = i;
-//                break;
-//            }
-//        }
+
         System.out.println(posicao);
 //        aplicar o recorte de acordo a posicao do bit 1 
         switch (posicao) {
@@ -148,12 +137,6 @@ public class RecorteLinha {
 
 //        procure a posicao 1 no codigo
         posicao = codigo.indexOf("1");
-//        for (int i = 0; i >= codigo.length(); i++) {
-//            if (codigo.charAt(i) == '1') {
-//                posicao = i;
-//                break;
-//            }
-//        }
 
 //        aplicar o recorte de acordo a posicao do bit 1 
         switch (posicao) {
@@ -213,9 +196,7 @@ public class RecorteLinha {
                 novaListaPontos.add(pontoB);
             }
 
-        }
-
-//        
+        } 
         return novaListaPontos;
     }
 }

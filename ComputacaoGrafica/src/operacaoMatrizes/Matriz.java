@@ -1,14 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Essa classe realiza operações entre matrizes, como a multiplicação.
  */
 package operacaoMatrizes;
 
-/**
- *
- * @author Peu
- */
 public class Matriz {
     
     public static double[][] multiplicaMatrizes(double[][] m1, double[][] m2){

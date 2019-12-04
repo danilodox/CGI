@@ -1,8 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Essa classe realiza as transformações 3D como translação, rotação, reflexão e cisalhamento.
  */
+
 package transformacoes;
 
 import enums.Eixo;
@@ -10,10 +9,6 @@ import java.util.Stack;
 import operacaoMatrizes.Matriz;
 import panels.PanelMenu3D;
 
-/**
- *
- * @author Peu
- */
 public class Transformacoes3D {
     private static Transformacoes3D instance;
     private double[][] matrizM;

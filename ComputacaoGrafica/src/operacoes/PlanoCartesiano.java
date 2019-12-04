@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Essa classe desenha o plano cartesiano.
  */
 package operacoes;
 
@@ -9,18 +7,11 @@ import auxiliar.Ponto;
 import formas.Rasterizacao;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
 import java.util.List;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Peu
- */
 public class PlanoCartesiano extends JPanel{
     
     public static PlanoCartesiano instance;

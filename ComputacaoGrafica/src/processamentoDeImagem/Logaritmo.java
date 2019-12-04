@@ -1,11 +1,11 @@
 package processamentoDeImagem;
 
+/*
+*Classe que aplica a transformação logaritmica na imagem.
+*/
+
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author geovanniovinhas
- */
 public class Logaritmo {
 
     private int[][] imagem;

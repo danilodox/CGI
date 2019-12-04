@@ -1,13 +1,13 @@
 package processamentoDeImagem;
 
+/*
+*Classe que realiza a operação de equalização nas imagens.
+*/
+
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import panels.PanelFiltros;
 
-/**
- *
- * @author Douglas Rafael
- */
 public class HistogramaGrafico {
 
     PanelFiltros panelFiltros;

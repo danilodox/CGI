@@ -1,12 +1,12 @@
 package operacoes;
 
+/*
+* Operação de multiplicação entre duas imagens.
+*/
+
 import java.awt.image.BufferedImage;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author geovanniovinhas
- */
 public class OperacaoMultiplicacao {
 
     private final int[][] imagem1;

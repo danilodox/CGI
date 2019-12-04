@@ -1,12 +1,12 @@
 package operacoes;
 
+/*
+* Essa classe realiza a operação AND entre duas imagens.
+*/
+
 import java.awt.image.BufferedImage;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author geovanniovinhas
- */
 public class OperacaoAND {
 
     private final int[][] imagem1;

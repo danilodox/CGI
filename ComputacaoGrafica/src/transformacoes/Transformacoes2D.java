@@ -1,18 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Essa classe realiza as transformações 2D como translação, rotação, reflexão e cisalhamento.
  */
+
 package transformacoes;
 
 import enums.Eixo;
 import operacaoMatrizes.Matriz;
 import panels.SubMenuTransfor2d;
 
-/**
- *
- * @author aline
- */
 public class Transformacoes2D {
     
     private static Transformacoes2D instance;

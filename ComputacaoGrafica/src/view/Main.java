@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * 
  */
 package view;
 
@@ -16,10 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-/**
- *
- * @author Peu
- */
 public class Main extends JFrame{
     /**
 	 * 
@@ -53,13 +47,6 @@ public class Main extends JFrame{
 		panel_2.add(btnApresentarOsGrficos);
 		
 		JButton btnApresentarAAnimao = new JButton("Apresentar a Anima\u00E7\u00E3o");
-		/*btnApresentarAAnimao.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				SistemaSolar sistemaSolar = new SistemaSolar();
-				sistemaSolar.animacao();
-			}
-		});*/
 		panel_2.add(btnApresentarAAnimao);
 		
 		JLabel label = new JLabel("");

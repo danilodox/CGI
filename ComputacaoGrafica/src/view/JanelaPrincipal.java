@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Painel principal, contendo os menus de operações e transformações.
  */
 package view;
 
@@ -35,12 +33,6 @@ import panels.SubMenuTransfor2d;
 import transformacoes.Transformacoes2D;
 import transformacoes.Transformacoes3D;
 
-
-
-/**
- *
- * @author Peu
- */
 public class JanelaPrincipal extends javax.swing.JFrame {
     
     //private final PanelGrafico pg;
@@ -75,6 +67,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelHistograma = PanelHistograma.getInstance();
         panelMenuRecorteReta = PanelMenuRecorteReta.getInstance();
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
         //openMenuReta(null);
         coordinatesSystem();
     }
@@ -122,7 +115,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menu_graficos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         panelBox.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {

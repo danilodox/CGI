@@ -1,17 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Painel do menu das operações de filtro da imagem.
  */
 package panels;
 
 import enums.FiltrosEnum;
 import javax.swing.JRadioButton;
 
-/**
- *
- * @author Peu
- */
 public class PanelMenuFiltros extends javax.swing.JPanel {
     
     private static PanelMenuFiltros instance;

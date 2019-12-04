@@ -1,11 +1,11 @@
 package processamentoDeImagem;
 
+/*
+* Aplica a transformação Gamma na imagem.
+*/
+
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author geovanniovinhas
- */
 public class Gamma {
 
     private int[][] imagem;

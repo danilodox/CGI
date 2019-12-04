@@ -1,5 +1,9 @@
 package processamentoDeImagem;
 
+/*
+* Classe que realiza a operação gato de arnold na imagem.
+*/
+
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import javax.swing.ImageIcon;
@@ -7,10 +11,6 @@ import javax.swing.JLabel;
 import panels.PanelFiltros;
 import panels.PanelGatoArnold;
 
-/**
- *
- * @author Douglas Rafael
- */
 public class GatoArnold {
 
     PanelFiltros panelFiltros;
@@ -22,6 +22,8 @@ public class GatoArnold {
     private JLabel label;
     private ImageIcon icon;
 
+    //Corresponde em aplicar cisalhamento e recorte na imagem consecutivamente
+    //até que a imagem retorne a forma inicial.
     public GatoArnold(int imagem[][], int width, int height) {
         this.imagem = imagem;
         this.imagemArnold = imagem;

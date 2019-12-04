@@ -1,12 +1,12 @@
 package operacoes;
 
+/*
+* Essa classe realiza a operação OR entre duas imagens.
+*/
+
 import java.awt.image.BufferedImage;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author geovanniovinhas
- */
 public class OperacaoOR {
 
     private final int[][] imagem1;

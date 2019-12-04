@@ -1,11 +1,11 @@
 package processamentoDeImagem;
 
+/*
+* Classe que realiza as operações de equalização das imagens.
+*/
+
 import panels.PanelFiltros;
 
-/**
- *
- * @author Douglas Rafael
- */
 public class EqualizarImagem {
 
     PanelFiltros panelFiltros;
@@ -71,16 +71,6 @@ public class EqualizarImagem {
             contador = contador + 1;
         }
 
-//        //printando a tabela do excel
-//        System.out.println("\n");
-//        System.out.print("K\t\tNk\t\trK\t\tPr(rk)\t\t\tSk\t\tRound(255 * sk)\n");
-//        contador = 0;
-//        while (matrizDeEqualizacao[contador][0] != 1000) {
-//            System.out.print(matrizDeEqualizacao[contador][0] + "\t\t" + matrizDeEqualizacao[contador][1] + "\t\t"
-//                    + matrizDeEqualizacao[contador][2] + "\t\t" + matrizDeEqualizacao[contador][3] + "\t\t"
-//                    + matrizDeEqualizacao[contador][4] + "\t\t" + matrizDeEqualizacao[contador][5] + "\t\t\n");
-//            contador = contador + 1;
-//        }
         for (int i = 0; i < imagem.length; i++) {
             for (int j = 0; j < imagem[0].length; j++) {
 

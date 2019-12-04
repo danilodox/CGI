@@ -1,11 +1,11 @@
 package processamentoDeImagem;
 
+/*
+* Classe que aplica a operação Negativo na imagem.
+*/
+
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author geovanniovinhas
- */
 public class Negativo {
 
     private int[][] imagem;

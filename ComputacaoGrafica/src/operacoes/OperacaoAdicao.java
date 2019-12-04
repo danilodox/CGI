@@ -1,12 +1,12 @@
 package operacoes;
 
+/*
+* Operação de adição entre duas imagens.
+*/
+
 import java.awt.image.BufferedImage;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author geovanniovinhas
- */
 public class OperacaoAdicao {
 
     private final int[][] imagem1;

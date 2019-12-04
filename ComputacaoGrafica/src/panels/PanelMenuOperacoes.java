@@ -1,17 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Painel das operações entre duas imagens.
  */
 package panels;
 
 import enums.OperacoesEnum;
 import javax.swing.JRadioButton;
 
-/**
- *
- * @author Peu
- */
 public class PanelMenuOperacoes extends javax.swing.JPanel {
 
     private static PanelMenuOperacoes instance;

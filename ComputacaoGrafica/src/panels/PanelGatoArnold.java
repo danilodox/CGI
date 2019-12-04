@@ -1,18 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Painel da operação Gato de Arnold.
  */
 package panels;
 
-import filtros.FiltroAltoReforco;
-import filtros.FiltroMedia;
-import filtros.FiltroMediana;
-import filtros.FiltroPassaAlta;
-import filtros.FiltroPrewitt;
-import filtros.FiltroRoberts;
-import filtros.FiltroRobertsCruzado;
-import filtros.FiltroSobel;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -32,10 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import processamentoDeImagem.GatoArnold;
 
-/**
- *
- * @author Peu
- */
 public class PanelGatoArnold extends javax.swing.JPanel {
     
     private static PanelGatoArnold instance;

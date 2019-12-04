@@ -1,12 +1,12 @@
 package operacoes;
 
+/*
+* Essa classe realiza a operação XOR entre duas imagens.
+*/
+
 import java.awt.image.BufferedImage;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author geovanniovinhas
- */
 public class OperacaoXOR {
 
     private final int[][] imagem1;

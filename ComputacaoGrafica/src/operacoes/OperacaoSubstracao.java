@@ -1,12 +1,12 @@
 package operacoes;
 
+/*
+* Operação de subtração entre duas imagens.
+*/
+
 import java.awt.image.BufferedImage;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author geovanniovinhas
- */
 public class OperacaoSubstracao {
 
     private final int[][] imagem1;

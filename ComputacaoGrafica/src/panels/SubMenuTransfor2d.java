@@ -1,29 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Painel de menu das operações das transformações 2D.
  */
 package panels;
 
-import panels.*;
-import view.JanelaPrincipal;
 import auxiliar.Ponto;
-import enums.RasterEnum;
 import enums.TransformEnum;
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
 import java.util.Stack;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import operacoes.PlanoCartesiano;
 import transformacoes.Transformacoes2D;
 import view.JanelaPrincipal;
 
-/**
- *
- * @author Peu
- */
 public class SubMenuTransfor2d extends javax.swing.JPanel {
     
     private static SubMenuTransfor2d instance;
@@ -55,10 +45,6 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
         listaDeTransformacoes = new Stack<>();
         initComponents();
         pan_dados1.setVisible(false);
-//        valorDDX.setEnabled(false);
-//        valorDDY.setEnabled(false);
-//        lab_dd1.setEnabled(false);
-//        lab_dd2.setEnabled(false);
     }
 
     /**
@@ -426,10 +412,6 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
 
     private void transformacaoSelecionada(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transformacaoSelecionada
         pan_dados1.setVisible(true);
-//        valorDDX.setEnabled(true);
-//        valorDDY.setEnabled(true);
-//        lab_dd1.setEnabled(true);
-//        lab_dd2.setEnabled(true);
         
         pan_dados2.setEnabled(false);
         rb_refX.setEnabled(false);
@@ -445,14 +427,7 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
             valorDDY.setEnabled(false);
         } else if (rb_reflexao.isSelected()) {
             pan_dados1.setVisible(false);
-//            valorDDX.setEnabled(false);
-//            valorDDY.setEnabled(false);
-//            lab_dd1.setEnabled(false);
-//            lab_dd2.setEnabled(false);
             pan_dados2.setVisible(true);
-//            rb_refX.setEnabled(true);
-//            rb_refY.setEnabled(true);
-//            rb_refXY.setEnabled(true);
         } else {
             lab_dd1.setText("X");
             lab_dd2.setEnabled(true);

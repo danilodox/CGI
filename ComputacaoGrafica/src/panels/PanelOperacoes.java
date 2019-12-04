@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Painel das operações entre as imagens.
  */
 package panels;
 
@@ -27,10 +25,6 @@ import operacoes.OperacaoOR;
 import operacoes.OperacaoSubstracao;
 import operacoes.OperacaoXOR;
 
-/**
- *
- * @author Peu
- */
 public class PanelOperacoes extends javax.swing.JPanel {
     
     private static PanelOperacoes instance;

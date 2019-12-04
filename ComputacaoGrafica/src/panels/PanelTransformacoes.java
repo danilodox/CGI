@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Painel da aplicação das transformações das imagens.
  */
 package panels;
 
@@ -147,7 +145,7 @@ public class PanelTransformacoes extends javax.swing.JPanel {
             .addGap(0, 233, Short.MAX_VALUE)
         );
 
-        btn_aplyF.setText("jButton1");
+        btn_aplyF.setText("Aplicar");
         btn_aplyF.setPreferredSize(new java.awt.Dimension(100, 100));
         btn_aplyF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

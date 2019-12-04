@@ -1,14 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Painel das transformações 3D.
  */
 package panels;
 
 import auxiliar.Ponto;
 import enums.TransformEnum;
-import graficos.PanelGrafico;
-import java.awt.Color;
 import java.util.Stack;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -17,10 +13,6 @@ import operacoes.PlanoCartesiano;
 import transformacoes.Transformacoes3D;
 import view.JanelaPrincipal;
 
-/**
- *
- * @author Peu
- */
 public class PanelMenu3D extends javax.swing.JPanel {
     
     private final DefaultListModel<String> modelList;

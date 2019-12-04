@@ -1,12 +1,12 @@
 package operacoes;
 
+/*
+* Operação de divisão entre duas imagens.
+*/
+
 import java.awt.image.BufferedImage;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author geovanniovinhas
- */
 public class OperacaoDivisao {
 
     private final int[][] imagem1;
