@@ -60,6 +60,6 @@ public class Gamma {
             }
         }
 
-        return Normalizacao.matrizToBufferedImage(matrizImagem);
+        return Normalizacao.matrizToBufferedImage(matrizImagem, 255);
     }
 }
