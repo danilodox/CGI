@@ -302,8 +302,6 @@ public class PanelMenuRecorteReta extends javax.swing.JPanel {
         try {
             if (RecorteLinha.getInstance().isRetaInJanela((double) xMin.getValue(), (double) xMax.getValue(), (double) yMin.getValue(), (double) yMax.getValue(), listaPontos.get(0), listaPontos.get(1))) {
                 listaPontoReta = RecorteLinha.getInstance().recorteFinal((double) xMin.getValue(), (double) xMax.getValue(), (double) yMin.getValue(), (double) yMax.getValue(), listaPontos);
-                System.out.println("pontoFinal1Panel " + listaPontoReta.get(0));
-                System.out.println("pontoFinal2Panel " + listaPontoReta.get(1));
                 btCriarJanela(evt);
                 Rasterizacao.getInstance().bresenham(listaPontoReta.get(0), listaPontoReta.get(1), null);
 //                PanelPlanoCartesiano.getInstance().getGraphics().drawLine((int)listaPontoReta.get(0).getX() , (int)listaPontoReta.get(0).getY(), (int) (int)listaPontoReta.get(1).getX(), (int) (int)listaPontoReta.get(1).getY());

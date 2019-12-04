@@ -188,9 +188,6 @@ public class RecorteLinha {
 
         Ponto pontoA;
         Ponto pontoB;
-        System.out.println("pontoOrigin1 " + listaPontosOriginal.get(0));
-        System.out.println("pontoOrigin2 " + listaPontosOriginal.get(1));
-
         codigo1 = criarBit(xMin, xMax, yMin, yMax, listaPontosOriginal.get(0));
         codigo2 = criarBit(xMin, xMax, yMin, yMax, listaPontosOriginal.get(1));
 
@@ -199,17 +196,14 @@ public class RecorteLinha {
                 pontoA = aplicaRecortePonto1(codigo1, xMin, xMax, yMin, yMax, listaPontosOriginal.get(0), listaPontosOriginal.get(1));
 
                 codigo1 = criarBit(xMin, xMax, yMin, yMax, pontoA);
-                System.out.println("Novo ponto" + pontoA);
                 codigo2 = criarBit(xMin, xMax, yMin, yMax, listaPontosOriginal.get(1));
                 novaListaPontos.add(pontoA);
                 novaListaPontos.add(listaPontosOriginal.get(1));
-                System.out.println("1: " + codigo1);
             } else if (codigo1.equals("0000") && !codigo2.equals("0000")) {
                 pontoB = aplicaRecortePonto2(codigo2, xMin, xMax, yMin, yMax, listaPontosOriginal.get(0), listaPontosOriginal.get(1));
                 codigo2 = criarBit(xMin, xMax, yMin, yMax, pontoB);
                 novaListaPontos.add(listaPontosOriginal.get(0));
                 novaListaPontos.add(pontoB);
-                System.out.println("2");
             } else {
                 pontoA = aplicaRecortePonto1(codigo1, xMin, xMax, yMin, yMax, listaPontosOriginal.get(0), listaPontosOriginal.get(1));
                 pontoB = aplicaRecortePonto2(codigo2, xMin, xMax, yMin, yMax, listaPontosOriginal.get(0), listaPontosOriginal.get(1));
@@ -217,14 +211,11 @@ public class RecorteLinha {
                 codigo2 = criarBit(xMin, xMax, yMin, yMax, pontoB);
                 novaListaPontos.add(pontoA);
                 novaListaPontos.add(pontoB);
-                System.out.println("3");
             }
 
         }
 
 //        
-        System.out.println("pontoFinal1 " + novaListaPontos.get(0));
-        System.out.println("pontoFinal2 " + novaListaPontos.get(1));
         return novaListaPontos;
     }
 }
