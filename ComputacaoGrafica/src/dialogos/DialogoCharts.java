@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Painel de dialogo.
  */
 package dialogos;
 
@@ -10,10 +8,6 @@ import panels.PanelChartBar;
 import panels.PanelChartBarHori;
 import panels.PanelChartPie;
 
-/**
- *
- * @author Peu
- */
 public class DialogoCharts extends javax.swing.JDialog {
 
     /**

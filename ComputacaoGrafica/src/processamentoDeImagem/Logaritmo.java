@@ -60,6 +60,6 @@ public class Logaritmo {
 //                matrizImagem[i][j] = (int) (constanteA * (Math.log10(imagem[i][j] + 1)));
             }
         }
-        return Normalizacao.matrizToBufferedImage(matrizImagem);
+        return Normalizacao.matrizToBufferedImage(matrizImagem, 255);
     }
 }

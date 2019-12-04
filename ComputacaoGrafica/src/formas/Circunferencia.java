@@ -32,6 +32,7 @@ public class Circunferencia {
         return instance;
     }
     
+    //Função explicita da rasterização da circunferencia
     public void funcaoExplicita(int raio) {
         planoCartesiano.redesenha();
         //Define os passo e atribui os valores que serão verificados 

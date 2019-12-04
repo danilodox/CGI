@@ -1,5 +1,5 @@
 /*
- * 
+ * Classe que verifica as exceções durante o recorte da linha no viewport
  */
 package formas;
 

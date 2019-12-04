@@ -65,53 +65,7 @@ public class FiltroMedia {
                 // coloca resultado na imagem de saida
                 matrizResultado[y - 1][x - 1] = Math.round(media);
             }
-        }/*
-        int CoeficienteDeNormalizacao = 0;
-        int matrizImagem[][] = new int[width][height];
-
-        // Soma os valores dos pixels da matriz para determinar o coeficiente de normalização
-        for (int i = 0; i < getHeight(); i++) {
-            for (int j = 0; j < getWidth(); j++) {
-                CoeficienteDeNormalizacao = CoeficienteDeNormalizacao + imagem[i][j];
-            }
         }
-        for (int i = 0; i < getHeight(); i++) {
-            for (int j = 0; j < getWidth(); j++) {
-
-                //soma dos pixeis da vizinhan�a
-                int soma = 0;
-
-                soma += imagem[i][j];
-                if ((i - 1) >= 0) {
-                    soma += imagem[i - 1][j] / CoeficienteDeNormalizacao;
-                }
-                if ((i + 1) < getWidth()) {
-                    soma += imagem[i + 1][j] / CoeficienteDeNormalizacao;
-                }
-                if ((j - 1) >= 0) {
-                    soma += imagem[i][j - 1] / CoeficienteDeNormalizacao;
-                }
-                if ((j + 1) < getHeight()) {
-                    soma += imagem[i][j + 1] / CoeficienteDeNormalizacao;
-                }
-                if (((i - 1) >= 0) && ((j - 1) >= 0)) {
-                    soma += imagem[i - 1][j - 1] / CoeficienteDeNormalizacao;
-                }
-                if (((i + 1) < getWidth()) && ((j - 1) >= 0)) {
-                    soma += imagem[i + 1][j - 1] / CoeficienteDeNormalizacao;
-                }
-                if (((i - 1) >= 0) && ((j + 1) < getHeight())) {
-                    soma += imagem[i - 1][j + 1] / CoeficienteDeNormalizacao;
-                }
-                if (((i + 1) < getWidth()) && ((j + 1) < getHeight())) {
-                    soma += imagem[i + 1][j + 1] / CoeficienteDeNormalizacao;
-                }
-
-                //adiciona a soma dos valores RGB da vizinhançaa na posiçao central
-                matrizImagem[i][j] = Math.round(soma);
-            }
-        }*/
-        
         return Normalizacao.normalizaImage(matrizResultado);
     }
 }

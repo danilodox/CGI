@@ -1,14 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Enumera os efeitos de transformação de imagens.
  */
 package enums;
 
-/**
- *
- * @author Peu
- */
 public enum TransformacoesImagemEnum {
     NEGATIVO("Negativo"), GAMMA("Gamma"), LOG("Logaritmo");
 

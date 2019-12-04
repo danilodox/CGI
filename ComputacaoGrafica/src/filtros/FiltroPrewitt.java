@@ -72,6 +72,6 @@ public class FiltroPrewitt {
                 matrizImagem[i][j] = Normalizacao.normalizaPixel(prewitt);
             }
         }
-        return Normalizacao.matrizToBufferedImage(matrizImagem);
+        return Normalizacao.matrizToBufferedImage(matrizImagem, 255);
     }
 }

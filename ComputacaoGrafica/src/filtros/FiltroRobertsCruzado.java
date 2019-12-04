@@ -45,6 +45,7 @@ public class FiltroRobertsCruzado {
         this.height = height;
     }
 
+    //Aplica o filtro de Roberts Cruzado na imagem.
     public BufferedImage run() {
         int matrizImagem[][] = new int[getWidth()][getHeight()];
 
@@ -60,6 +61,6 @@ public class FiltroRobertsCruzado {
             }
         }
 
-        return Normalizacao.matrizToBufferedImage(matrizImagem);
+        return Normalizacao.matrizToBufferedImage(matrizImagem, 255);
     }
 }

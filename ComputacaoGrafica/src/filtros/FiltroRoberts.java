@@ -54,6 +54,7 @@ public class FiltroRoberts {
         this.height = height;
     }
 
+    //Aplica o filtro Roberts na imagem.
     public BufferedImage run() {
         int matrizImagem[][] = new int[getWidth()][getHeight()];
 
@@ -81,6 +82,6 @@ public class FiltroRoberts {
             }
         }
 
-        return Normalizacao.matrizToBufferedImage(matrizImagem);
+        return Normalizacao.matrizToBufferedImage(matrizImagem, 255);
     }
 }

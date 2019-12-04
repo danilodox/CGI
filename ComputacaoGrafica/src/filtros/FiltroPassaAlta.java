@@ -54,6 +54,7 @@ public class FiltroPassaAlta {
         this.height = height;
     }
 
+    //Aplica a transformação Passa Alta na imagem.
     public BufferedImage run() {
         int matrizImagem[][] = new int[getWidth()][getHeight()];
         
@@ -75,6 +76,6 @@ public class FiltroPassaAlta {
             }
         }
 
-        return Normalizacao.matrizToBufferedImage(matrizImagem);
+        return Normalizacao.matrizToBufferedImage(matrizImagem, 255);
     }
 }

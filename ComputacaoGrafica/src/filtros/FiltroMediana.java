@@ -36,7 +36,7 @@ public class FiltroMediana {
         }// if
     }
 
-    //parte do quick sort
+    //parte do quick sort, para ordenar os valores dos pixels
     private static int separaVetor(int[] vetor, int ini, int fim) {
         int aux, c = vetor[ini], i = ini + 1, j = fim;
         while (i <= j) {

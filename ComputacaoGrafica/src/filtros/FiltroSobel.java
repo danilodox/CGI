@@ -51,6 +51,7 @@ public class FiltroSobel {
         this.height = height;
     }
 
+    //Aplica o filtro de Sobel na imagem
     public BufferedImage run() {
         int matrizImagem[][] = new int[getWidth()][getHeight()];
 
@@ -71,6 +72,6 @@ public class FiltroSobel {
             }
         }
 
-        return Normalizacao.matrizToBufferedImage(matrizImagem);
+        return Normalizacao.matrizToBufferedImage(matrizImagem, 255);
     }
 }

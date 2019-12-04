@@ -1,5 +1,5 @@
 /*
- * 
+ * Faz a operação de recorte
  */
 package formas;
 
@@ -34,6 +34,8 @@ public class RecorteLinha {
      * @param b
      * @return
      */
+    
+    //Função que auxilia no calculo da localização do ponto
     public static String funcaoSig(double a, double b) {
         if ((a - b) > 0) {
             return "1";
@@ -41,6 +43,7 @@ public class RecorteLinha {
         return "0";
     }
 
+    //Verifica a função sinal para decidir qual a direção em que a linha precisa ser cortada.
     public String criarBit(double Xmin, double Xmax, double Ymin, double Ymax, Ponto ponto) {
         String bit1, bit2, bit3, bit4;
 
@@ -52,6 +55,7 @@ public class RecorteLinha {
         return bit1 + bit2 + bit3 + bit4;
     }
 
+    //Realiza a operação AND entre os dois pontos para certificar de que estão dentro do viewport
     public String operacaoLogicaAND(String codigo1, String codigo2) {
         String codigoFinal = "";
         int bitFInal;
@@ -64,6 +68,7 @@ public class RecorteLinha {
         return codigoFinal;
     }
 
+    //Retorna valor booleano certificando se o ponto está dentro do viewport
     public boolean isRetaInJanela(double Xmin, double Xmax, double Ymin, double Ymax, Ponto pontoInicial, Ponto pontoFinal) throws RecorteException {
         String codigo1, codigo2, resultado;
         codigo1 = criarBit(Xmin, Xmax, Ymin, Ymax, pontoInicial);
