@@ -165,13 +165,13 @@ public class Transformacoes3D {
         try {
             // (Matriz translação posição inicial) X (Matriz Cisalhamento)
             matrizM = Matriz.multiplicaMatrizes(geraMatrizTranslacao(tx, ty, tz), geraMatrizCisalhamento(a, b, eixo));
-            System.out.println("primeira, foi");
+            
             // (Matriz M) X (Matriz translação para origem)
             matrizM = Matriz.multiplicaMatrizes(matrizM, geraMatrizTranslacao(-tx, -ty, -tz));
-            System.out.println("segunda, foi");
+            
             // (Matriz M) X (Matriz objeto)
             matrizResult = Matriz.multiplicaMatrizes(matrizM, matrizObjeto);
-            System.out.println("terceira, foi");
+            
             // Atualiza matriz objeto global.
             PanelMenu3D.matrizObjeto3D = matrizResult;
         } catch (Exception e) {
