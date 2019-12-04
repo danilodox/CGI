@@ -413,25 +413,22 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
     private void transformacaoSelecionada(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transformacaoSelecionada
         pan_dados1.setVisible(true);
         
-        pan_dados2.setEnabled(false);
-        rb_refX.setEnabled(false);
-        rb_refY.setEnabled(false);
-        rb_refXY.setEnabled(false);
+        pan_dados2.setVisible(false);
 
         valorDDX.setValue(0D);
         valorDDY.setValue(0D);
 
         if (rb_rotacao.isSelected()) {
             lab_dd1.setText("Ângulo");
-            lab_dd2.setEnabled(false);
-            valorDDY.setEnabled(false);
+            lab_dd2.setVisible(false);
+            valorDDY.setVisible(false);
         } else if (rb_reflexao.isSelected()) {
             pan_dados1.setVisible(false);
             pan_dados2.setVisible(true);
         } else {
             lab_dd1.setText("X");
-            lab_dd2.setEnabled(true);
-            valorDDY.setEnabled(true);
+            lab_dd2.setVisible(true);
+            valorDDY.setVisible(true);
         }
     }//GEN-LAST:event_transformacaoSelecionada
 

@@ -105,6 +105,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menuTransformacoes = new javax.swing.JMenu();
         subMenu2d = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        menu_imagem = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         menuFiltros = new javax.swing.JMenuItem();
         menu_operacoes = new javax.swing.JMenuItem();
@@ -336,6 +337,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
         menuTransformacoes.add(jMenuItem1);
 
+        menu_imagem.setText("Imagem");
+        menu_imagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_imagemActionPerformed(evt);
+            }
+        });
+        menuTransformacoes.add(menu_imagem);
+
         jMenuBar1.add(menuTransformacoes);
 
         jMenu1.setText("Processamento de Imagem");
@@ -527,6 +536,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         }
         changePanMenu(panelMenuRecorteReta);
     }//GEN-LAST:event_menu_recordeRetaActionPerformed
+
+    private void menu_imagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_imagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_imagemActionPerformed
     
     private void coordinatesSystem(){
         panelGrafic.addMouseMotionListener(new MouseMotionAdapter(){
@@ -615,6 +628,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_equalizacao;
     private javax.swing.JMenuItem menu_gatoArnold;
     private javax.swing.JMenuItem menu_graficos;
+    private javax.swing.JMenuItem menu_imagem;
     private javax.swing.JMenuItem menu_operacoes;
     private javax.swing.JMenuItem menu_recordeReta;
     private javax.swing.JMenuItem menu_transformacoes;
