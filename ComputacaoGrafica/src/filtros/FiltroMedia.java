@@ -37,6 +37,35 @@ public class FiltroMedia {
     }
 
     public BufferedImage run() {
+        
+        // imagem para realizar
+        int[][] matriz_auxiliar = new int[width + 1][height + 1];
+        int[][] matrizResultado = new int[width][height];
+
+        // copia a imagem recebida em parametro para a matriz da imagem auxiliar, para
+        // poder realizar a operacao
+        for (int i = 1; i < matriz_auxiliar.length; i++) {
+            for (int j = 1; j < matriz_auxiliar.length; j++) {
+                matriz_auxiliar[j][i] = imagem[j - 1][i - 1];
+            }
+        }
+
+        // realizando efeito midia
+        for (int y = 1; y < width; y++) {
+            for (int x = 1; x < height; x++) {
+
+                // soma todos os 9 pixel correspondente de onde a mascara estar
+                float media = matriz_auxiliar[y - 1][x - 1] + matriz_auxiliar[y - 1][x] + matriz_auxiliar[y - 1][x + 1]
+                        + matriz_auxiliar[y][x + 1] + matriz_auxiliar[y][x] + matriz_auxiliar[y + 1][x + 1]
+                        + matriz_auxiliar[y + 1][x] + matriz_auxiliar[y][x - 1] + matriz_auxiliar[y + 1][x - 1];
+
+                // pega o resultado da soma e faz a midia dividindo por 9
+                media = media / 9;
+
+                // coloca resultado na imagem de saida
+                matrizResultado[y - 1][x - 1] = Math.round(media);
+            }
+        }/*
         int CoeficienteDeNormalizacao = 0;
         int matrizImagem[][] = new int[width][height];
 
@@ -81,8 +110,8 @@ public class FiltroMedia {
                 //adiciona a soma dos valores RGB da vizinhançaa na posiçao central
                 matrizImagem[i][j] = Math.round(soma);
             }
-        }
+        }*/
         
-        return Normalizacao.normalizaImage(matrizImagem);
+        return Normalizacao.normalizaImage(matrizResultado);
     }
 }
