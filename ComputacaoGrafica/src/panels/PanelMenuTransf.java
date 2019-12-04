@@ -67,9 +67,19 @@ public class PanelMenuTransf extends javax.swing.JPanel {
 
         gBtn_filtros.add(rb_negativo);
         rb_negativo.setText("Negativo");
+        rb_negativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtroSelect(evt);
+            }
+        });
 
         gBtn_filtros.add(rb_gamma);
         rb_gamma.setText("Gamma");
+        rb_gamma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtroSelect(evt);
+            }
+        });
 
         gBtn_filtros.add(rb_logaritmo);
         rb_logaritmo.setText("Logaritmo");
