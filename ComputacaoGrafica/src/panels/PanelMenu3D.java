@@ -458,6 +458,13 @@ public class PanelMenu3D extends javax.swing.JPanel {
             setValorX((double) js_DDx.getValue());
             setValorY((double) js_DDy.getValue());
             setValorZ((double) js_DDz.getValue());
+            if (rb_refXY.isSelected()) {
+                setEixo("X");
+            } else if (rb_refYZ.isSelected()) {
+                setEixo("Y");
+            } else if (rb_refXZ.isSelected()) {
+                setEixo("Z");
+            }
         }
 
         if (matrizObjeto3D == null) {
@@ -469,7 +476,12 @@ public class PanelMenu3D extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_AplicarTActionPerformed
 
     private void btn_AplicarTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AplicarTCActionPerformed
-        // TODO add your handling code here:
+        if (!listaTransformacoes.isEmpty()) {
+            setTipoAlgoritimo(TransformEnum.COMPOSTA);
+            JanelaPrincipal.runResult(this);
+        } else {
+            JOptionPane.showMessageDialog(this.getRootPane(), "Você não adicionou nenhum tipo de transformação na lista.\nPor favor, adicione e tente novamente...", "Aplicar Transformações Compostas?", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btn_AplicarTCActionPerformed
 
     private void rb_translacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_translacaoActionPerformed

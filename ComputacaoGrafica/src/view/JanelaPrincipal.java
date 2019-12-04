@@ -797,6 +797,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     break;
                 case CISALHAMENTO:
                     // Aplica cisalhamento de acordo com o valor de a e b
+                    System.out.println(menu.getEixo());
                     matrizObjeto3D = trans3D.cisalhamento(matrizObjeto3D, menu.getValorX(), menu.getAlignmentY(), menu.getEixo());
                     break;
                 case COMPOSTA:

@@ -16,11 +16,14 @@ public class Matriz {
         //Verfica se A.columns = B.rows
         int rows = m1.length; //A.rows
         int cols = m2[0].length; //B.columns
+        System.out.println("matriz1: " + m1.length + ", " + m1[0].length);
+        System.out.println("matriz2: " + m2.length + ", " + m2[0].length);
         double[][] C = new double[rows][cols];
+        System.out.println("matrizf: " + C.length + ", " + C[0].length);
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < cols; j++){
                 for(int k = 0; k < n; k++){
-                    C[i][j] = C[i][j] + m1[i][k] * m2[k][j];
+                    C[i][j] += m1[i][k] * m2[k][j];
                 }
             }
         }
