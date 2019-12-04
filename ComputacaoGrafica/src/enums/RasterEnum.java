@@ -1,14 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Enumera as operações de rasteirização da reta.
  */
 package enums;
 
-/**
- *
- * @author Peu
- */
 public enum RasterEnum {
     DDA("DDA (Digital Differential Analyser)"), PONTO_MEDIO("Bresenham (Ponto Médio)");
     

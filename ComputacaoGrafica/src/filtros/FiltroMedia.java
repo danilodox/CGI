@@ -1,13 +1,13 @@
 package filtros;
 
+/*
+ * Filtro de Média. Suavização de Imagens no Domínio Espacial.
+ */
+
 import java.awt.image.BufferedImage;
 import processamentoDeImagem.Normalizacao;
 
-/**
- * Filtro de Média. Suavização de Imagens no Domínio Espacial.
- *
- * @author EquipeCGI
- */
+
 public class FiltroMedia {
 
     private int[][] imagem;

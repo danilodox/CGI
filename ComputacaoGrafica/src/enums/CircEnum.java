@@ -1,14 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Enumera as operação de rasterização da circunferencia.
  */
 package enums;
 
-/**
- *
- * @author Peu
- */
 public enum CircEnum {
     EQUACAO_EXPLICITA("Equação Explícita"), PONTO_MEDIO("Ponto Médio"), TRIGONOMETRIA("Trigonométrica"), ELIPSE("Elipse");
     

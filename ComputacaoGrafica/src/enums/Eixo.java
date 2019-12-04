@@ -1,14 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Enumera os eixos que serão usados durante as transformações.
  */
 package enums;
 
-/**
- *
- * @author aline
- */
 public enum Eixo {
     X("X"), Y("Y"), Z("Z"), XY("XY"), XZ("XZ"), YZ("YZ");
     

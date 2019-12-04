@@ -1,13 +1,14 @@
 package filtros;
 
+/*
+* O filtro de prewitt é usado principalmente para a detecção de bordas.
+*/
+
 import java.awt.image.BufferedImage;
 import panels.PanelFiltros;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author EquipeCGI
- */
+
 public class FiltroPrewitt {
 
     PanelFiltros panelFiltros;
@@ -49,54 +50,12 @@ public class FiltroPrewitt {
         this.height = height;
     }
 
+    /*
+    * Computa um aproximação do gradiente da função de intensificação da imagem.
+    */
     public BufferedImage run() {
         int matrizImagem[][] = new int[getWidth()][getHeight()];
 
-//        for (int i = 0; i < getHeight(); i++) {
-//            for (int j = 0; j < getWidth(); j++) {
-//                // Aproximações em X e Y
-//                int aproximacaoX = 0;
-//                int aproximacaoY = 0;
-//
-//                if (((i - 1) >= 0) && ((j + 1) < getHeight())) {
-//                    aproximacaoX += imagem[i - 1][j + 1];
-//                    aproximacaoY -= imagem[i - 1][j + 1];
-//                }
-//
-//                if ((j + 1) < getHeight()) {
-//                    aproximacaoX += imagem[i][j + 1];
-//                }
-//
-//                if (((i + 1) < getWidth()) && ((j + 1) < getHeight())) {
-//                    aproximacaoX += imagem[i + 1][j + 1];
-//                    aproximacaoY += imagem[i + 1][j + 1];
-//                }
-//
-//                if (((i - 1) >= 0) && ((j - 1) >= 0)) {
-//                    aproximacaoX -= imagem[i - 1][j - 1];
-//                    aproximacaoY -= imagem[i - 1][j - 1];
-//                }
-//
-//                if ((j - 1) >= 0) {
-//                    aproximacaoX -= imagem[i][j - 1];
-//                }
-//
-//                if (((i + 1) < getWidth()) && ((j - 1) >= 0)) {
-//                    aproximacaoX -= imagem[i + 1][j - 1];
-//                    aproximacaoY += imagem[i + 1][j - 1];
-//                }
-//
-//                if ((i + 1) < getWidth()) {
-//                    aproximacaoY += imagem[i + 1][j];
-//                }
-//
-//                if ((i - 1) >= 0) {
-//                    aproximacaoY -= imagem[i - 1][j];
-//                }
-//
-//                // Adiciona o novo valor na matriz
-//                matrizImagem[i][j] = Math.abs(aproximacaoX) + Math.abs(aproximacaoY);;
-//            }
         for (int i = 1; i < getWidth() - 1; i++) {
             for (int j = 1; j < getHeight() - 1; j++) {
                 int mask1 = imagem[i - 1][j - 1];

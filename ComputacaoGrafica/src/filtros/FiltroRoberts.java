@@ -1,13 +1,18 @@
 package filtros;
 
+/*
+* O filtro de Roberts apresenta a desvantagem de certas bordas serem mais 
+* realçadas do que outras dependendo da direção, mesmo com magnitude igual. 
+* Como resultado de sua aplicação, obtém-se uma imagem com altos valores 
+* de nível de cinza, em regiões de limites bem definidos e valores baixos 
+* em regiões de limites suaves, sendo 0 para regiões de nível de cinza 
+* constante.
+*/
+
 import java.awt.image.BufferedImage;
 import panels.PanelFiltros;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author EquipeCGI
- */
 public class FiltroRoberts {
 
     PanelFiltros panelFiltros;

@@ -1,13 +1,15 @@
 package filtros;
 
+/*
+* Filtro da mediana: Usado para suavização da imagem, baseia-se no uso
+* de mascara de convolução. Principalmente usado para a suavização do
+* ruido sal e pimenta.
+*/
+
 import java.awt.image.BufferedImage;
 import panels.PanelFiltros;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author EquipeCGI
- */
 public class FiltroMediana {
 
     PanelFiltros panelFiltros;

@@ -9,10 +9,6 @@ import operacoes.PlanoCartesiano;
 import auxiliar.Ponto;
 import javax.swing.JTextArea;
 
-/**
- *
- * @author Peu
- */
 public class Rasterizacao {
     
     private static Rasterizacao instance;

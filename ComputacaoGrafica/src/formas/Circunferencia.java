@@ -1,21 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Nessa classe temos as operações de rasteirização da circunferencia
+ * que corresponde as operações explicita, trigonometrica e ponto medio.
  */
 package formas;
 
 import operacoes.PlanoCartesiano;
 import auxiliar.Ponto;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Peu
- */
 public class Circunferencia {
     private static Circunferencia instance;
 
@@ -40,6 +34,7 @@ public class Circunferencia {
     
     public void funcaoExplicita(int raio) {
         planoCartesiano.redesenha();
+        //Define os passo e atribui os valores que serão verificados 
         int passosD = 0, passosU = 0;
         if(raio % 2 == 0){
             passosD = Math.floorDiv(raio + 1, 2);
@@ -49,10 +44,13 @@ public class Circunferencia {
             passosU = (int) ((raio /2) + (raio % 2));
         }
         
+        //Testa se os passos iniciais i é menor que i2, parando caso positivo
         int i=0, i2 = passosU;
         while(i<passosD){
+            //Realiza os incrementos
             int yAux = (int) Math.sqrt((raio * raio) - (i * i));
             int yAux2 = (int) Math.sqrt((raio * raio) - (i2 * i2));
+            //Desenha os pontos utilizando a simetria de 8
             drawPoints2(i, yAux);
             drawPoints2(i2, yAux2);
             i++;
@@ -60,6 +58,8 @@ public class Circunferencia {
         }
     }
     
+    //Seu funcionamento é similar a função explicita, no entanto utiliza o angulo 
+    //para determinar os pontos ao inves do raio.
     public void funcaoTrigonometrica(int raio){
         planoCartesiano.redesenha();
         for(int i = 0 ; i <= 45 ; i++){
@@ -69,6 +69,9 @@ public class Circunferencia {
         }
     }
     
+    //a estratégia é selecionar entre 2 pixels na malha aquele que está 
+    //mais próximo da circunferência, utilizando o sinal da função no ponto 
+    //intermediário entre os dois possíveis pixels.
     public void funcaoPontoMedio(int raio){
         planoCartesiano.redesenha();
         
@@ -89,6 +92,7 @@ public class Circunferencia {
         }
     }
     
+    //Desenha os pixels usando a simetria de 8
     public void drawPoints(int x, int y){
         g.fillRect(planoCartesiano.getValorCentroX() - x, planoCartesiano.getValorCentroY() + y, 1, 1);
         g.fillRect(planoCartesiano.getValorCentroX() + x, planoCartesiano.getValorCentroY() + y, 1, 1);

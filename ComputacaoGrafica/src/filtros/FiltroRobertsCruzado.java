@@ -1,12 +1,9 @@
 package filtros;
+
 import java.awt.image.BufferedImage;
 import panels.PanelFiltros;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author EquipeCGI
- */
 public class FiltroRobertsCruzado {
 
     PanelFiltros panelFiltros;
@@ -51,30 +48,6 @@ public class FiltroRobertsCruzado {
     public BufferedImage run() {
         int matrizImagem[][] = new int[getWidth()][getHeight()];
 
-//        for (int i = 0; i < getHeight(); i++) {
-//            for (int j = 0; j < getWidth(); j++) {
-//                // Aproximações em X e Y
-//                int aproximacaoX = 0;
-//                int aproximacaoY = 0;
-//
-//                if (((j + 1) < getHeight()) && ((i + 1) < getHeight())) {
-//                    aproximacaoY = imagem[i][j] - imagem[i + 1][j + 1];
-//                } else {
-//                    aproximacaoY = imagem[i][j];
-//                }
-//
-//                if ((i + 1) < getWidth()) {
-//                    aproximacaoX += imagem[i + 1][j];
-//                }
-//                if ((j + 1) < getHeight()) {
-//                    aproximacaoX += -imagem[i][j + 1];
-//                }
-//
-//                // Adiciona o novo valor na matriz
-//                matrizImagem[i][j] = Math.abs(aproximacaoX) + Math.abs(aproximacaoY);;
-//            }
-//
-//        }
         for (int i = 1; i < getWidth() - 1; i++) {
             for (int j = 1; j < getHeight() - 1; j++) {
                 int mask5 = imagem[i][j];

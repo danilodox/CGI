@@ -1,13 +1,15 @@
 package filtros;
 
+/*
+* O filtro de Sobel realça linhas verticais e horizontais mais escuras
+* que o fundo, sem realçar pontos isolados. Consiste na aplicação de duas 
+* máscaras, descritas a seguir, que compõem um resultado único.
+*/
+
 import java.awt.image.BufferedImage;
 import panels.PanelFiltros;
 import processamentoDeImagem.Normalizacao;
 
-/**
- *
- * @author EquipeCGI
- */
 public class FiltroSobel {
 
     PanelFiltros panelFiltros;
@@ -52,49 +54,6 @@ public class FiltroSobel {
     public BufferedImage run() {
         int matrizImagem[][] = new int[getWidth()][getHeight()];
 
-//        for (int i = 0; i < getHeight(); i++) {
-//            for (int j = 0; j < getWidth(); j++) {
-//                int fatA = 0;
-//                int fatB = 0;
-//                int fatC = 0;
-//                int fatD = 0;
-//                
-//                if ((i - 1) >= 0) {
-//                    fatD += 2 * imagem[i - 1][j];
-//                }
-//                if ((i + 1) < getWidth()) {
-//                    fatC += 2 * imagem[i + 1][j];
-//                }
-//                if ((j - 1) >= 0) {
-//                    fatB += 2 * imagem[i][j - 1];
-//                }
-//                if ((j + 1) < getHeight()) {
-//                    fatA += 2 * imagem[i][j + 1];
-//                }
-//                if (((i - 1) >= 0) && ((j - 1) >= 0)) {
-//                    fatB += imagem[i - 1][j - 1];
-//                    fatD += imagem[i - 1][j - 1];
-//                }
-//                if (((i + 1) < getWidth()) && ((j - 1) >= 0)) {
-//                    fatB += imagem[i + 1][j - 1];
-//                    fatC += imagem[i + 1][j - 1];
-//                }
-//                if (((i - 1) >= 0) && ((j + 1) < getHeight())) {
-//                    fatA += imagem[i - 1][j + 1];
-//                    fatD += imagem[i - 1][j + 1];
-//                }
-//                if (((i + 1) < getWidth()) && ((j + 1) < getHeight())) {
-//                    fatA += imagem[i + 1][j + 1];
-//                    fatC += imagem[i + 1][j + 1];;
-//                }
-//
-//                int aux1 = fatA - fatB;
-//                int aux2 = fatC - fatD;
-//
-//                matrizImagem[i][j] = Math.abs(aux1) + Math.abs(aux2);
-//            }
-//
-//        }
         for (int i = 1; i < getWidth() - 1; i++) {
             for (int j = 1; j < getHeight() - 1; j++) {
                 int mask1 = imagem[i - 1][j - 1];
