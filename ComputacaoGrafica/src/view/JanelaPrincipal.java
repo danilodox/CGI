@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import operacaoMatrizes.Matriz;
 import panels.PanelFiltros;
 import panels.PanelGatoArnold;
+import panels.PanelHistograma;
 import panels.PanelMenu3D;
 import panels.PanelMenuCircunferencia;
 import panels.PanelMenuFiltros;
@@ -52,6 +53,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private final PanelGatoArnold panelGatoArnold;
     private final PanelMenuTransf panelMenuTransformacoes;
     private final PanelTransformacoes panelTransformacoes;
+    private final PanelHistograma panelHistograma;
     /**
      * Creates new form JanelaGrafica
      */
@@ -67,6 +69,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelGatoArnold = PanelGatoArnold.getInstance();
         panelMenuTransformacoes = PanelMenuTransf.getInstance();
         panelTransformacoes = PanelTransformacoes.getInstance();
+        panelHistograma = PanelHistograma.getInstance();
         initComponents();
         //openMenuReta(null);
         coordinatesSystem();
@@ -109,7 +112,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menu_operacoes = new javax.swing.JMenuItem();
         menu_gatoArnold = new javax.swing.JMenuItem();
         menu_transformacoes = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        menu_equalizacao = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -360,8 +363,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(menu_transformacoes);
 
-        jMenuItem6.setText("Equalização/Histograma");
-        jMenu1.add(jMenuItem6);
+        menu_equalizacao.setText("Equalização/Histograma");
+        menu_equalizacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_equalizacaoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_equalizacao);
 
         jMenuBar1.add(jMenu1);
 
@@ -477,6 +485,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         changePanelCentral(panelTransformacoes);
         changePanMenu(panelMenuTransformacoes);
     }//GEN-LAST:event_menu_transformacoesActionPerformed
+
+    private void menu_equalizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_equalizacaoActionPerformed
+        panelFooter.setVisible(false);
+        panMenu.setVisible(false);
+        panelBox.removeAll();
+
+        changePanelCentral(panelHistograma);
+    }//GEN-LAST:event_menu_equalizacaoActionPerformed
     
     private void coordinatesSystem(){
         panelGrafic.addMouseMotionListener(new MouseMotionAdapter(){
@@ -547,7 +563,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -563,6 +578,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuDesenhar;
     private javax.swing.JMenuItem menuFiltros;
     private javax.swing.JMenu menuTransformacoes;
+    private javax.swing.JMenuItem menu_equalizacao;
     private javax.swing.JMenuItem menu_gatoArnold;
     private javax.swing.JMenuItem menu_operacoes;
     private javax.swing.JMenuItem menu_transformacoes;
