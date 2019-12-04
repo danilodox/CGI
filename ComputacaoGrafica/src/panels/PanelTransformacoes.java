@@ -5,14 +5,6 @@
  */
 package panels;
 
-import filtros.FiltroAltoReforco;
-import filtros.FiltroMedia;
-import filtros.FiltroMediana;
-import filtros.FiltroPassaAlta;
-import filtros.FiltroPrewitt;
-import filtros.FiltroRoberts;
-import filtros.FiltroRobertsCruzado;
-import filtros.FiltroSobel;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -20,37 +12,34 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import static java.lang.Thread.sleep;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import processamentoDeImagem.GatoArnold;
+import processamentoDeImagem.Gamma;
+import processamentoDeImagem.Logaritmo;
+import processamentoDeImagem.Negativo;
 
 /**
  *
  * @author Peu
  */
-public class PanelGatoArnold extends javax.swing.JPanel {
+public class PanelTransformacoes extends javax.swing.JPanel {
     
-    private static PanelGatoArnold instance;
+    private static PanelTransformacoes instance;
     private static BufferedReader imagem;
     private BufferedImage imgT;
     private int[][] imagemMatriz;
     private int imgWidth;
     private int imgHeight;
     private int imgValorMaximo;
-    private JLabel label;
-    private ImageIcon icon;
-    
-    public static synchronized PanelGatoArnold getInstance() {
+
+    public static synchronized PanelTransformacoes getInstance() {
         if (instance == null) {
-            instance = new PanelGatoArnold();
+            instance = new PanelTransformacoes();
         }
         return instance;
     }
@@ -58,7 +47,7 @@ public class PanelGatoArnold extends javax.swing.JPanel {
     /**
      * Construtor
      */
-    private PanelGatoArnold() {
+    private PanelTransformacoes() {
         initComponents();
     }
 
@@ -114,7 +103,7 @@ public class PanelGatoArnold extends javax.swing.JPanel {
 
         lab_title.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lab_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lab_title.setText("Operação de gato arnold");
+        lab_title.setText("Filtro da Média");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -158,7 +147,7 @@ public class PanelGatoArnold extends javax.swing.JPanel {
             .addGap(0, 233, Short.MAX_VALUE)
         );
 
-        btn_aplyF.setText("Aplicar");
+        btn_aplyF.setText("jButton1");
         btn_aplyF.setPreferredSize(new java.awt.Dimension(100, 100));
         btn_aplyF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +174,7 @@ public class PanelGatoArnold extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                     .addComponent(btn_selecImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                     .addComponent(panel_imagemO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addComponent(btn_aplyF, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(160, 160, 160)
                 .addComponent(panel_imagemF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,7 +225,7 @@ public class PanelGatoArnold extends javax.swing.JPanel {
             int returnVal = fileChooser.showOpenDialog(btn_selecImagem);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 panel_imagemF.repaint();
-                panel_imagemF.removeAll();
+
                 populaImgInPanel(criaImagem(fileChooser.getSelectedFile()), panel_imagemO);
                 btn_aplyF.setEnabled(true);
             }
@@ -246,23 +235,22 @@ public class PanelGatoArnold extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_selecImagemActionPerformed
 
     private void btn_aplyFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aplyFActionPerformed
-        Thread minhaThread = new Thread() {
-            @Override
-            public void run() {
-                for (int i = 0; i < getImgHeight(); i++) {
-                    GatoArnold gatoDeArnold = new GatoArnold(imagemMatriz, getImgWidth(), getImgHeight());
+        PanelMenuTransf menuTransformacoes = PanelMenuTransf.getInstance();
+        System.out.println("gamma " + menuTransformacoes.getDados());
 
-                    gatoDeArnold.run();
-
-                    try {
-                        sleep(50);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
-        minhaThread.start();
+        switch (menuTransformacoes.getTipoAlgoritimo()) {
+            case NEGATIVO:
+                panel_imagemF.getGraphics().drawImage(new Negativo(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
+                break;
+            case GAMMA:
+                panel_imagemF.getGraphics().drawImage(new Gamma(imagemMatriz, getImgWidth(), getImgHeight(), menuTransformacoes.getDados()).run(), 0, 0, null);
+                break;
+            case LOG:
+                panel_imagemF.getGraphics().drawImage(new Logaritmo(imagemMatriz, getImgWidth(), getImgHeight(), menuTransformacoes.getDados()).run(), 0, 0, null);
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_btn_aplyFActionPerformed
 
 
@@ -290,7 +278,7 @@ public class PanelGatoArnold extends javax.swing.JPanel {
             fileInputStream = new FileInputStream(file);
             scan = new Scanner(fileInputStream);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(PanelGatoArnold.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelTransformacoes.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // Descarta a primeira linha
@@ -315,7 +303,7 @@ public class PanelGatoArnold extends javax.swing.JPanel {
         try {
             fileInputStream.close();
         } catch (IOException ex) {
-            Logger.getLogger(PanelGatoArnold.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelTransformacoes.class.getName()).log(Level.SEVERE, null, ex);
         }
         return imagemMatriz;
     }

@@ -25,7 +25,9 @@ import panels.PanelMenuCircunferencia;
 import panels.PanelMenuFiltros;
 import panels.PanelMenuOperacoes;
 import panels.PanelMenuRaster;
+import panels.PanelMenuTransf;
 import panels.PanelOperacoes;
+import panels.PanelTransformacoes;
 import panels.SubMenuTransfor2d;
 import transformacoes.Transformacoes2D;
 import transformacoes.Transformacoes3D;
@@ -48,6 +50,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private final PanelOperacoes panelOperacoes;
     private final PanelMenuOperacoes panelMenuOperacoes;
     private final PanelGatoArnold panelGatoArnold;
+    private final PanelMenuTransf panelMenuTransformacoes;
+    private final PanelTransformacoes panelTransformacoes;
     /**
      * Creates new form JanelaGrafica
      */
@@ -61,6 +65,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelOperacoes = PanelOperacoes.getInstance();
         panelMenuOperacoes = PanelMenuOperacoes.getInstance();
         panelGatoArnold = PanelGatoArnold.getInstance();
+        panelMenuTransformacoes = PanelMenuTransf.getInstance();
+        panelTransformacoes = PanelTransformacoes.getInstance();
         initComponents();
         //openMenuReta(null);
         coordinatesSystem();
@@ -468,8 +474,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panMenu.setVisible(true);
         panelBox.removeAll();
 
-//        changePanelCentral(panelTransformacoes);
-//        changeMenuLeft(panelMenuTransformacoes);
+        changePanelCentral(panelTransformacoes);
+        changePanMenu(panelMenuTransformacoes);
     }//GEN-LAST:event_menu_transformacoesActionPerformed
     
     private void coordinatesSystem(){
