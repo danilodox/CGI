@@ -101,7 +101,7 @@ public class PanelTransformacoes extends javax.swing.JPanel {
 
         lab_title.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lab_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lab_title.setText("Filtro da Média");
+        lab_title.setText("Transformações");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
