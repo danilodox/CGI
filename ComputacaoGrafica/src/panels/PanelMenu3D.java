@@ -14,6 +14,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import operacaoMatrizes.Matriz;
 import operacoes.PlanoCartesiano;
+import transformacoes.Transformacoes3D;
 import view.JanelaPrincipal;
 
 /**
@@ -324,6 +325,12 @@ public class PanelMenu3D extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Transformações Compostas"));
 
+        jl_listaT.setModel(modelList);
+        jl_listaT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_listaTMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jl_listaT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -370,7 +377,42 @@ public class PanelMenu3D extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_addListaTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addListaTActionPerformed
-        // TODO add your handling code here:
+        Transformacoes3D trans3D = Transformacoes3D.getInstance();
+        /**
+         * Seta o tipo de algoritmo selecionado e seus parametros necessários
+         */
+        if (rb_translacao.isSelected()) {
+            modelList.addElement("- Translação: Tx=" + js_DDx.getValue() + ", Ty=" + js_DDy.getValue() + ", Tz=" + js_DDz.getValue());
+            listaTransformacoes.push(trans3D.geraMatrizTranslacao((double) js_DDx.getValue(), (double) js_DDy.getValue(), (double) js_DDz.getValue()));
+        } else if (rb_escala.isSelected()) {
+            modelList.addElement("- Escala: Sx=" + js_DDx.getValue() + ", Sy=" + js_DDy.getValue() + ", Sz=" + js_DDz.getValue());
+            listaTransformacoes.push(trans3D.geraMatrizEscala((double) js_DDx.getValue(), (double) js_DDy.getValue(), (double) js_DDz.getValue()));
+        } else if (rb_rotacao.isSelected()) {
+            if (rb_refXY.isSelected()) {
+                modelList.addElement("- Rotação em X, Θ=" + js_DDx.getValue());
+                listaTransformacoes.push(trans3D.geraMatrizRotacao((double) js_DDx.getValue(), "x"));
+            } else if (rb_refYZ.isSelected()) {
+                modelList.addElement("- Rotação em Y, Θ=" + js_DDx.getValue());
+                listaTransformacoes.push(trans3D.geraMatrizRotacao((double) js_DDx.getValue(), "y"));
+            } else if (rb_refXZ.isSelected()) {
+                modelList.addElement("- Rotação em Z, Θ=" + js_DDx.getValue());
+                listaTransformacoes.push(trans3D.geraMatrizRotacao((double) js_DDx.getValue(), "z"));
+            }
+        } else if (rb_reflexao.isSelected()) {
+            if (rb_refXY.isSelected()) {
+                modelList.addElement("- Reflexão em XY");
+                listaTransformacoes.push(trans3D.geraMatrizReflexao("xy"));
+            } else if (rb_refYZ.isSelected()) {
+                modelList.addElement("- Reflexão em YZ");
+                listaTransformacoes.push(trans3D.geraMatrizReflexao("yz"));
+            } else if (rb_refXZ.isSelected()) {
+                modelList.addElement("- Reflexão em XZ");
+                listaTransformacoes.push(trans3D.geraMatrizReflexao("xz"));
+            }
+        } else if (rb_cisalhamento.isSelected()) {
+            modelList.addElement("- Cisalhamento: Cx=" + js_DDx.getValue() + ", Cy=" + js_DDy.getValue() + ", Cz=" + js_DDz.getValue());
+            listaTransformacoes.push(trans3D.geraMatrizCisalhamento((double) js_DDx.getValue(), (double) js_DDy.getValue(), ""));
+        }
     }//GEN-LAST:event_btn_addListaTActionPerformed
 
     private void btn_CriarObjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CriarObjActionPerformed
@@ -386,7 +428,6 @@ public class PanelMenu3D extends javax.swing.JPanel {
             setValorX((double) js_DDx.getValue());
             setValorY((double) js_DDy.getValue());
             setValorZ((double) js_DDz.getValue());
-            System.out.println(((Integer) js_DDz.getValue()).doubleValue());
         } else if (rb_escala.isSelected()) {
             setTipoAlgoritimo(TransformEnum.ESCALA);
             setValorX((double) js_DDx.getValue());
@@ -569,6 +610,14 @@ public class PanelMenu3D extends javax.swing.JPanel {
             rb_refXZ.setText("Cisalhamento em Z");
         }
     }//GEN-LAST:event_rb_cisalhamentoActionPerformed
+
+    private void jl_listaTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_listaTMouseClicked
+        if (evt.getClickCount() == 2) {
+            int indexItem = jl_listaT.getSelectedIndex();
+            modelList.remove(indexItem);
+            listaTransformacoes.remove(indexItem);
+        }
+    }//GEN-LAST:event_jl_listaTMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
