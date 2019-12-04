@@ -27,6 +27,7 @@ import panels.PanelMenuCircunferencia;
 import panels.PanelMenuFiltros;
 import panels.PanelMenuOperacoes;
 import panels.PanelMenuRaster;
+import panels.PanelMenuRecorteReta;
 import panels.PanelMenuTransf;
 import panels.PanelOperacoes;
 import panels.PanelTransformacoes;
@@ -55,6 +56,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private final PanelMenuTransf panelMenuTransformacoes;
     private final PanelTransformacoes panelTransformacoes;
     private final PanelHistograma panelHistograma;
+    private final PanelMenuRecorteReta panelMenuRecorteReta;
     /**
      * Creates new form JanelaGrafica
      */
@@ -71,6 +73,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelMenuTransformacoes = PanelMenuTransf.getInstance();
         panelTransformacoes = PanelTransformacoes.getInstance();
         panelHistograma = PanelHistograma.getInstance();
+        panelMenuRecorteReta = PanelMenuRecorteReta.getInstance();
         initComponents();
         //openMenuReta(null);
         coordinatesSystem();
@@ -105,6 +108,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menuDesenhar = new javax.swing.JMenu();
         jm_reta = new javax.swing.JMenuItem();
         jm_circ = new javax.swing.JMenuItem();
+        menu_recordeReta = new javax.swing.JMenuItem();
         menuTransformacoes = new javax.swing.JMenu();
         subMenu2d = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -302,13 +306,21 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
         menuDesenhar.add(jm_reta);
 
-        jm_circ.setText("Circunferencia");
+        jm_circ.setText("Circunferência");
         jm_circ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jm_circActionPerformed(evt);
             }
         });
         menuDesenhar.add(jm_circ);
+
+        menu_recordeReta.setText("Recorte de reta");
+        menu_recordeReta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_recordeRetaActionPerformed(evt);
+            }
+        });
+        menuDesenhar.add(menu_recordeReta);
 
         jMenuBar1.add(menuDesenhar);
 
@@ -512,6 +524,17 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void menu_graficosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_graficosActionPerformed
         new DialogoCharts(this, true).setVisible(true);
     }//GEN-LAST:event_menu_graficosActionPerformed
+
+    private void menu_recordeRetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_recordeRetaActionPerformed
+        panMenu.setVisible(true);
+
+        if (!panelFooter.isValid()) {
+            setDefaultBox();
+        } else {
+            PlanoCartesiano.getInstance().redesenha();
+        }
+        changePanMenu(panelMenuRecorteReta);
+    }//GEN-LAST:event_menu_recordeRetaActionPerformed
     
     private void coordinatesSystem(){
         panelGrafic.addMouseMotionListener(new MouseMotionAdapter(){
@@ -601,6 +624,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_gatoArnold;
     private javax.swing.JMenuItem menu_graficos;
     private javax.swing.JMenuItem menu_operacoes;
+    private javax.swing.JMenuItem menu_recordeReta;
     private javax.swing.JMenuItem menu_transformacoes;
     private javax.swing.JPanel panMenu;
     private javax.swing.JPanel panelBox;

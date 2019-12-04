@@ -231,4 +231,17 @@ public class PlanoCartesiano extends JPanel{
         return new Color(corRGB, corRGB, corRGB).getRGB();
     }
     
+    public void desenhaViewPort(List<Ponto> listaPontos) {
+        this.redesenha();
+        Rasterizacao rast = Rasterizacao.getInstance();
+        /**
+         * a-b b-c c-d
+         */
+        rast.bresenham(listaPontos.get(0), listaPontos.get(1), null);
+        rast.bresenham(listaPontos.get(1), listaPontos.get(2), null);
+        rast.bresenham(listaPontos.get(2), listaPontos.get(3), null);
+        rast.bresenham(listaPontos.get(3), listaPontos.get(0), null);
+
+    }
+    
 }

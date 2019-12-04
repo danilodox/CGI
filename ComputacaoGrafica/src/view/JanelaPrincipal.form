@@ -19,10 +19,18 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jm_circ">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Circunferencia"/>
+                <Property name="text" type="java.lang.String" value="Circunfer&#xea;ncia"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jm_circActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menu_recordeReta">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Recorte de reta"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_recordeRetaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

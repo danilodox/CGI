@@ -216,6 +216,12 @@ public class PanelMenu3D extends javax.swing.JPanel {
 
         panelDados1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
 
+        js_DDx.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+
+        js_DDy.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+
+        js_DDz.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+
         lab_X.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lab_X.setText("X");
 
