@@ -21,6 +21,7 @@ public class OperacaoDivisao {
         this.height = height;
     }
 
+    //Aplica a operação de Divisão entre as imagens
     public BufferedImage run() {
         int matrizImagemDivisao[][] = new int[width][height];
 

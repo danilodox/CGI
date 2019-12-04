@@ -5,6 +5,7 @@ package operacaoMatrizes;
 
 public class Matriz {
     
+    //Multiplica uma matriz por outra
     public static double[][] multiplicaMatrizes(double[][] m1, double[][] m2){
         int n = m1[0].length; //A.columns = B.rows
         //Verfica se A.columns = B.rows

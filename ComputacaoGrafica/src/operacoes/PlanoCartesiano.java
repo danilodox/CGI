@@ -42,6 +42,7 @@ public class PlanoCartesiano extends JPanel{
         });
     }
     
+    //Sincroniza para que haja um plano unico
     public static synchronized PlanoCartesiano getInstance() {
         if (instance == null) {
             instance = new PlanoCartesiano();
@@ -99,6 +100,7 @@ public class PlanoCartesiano extends JPanel{
         g.drawLine(getValorCentroX(), 0, getValorCentroX(), getAltura()); // x1, y1, x2, y2 
     }
     
+    //Atualiza o plano
     public void redesenha() {
         if (instance != null) {
             instance.getGraphics().clearRect(0, 0, this.getLargura(), this.getAltura());
@@ -119,11 +121,6 @@ public class PlanoCartesiano extends JPanel{
         Graphics g = super.getGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(x, y, 1, 1);
-
-//        bufferedImage = new BufferedImage(getLargura(),getAltura(),BufferedImage.TYPE_INT_RGB);
-//        Graphics g = bufferedImage.getGraphics();
-//        bufferedImage.setRGB(x, y, Color.LIGHT_GRAY.getRGB());
-//        g.drawImage(bufferedImage, 0, 0, null);
     }
 
     /**

@@ -21,6 +21,7 @@ public class OperacaoAND {
         this.height = height;
     }
 
+    //Aplica a operação AND nas imagens
     public BufferedImage run() {
         int matrizImagem[][] = new int[width][height];
 

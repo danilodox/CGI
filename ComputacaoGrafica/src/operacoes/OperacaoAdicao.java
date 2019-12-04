@@ -21,6 +21,7 @@ public class OperacaoAdicao {
         this.height = height;
     }
 
+    //Aplica a operação de Adição entre as imagens
     public BufferedImage run() {
         int matrizImagemAdicao[][] = new int[width][height];
 

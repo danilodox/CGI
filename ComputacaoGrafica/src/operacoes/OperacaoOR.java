@@ -21,6 +21,7 @@ public class OperacaoOR {
         this.height = height;
     }
 
+    //Aplica a operação OR nas imagens
     public BufferedImage run() {
         int matrizImagem[][] = new int[width][height];
 

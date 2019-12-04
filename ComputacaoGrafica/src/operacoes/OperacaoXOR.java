@@ -21,6 +21,7 @@ public class OperacaoXOR {
         this.height = height;
     }
 
+    //Aplica a operação XOR nas imagens
     public BufferedImage run() {
         int matrizImagem[][] = new int[width][height];
 

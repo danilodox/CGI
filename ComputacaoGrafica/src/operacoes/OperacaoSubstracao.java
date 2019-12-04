@@ -21,6 +21,7 @@ public class OperacaoSubstracao {
         this.height = height;
     }
 
+    //Aplica a operação de Subtração entre as imagens
     public BufferedImage run() {
         int matrizImagemSub[][] = new int[width][height];
 

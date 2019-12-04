@@ -21,6 +21,7 @@ public class OperacaoMultiplicacao {
         this.height = height;
     }
 
+    //Aplica a operação de Multiplicação entre as imagens
     public BufferedImage run() {
         int matrizImagemMult[][] = new int[width][height];
 

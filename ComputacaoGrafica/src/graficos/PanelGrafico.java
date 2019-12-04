@@ -22,6 +22,7 @@ public class PanelGrafico extends JPanel{
     }
     
     @Override
+    //Desenha as linhas dos eixos no painel principal
     public void paintComponent(Graphics g) {
         super.paintComponents(g);
 
@@ -31,6 +32,7 @@ public class PanelGrafico extends JPanel{
 
     }
 
+    //Atualiza o grafico, limpando a tela
     public void limpaPainel(){
         for(int i=0; i<600; i++){
             for(int j=0; j<400; j++){
