@@ -232,6 +232,7 @@ public class PanelFiltros extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_selecImagemActionPerformed
 
+    //Escolhe o metodo que deve ser usado
     private void btn_aplyFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aplyFActionPerformed
         PanelMenuFiltros menuFiltros = PanelMenuFiltros.getInstance();
         switch (menuFiltros.getTipoAlgoritimo()) {
