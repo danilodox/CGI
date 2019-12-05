@@ -20,13 +20,16 @@ public class DilatarBin {
     private int[][] imagem;
     
     public DilatarBin(int[][] imagem, int width, int height){
-        elementoEstruturante = new int[3][2];
-        elementoEstruturante[0][0] = 0;
-        elementoEstruturante[0][1] = -1;
-        elementoEstruturante[1][0] = 0;
-        elementoEstruturante[1][1] = 0;
-        elementoEstruturante[2][0] = 0;
+        elementoEstruturante = new int[3][3];
+        elementoEstruturante[0][0] = 1;
+        elementoEstruturante[0][1] = 1;
+        elementoEstruturante[0][2] = 1;
+        elementoEstruturante[1][0] = 1;
+        elementoEstruturante[1][1] = 1;
+        elementoEstruturante[1][2] = 1;
+        elementoEstruturante[2][0] = 1;
         elementoEstruturante[2][1] = 1;
+        elementoEstruturante[2][2] = 1;
         this.width = width;
         this.height = height;
         this.imagem = imagem;
@@ -114,7 +117,7 @@ public class DilatarBin {
                             xPosicao = x + elementoEstruturante[xEE][yEE];
                             yPosicao = y + elementoEstruturante[xEE][yEE + 1];
                             // se essa posicao jah esta com pixel ativo, nao muda nada
-                            if (xPosicao >= 0 && yPosicao >= 0 && xPosicao <= 256 && yPosicao <= 256 && matrizImagemBinaria[xPosicao][yPosicao] != pNovo) {
+                            if (xPosicao >= 0 && yPosicao >= 0 && xPosicao < 256 && yPosicao < 256 && matrizImagemBinaria[xPosicao][yPosicao] != pNovo) {
                                 matrizImagemBinaria[xPosicao][yPosicao] = pNovo;
 
                                 //atribui a "out" pixel a pixel o resultado obtido em "matrizImagemBinaria[x][y]"
