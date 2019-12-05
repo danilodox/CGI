@@ -3,7 +3,6 @@
  */
 package view;
 
-import dialogos.DialogoCharts;
 import operacoes.NormalizationsFunctions;
 import operacoes.PlanoCartesiano;
 import formas.Circunferencia;
@@ -112,8 +111,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menu_gatoArnold = new javax.swing.JMenuItem();
         menu_transformacoes = new javax.swing.JMenuItem();
         menu_equalizacao = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        menu_graficos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -391,18 +388,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Outros");
-
-        menu_graficos.setText("Gráficos");
-        menu_graficos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_graficosActionPerformed(evt);
-            }
-        });
-        jMenu2.add(menu_graficos);
-
-        jMenuBar1.add(jMenu2);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -522,10 +507,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         changePanelCentral(panelHistograma);
     }//GEN-LAST:event_menu_equalizacaoActionPerformed
 
-    private void menu_graficosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_graficosActionPerformed
-        new DialogoCharts(this, true).setVisible(true);
-    }//GEN-LAST:event_menu_graficosActionPerformed
-
     private void menu_recordeRetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_recordeRetaActionPerformed
         panMenu.setVisible(true);
 
@@ -607,7 +588,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;
@@ -627,7 +607,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuTransformacoes;
     private javax.swing.JMenuItem menu_equalizacao;
     private javax.swing.JMenuItem menu_gatoArnold;
-    private javax.swing.JMenuItem menu_graficos;
     private javax.swing.JMenuItem menu_imagem;
     private javax.swing.JMenuItem menu_operacoes;
     private javax.swing.JMenuItem menu_recordeReta;
