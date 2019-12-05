@@ -93,6 +93,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Dilata&#xe7;&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarTipo"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_erosao">
           <Properties>
@@ -101,6 +104,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Eros&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarTipo"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_fechamento">
           <Properties>
@@ -109,6 +115,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Fechamento"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarTipo"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_abertura">
           <Properties>
@@ -117,6 +126,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Abertura"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarTipo"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_hitOrMiss">
           <Properties>
@@ -125,6 +137,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Hit-or-Miss"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarTipo"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_contornoExterno">
           <Properties>
@@ -133,6 +148,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Contorno externo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarTipo"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_contornoInterno">
           <Properties>
@@ -141,6 +159,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Contorno interno"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarTipo"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_gradienteMorfologico">
           <Properties>
@@ -149,6 +170,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Gradiente morfol&#xf3;gico"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarTipo"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

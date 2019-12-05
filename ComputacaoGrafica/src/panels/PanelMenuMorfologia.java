@@ -68,21 +68,51 @@ public class PanelMenuMorfologia extends javax.swing.JPanel {
 
         gBtn_operacoes.add(rb_erosao);
         rb_erosao.setText("Erosão");
+        rb_erosao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarOperacao(evt);
+            }
+        });
 
         gBtn_operacoes.add(rb_gradiente);
         rb_gradiente.setText("Gradiente morfológico");
+        rb_gradiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarOperacao(evt);
+            }
+        });
 
         gBtn_operacoes.add(rb_abertura);
         rb_abertura.setText("Abertura");
+        rb_abertura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarOperacao(evt);
+            }
+        });
 
         gBtn_operacoes.add(rb_fechamento);
         rb_fechamento.setText("Fechamento");
+        rb_fechamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarOperacao(evt);
+            }
+        });
 
         gBtn_operacoes.add(rb_topHat);
         rb_topHat.setText("Top-Hat");
+        rb_topHat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarOperacao(evt);
+            }
+        });
 
         gBtn_operacoes.add(rb_bottomHat);
         rb_bottomHat.setText("Bottom-Hat");
+        rb_bottomHat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarOperacao(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

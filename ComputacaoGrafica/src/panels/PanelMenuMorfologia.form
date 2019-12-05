@@ -103,6 +103,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Eros&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarOperacao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_gradiente">
           <Properties>
@@ -111,6 +114,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Gradiente morfol&#xf3;gico"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarOperacao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_abertura">
           <Properties>
@@ -119,6 +125,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Abertura"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarOperacao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_fechamento">
           <Properties>
@@ -127,6 +136,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Fechamento"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarOperacao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_topHat">
           <Properties>
@@ -135,6 +147,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Top-Hat"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarOperacao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_bottomHat">
           <Properties>
@@ -143,6 +158,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Bottom-Hat"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarOperacao"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

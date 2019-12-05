@@ -54,27 +54,67 @@ public class PanelMenuMorfologiaBin extends javax.swing.JPanel {
 
         buttonGroup1.add(rb_dilatacao);
         rb_dilatacao.setText("Dilatação");
+        rb_dilatacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarTipo(evt);
+            }
+        });
 
         buttonGroup1.add(rb_erosao);
         rb_erosao.setText("Erosão");
+        rb_erosao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarTipo(evt);
+            }
+        });
 
         buttonGroup1.add(rb_fechamento);
         rb_fechamento.setText("Fechamento");
+        rb_fechamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarTipo(evt);
+            }
+        });
 
         buttonGroup1.add(rb_abertura);
         rb_abertura.setText("Abertura");
+        rb_abertura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarTipo(evt);
+            }
+        });
 
         buttonGroup1.add(rb_hitOrMiss);
         rb_hitOrMiss.setText("Hit-or-Miss");
+        rb_hitOrMiss.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarTipo(evt);
+            }
+        });
 
         buttonGroup1.add(rb_contornoExterno);
         rb_contornoExterno.setText("Contorno externo");
+        rb_contornoExterno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarTipo(evt);
+            }
+        });
 
         buttonGroup1.add(rb_contornoInterno);
         rb_contornoInterno.setText("Contorno interno");
+        rb_contornoInterno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarTipo(evt);
+            }
+        });
 
         buttonGroup1.add(rb_gradienteMorfologico);
         rb_gradienteMorfologico.setText("Gradiente morfológico");
+        rb_gradienteMorfologico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarTipo(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,6 +168,11 @@ public class PanelMenuMorfologiaBin extends javax.swing.JPanel {
                 .addGap(0, 389, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void selecionarTipo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarTipo
+        JRadioButton radio = (JRadioButton) evt.getSource();
+        PanelFiltros.getInstance().setTitle("Filtro de " + radio.getText());
+    }//GEN-LAST:event_selecionarTipo
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
