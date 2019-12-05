@@ -1,16 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Classe da tranformação de faixa dinamica da imagem
  */
 package processamentoDeImagem;
 
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author Peu
- */
 public class FaixaDinamica {
     private int[][] imagem;
     private int width;
@@ -48,6 +42,7 @@ public class FaixaDinamica {
         this.height = height;
     }
     
+    //Aplica a transformação
     public BufferedImage run() {
 
         int[][] matrizImagemNegativa = new int[width][height];
@@ -67,6 +62,7 @@ public class FaixaDinamica {
         return Normalizacao.matrizToBufferedImage(matrizImagemNegativa, 255);
     }
     
+    //Funções auxiliares que retornam o valor de fMax e fMin
     private int fMax(int[][] matrizImagem, int largura, int altura) {
         int max = matrizImagem[0][0];
 

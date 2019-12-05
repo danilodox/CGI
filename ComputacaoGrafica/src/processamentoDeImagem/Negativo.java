@@ -42,6 +42,7 @@ public class Negativo {
         this.height = height;
     }
 
+    //Aplica a transformação na imagem
     public BufferedImage run() {
         int matrizImagem[][] = new int[width][height];
 

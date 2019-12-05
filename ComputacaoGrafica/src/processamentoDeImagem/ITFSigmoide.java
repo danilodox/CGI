@@ -1,16 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Classe da transfomação ITFSigmoide
  */
 package processamentoDeImagem;
 
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author Peu
- */
 public class ITFSigmoide {
     
     private int[][] imagem;
@@ -19,6 +13,7 @@ public class ITFSigmoide {
     private int sigma;
     private int w;
 
+    //Aplica a transformação
     public ITFSigmoide(int[][] imagem, int width, int height, float w, float sigma) {
         this.imagem = imagem;
         this.width = width;
