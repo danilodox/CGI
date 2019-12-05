@@ -30,7 +30,7 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panel_configGamma" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="408" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="267" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,6 +54,9 @@
                       <Component id="rb_negativo" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="rb_gamma" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="rb_logaritmo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_itfSigmoide" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_faixaDinamica" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_transferenciaLinear" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -68,6 +71,12 @@
                   <Component id="rb_gamma" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="rb_logaritmo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="rb_itfSigmoide" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="rb_faixaDinamica" min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="rb_transferenciaLinear" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -107,6 +116,33 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filtroSelect"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_itfSigmoide">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="gBtn_filtros"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="ITF Sigmoide"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filtroSelect"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_faixaDinamica">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="gBtn_filtros"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Faixa din&#xe2;mica"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_transferenciaLinear">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="gBtn_filtros"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Transfer&#xea;ncia linear"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="panel_configGamma">
@@ -124,10 +160,14 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lab_dados" max="32767" attributes="0"/>
+                      <Component id="lab_dados1" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="31" max="32767" attributes="0"/>
-                          <Component id="js_gammay" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="js_dados1" pref="151" max="32767" attributes="0"/>
+                              <Component id="lab_dados2" max="32767" attributes="0"/>
+                              <Component id="js_dados2" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -139,22 +179,33 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lab_dados" min="-2" max="-2" attributes="0"/>
+                  <Component id="lab_dados1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="js_gammay" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="js_dados1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="lab_dados2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="js_dados2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lab_dados">
+        <Component class="javax.swing.JLabel" name="lab_dados1">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="c = 1 e y = (0 &lt;= y &lt;= 1)"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="js_gammay">
+        <Component class="javax.swing.JSpinner" name="js_dados1">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lab_dados2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="js_dados2">
         </Component>
       </SubComponents>
     </Container>

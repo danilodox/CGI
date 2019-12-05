@@ -27,8 +27,12 @@ public class PanelMenuTransf extends javax.swing.JPanel {
         panel_configGamma.setVisible(false);
     }
 
-    public float getDados() {
-        return ((Integer) js_gammay.getValue()).floatValue();
+    public float getDados1() {
+        return (float) js_dados1.getValue();
+    }
+    
+    public float getDados2(){
+        return (float) js_dados2.getValue();
     }
 
     public TransformacoesImagemEnum getTipoAlgoritimo() {
@@ -38,6 +42,12 @@ public class PanelMenuTransf extends javax.swing.JPanel {
             setTipoAlgoritimo(TransformacoesImagemEnum.GAMMA);
         } else if (rb_logaritmo.isSelected()) {
             setTipoAlgoritimo(TransformacoesImagemEnum.LOG);
+        } else if(rb_itfSigmoide.isSelected()){
+            setTipoAlgoritimo(TransformacoesImagemEnum.ITFSIGMOIDE);
+        } else if(rb_faixaDinamica.isSelected()){
+            setTipoAlgoritimo(TransformacoesImagemEnum.FAIXADINAMICA);
+        } else if(rb_transferenciaLinear.isSelected()){
+            setTipoAlgoritimo(TransformacoesImagemEnum.TRANSFERENCIALINEAR);
         }
         return tipoAlgoritimo;
     }
@@ -59,9 +69,14 @@ public class PanelMenuTransf extends javax.swing.JPanel {
         rb_negativo = new javax.swing.JRadioButton();
         rb_gamma = new javax.swing.JRadioButton();
         rb_logaritmo = new javax.swing.JRadioButton();
+        rb_itfSigmoide = new javax.swing.JRadioButton();
+        rb_faixaDinamica = new javax.swing.JRadioButton();
+        rb_transferenciaLinear = new javax.swing.JRadioButton();
         panel_configGamma = new javax.swing.JPanel();
-        lab_dados = new javax.swing.JLabel();
-        js_gammay = new javax.swing.JSpinner();
+        lab_dados1 = new javax.swing.JLabel();
+        js_dados1 = new javax.swing.JSpinner();
+        lab_dados2 = new javax.swing.JLabel();
+        js_dados2 = new javax.swing.JSpinner();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtros"));
 
@@ -89,6 +104,20 @@ public class PanelMenuTransf extends javax.swing.JPanel {
             }
         });
 
+        gBtn_filtros.add(rb_itfSigmoide);
+        rb_itfSigmoide.setText("ITF Sigmoide");
+        rb_itfSigmoide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtroSelect(evt);
+            }
+        });
+
+        gBtn_filtros.add(rb_faixaDinamica);
+        rb_faixaDinamica.setText("Faixa dinâmica");
+
+        gBtn_filtros.add(rb_transferenciaLinear);
+        rb_transferenciaLinear.setText("Transferência linear");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -98,7 +127,10 @@ public class PanelMenuTransf extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rb_negativo)
                     .addComponent(rb_gamma)
-                    .addComponent(rb_logaritmo))
+                    .addComponent(rb_logaritmo)
+                    .addComponent(rb_itfSigmoide)
+                    .addComponent(rb_faixaDinamica)
+                    .addComponent(rb_transferenciaLinear))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -110,13 +142,21 @@ public class PanelMenuTransf extends javax.swing.JPanel {
                 .addComponent(rb_gamma)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rb_logaritmo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rb_itfSigmoide)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rb_faixaDinamica, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rb_transferenciaLinear)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel_configGamma.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados para operação"));
 
-        lab_dados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lab_dados.setText("c = 1 e y = (0 <= y <= 1)");
+        lab_dados1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_dados1.setText("c = 1 e y = (0 <= y <= 1)");
+
+        lab_dados2.setText("jLabel1");
 
         javax.swing.GroupLayout panel_configGammaLayout = new javax.swing.GroupLayout(panel_configGamma);
         panel_configGamma.setLayout(panel_configGammaLayout);
@@ -125,10 +165,13 @@ public class PanelMenuTransf extends javax.swing.JPanel {
             .addGroup(panel_configGammaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panel_configGammaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lab_dados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lab_dados1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_configGammaLayout.createSequentialGroup()
                         .addGap(0, 31, Short.MAX_VALUE)
-                        .addComponent(js_gammay, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panel_configGammaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(js_dados1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                            .addComponent(lab_dados2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(js_dados2))
                         .addGap(29, 29, 29)))
                 .addContainerGap())
         );
@@ -136,10 +179,14 @@ public class PanelMenuTransf extends javax.swing.JPanel {
             panel_configGammaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_configGammaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lab_dados)
+                .addComponent(lab_dados1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(js_gammay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(js_dados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lab_dados2)
+                .addGap(18, 18, 18)
+                .addComponent(js_dados2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -155,7 +202,7 @@ public class PanelMenuTransf extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panel_configGamma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 408, Short.MAX_VALUE))
+                .addGap(0, 267, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -170,9 +217,27 @@ public class PanelMenuTransf extends javax.swing.JPanel {
         } else {
             panel_configGamma.setVisible(true);
             if (rb_gamma.isSelected()) {
-                lab_dados.setText("c = 1 e y = (0 <= y <= 1)");
-            } else {
-                lab_dados.setText("Constante \"a\"");
+                lab_dados1.setText("c = 1 e y = (0 <= y <= 1)");
+                lab_dados2.setVisible(false);
+                js_dados2.setVisible(false);
+            } else  if(rb_logaritmo.isSelected()){
+                lab_dados1.setText("Constante \"a\"");
+                lab_dados2.setVisible(false);
+                js_dados2.setVisible(false);
+            } else if(rb_itfSigmoide.isSelected()){
+                lab_dados1.setText("Valor do W");
+                lab_dados2.setText("Valor do Sigma");
+                lab_dados2.setVisible(true);
+                js_dados2.setVisible(true);
+            } else if(rb_faixaDinamica.isSelected()){
+                lab_dados1.setText("Valor do w_target");
+                lab_dados2.setVisible(false);
+                js_dados2.setVisible(false);
+            } else if(rb_transferenciaLinear.isSelected()){
+                lab_dados1.setText("Valor para contraste");
+                lab_dados2.setText("Valor para brilho");
+                lab_dados2.setVisible(true);
+                js_dados2.setVisible(true);
             }
         }
     }//GEN-LAST:event_filtroSelect
@@ -181,11 +246,16 @@ public class PanelMenuTransf extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup gBtn_filtros;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner js_gammay;
-    private javax.swing.JLabel lab_dados;
+    private javax.swing.JSpinner js_dados1;
+    private javax.swing.JSpinner js_dados2;
+    private javax.swing.JLabel lab_dados1;
+    private javax.swing.JLabel lab_dados2;
     private javax.swing.JPanel panel_configGamma;
+    private javax.swing.JRadioButton rb_faixaDinamica;
     private javax.swing.JRadioButton rb_gamma;
+    private javax.swing.JRadioButton rb_itfSigmoide;
     private javax.swing.JRadioButton rb_logaritmo;
     private javax.swing.JRadioButton rb_negativo;
+    private javax.swing.JRadioButton rb_transferenciaLinear;
     // End of variables declaration//GEN-END:variables
 }

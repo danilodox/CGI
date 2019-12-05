@@ -4,7 +4,8 @@
 package enums;
 
 public enum TransformacoesImagemEnum {
-    NEGATIVO("Negativo"), GAMMA("Gamma"), LOG("Logaritmo");
+    NEGATIVO("Negativo"), GAMMA("Gamma"), LOG("Logaritmo"), ITFSIGMOIDE("ITF Sifmoide"), FAIXADINAMICA("Faixa Dinamica"), 
+    TRANSFERENCIALINEAR("Transferencia Linear");
 
     private final String titulo;
 

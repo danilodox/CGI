@@ -17,9 +17,12 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import processamentoDeImagem.FaixaDinamica;
 import processamentoDeImagem.Gamma;
+import processamentoDeImagem.ITFSigmoide;
 import processamentoDeImagem.Logaritmo;
 import processamentoDeImagem.Negativo;
+import processamentoDeImagem.TransferenciaLinear;
 
 /**
  *
@@ -234,17 +237,25 @@ public class PanelTransformacoes extends javax.swing.JPanel {
 
     private void btn_aplyFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aplyFActionPerformed
         PanelMenuTransf menuTransformacoes = PanelMenuTransf.getInstance();
-        System.out.println("gamma " + menuTransformacoes.getDados());
-
+        
         switch (menuTransformacoes.getTipoAlgoritimo()) {
             case NEGATIVO:
                 panel_imagemF.getGraphics().drawImage(new Negativo(imagemMatriz, getImgWidth(), getImgHeight()).run(), 0, 0, null);
                 break;
             case GAMMA:
-                panel_imagemF.getGraphics().drawImage(new Gamma(imagemMatriz, getImgWidth(), getImgHeight(), menuTransformacoes.getDados()).run(), 0, 0, null);
+                panel_imagemF.getGraphics().drawImage(new Gamma(imagemMatriz, getImgWidth(), getImgHeight(), menuTransformacoes.getDados1()).run(), 0, 0, null);
                 break;
             case LOG:
-                panel_imagemF.getGraphics().drawImage(new Logaritmo(imagemMatriz, getImgWidth(), getImgHeight(), menuTransformacoes.getDados()).run(), 0, 0, null);
+                panel_imagemF.getGraphics().drawImage(new Logaritmo(imagemMatriz, getImgWidth(), getImgHeight(), menuTransformacoes.getDados1()).run(), 0, 0, null);
+                break;
+            case ITFSIGMOIDE:
+                panel_imagemF.getGraphics().drawImage(new ITFSigmoide(imagemMatriz, getImgWidth(), getImgHeight(), menuTransformacoes.getDados1(), menuTransformacoes.getDados2()).run(), 0, 0, null);
+                break;
+            case FAIXADINAMICA:
+                panel_imagemF.getGraphics().drawImage(new FaixaDinamica(imagemMatriz, getImgWidth(), getImgHeight(), menuTransformacoes.getDados1()).run(), 0, 0, null);
+                break;
+            case TRANSFERENCIALINEAR:
+                panel_imagemF.getGraphics().drawImage(new TransferenciaLinear(imagemMatriz, getImgWidth(), getImgHeight(), menuTransformacoes.getDados1(), menuTransformacoes.getDados2()).run(), 0, 0, null);
                 break;
             default:
                 break;
