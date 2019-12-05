@@ -29,6 +29,8 @@ import panels.PanelMenuTransf;
 import panels.PanelOperacoes;
 import panels.PanelTransformacoes;
 import panels.PanelMenu2D;
+import panels.PanelMenuMorfologia;
+import panels.PanelMorfologia;
 import transformacoes.Transformacoes2D;
 import transformacoes.Transformacoes3D;
 
@@ -48,6 +50,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private final PanelTransformacoes panelTransformacoes;
     private final PanelHistograma panelHistograma;
     private final PanelMenuRecorteReta panelMenuRecorteReta;
+    private final PanelMenuMorfologia panelMenuMorfologia;
+    private final PanelMorfologia panelMorfologia;
     /**
      * Creates new form JanelaGrafica
      */
@@ -65,6 +69,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelTransformacoes = PanelTransformacoes.getInstance();
         panelHistograma = PanelHistograma.getInstance();
         panelMenuRecorteReta = PanelMenuRecorteReta.getInstance();
+        panelMenuMorfologia = PanelMenuMorfologia.getInstance();
+        panelMorfologia = PanelMorfologia.getInstance();
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         //openMenuReta(null);
@@ -111,6 +117,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menu_gatoArnold = new javax.swing.JMenuItem();
         menu_transformacoes = new javax.swing.JMenuItem();
         menu_equalizacao = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        menu_nivelCinzar = new javax.swing.JMenuItem();
+        menu_binario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -396,6 +405,21 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("Morfologia");
+
+        menu_nivelCinzar.setText("Nivel de cinzar");
+        menu_nivelCinzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_nivelCinzarActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menu_nivelCinzar);
+
+        menu_binario.setText("Binario");
+        jMenu2.add(menu_binario);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -531,6 +555,15 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void menu_imagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_imagemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menu_imagemActionPerformed
+
+    private void menu_nivelCinzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_nivelCinzarActionPerformed
+        panelFooter.setVisible(false);
+        panMenu.setVisible(true);
+        panelBox.removeAll();
+
+        changePanelCentral(panelMorfologia);
+        changePanMenu(panelMenuMorfologia);
+    }//GEN-LAST:event_menu_nivelCinzarActionPerformed
     
     private void coordinatesSystem(){
         panelGrafic.addMouseMotionListener(new MouseMotionAdapter(){
@@ -598,6 +631,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;
@@ -615,9 +649,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuDesenhar;
     private javax.swing.JMenuItem menuFiltros;
     private javax.swing.JMenu menuTransformacoes;
+    private javax.swing.JMenuItem menu_binario;
     private javax.swing.JMenuItem menu_equalizacao;
     private javax.swing.JMenuItem menu_gatoArnold;
     private javax.swing.JMenuItem menu_imagem;
+    private javax.swing.JMenuItem menu_nivelCinzar;
     private javax.swing.JMenuItem menu_operacoes;
     private javax.swing.JMenuItem menu_recordeReta;
     private javax.swing.JMenuItem menu_transformacoes;
