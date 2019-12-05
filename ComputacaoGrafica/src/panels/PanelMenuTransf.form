@@ -134,6 +134,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Faixa din&#xe2;mica"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filtroSelect"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_transferenciaLinear">
           <Properties>
@@ -142,6 +145,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Transfer&#xea;ncia linear"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filtroSelect"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -202,6 +208,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lab_dados2">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
         </Component>

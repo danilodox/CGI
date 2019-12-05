@@ -28,11 +28,11 @@ public class PanelMenuTransf extends javax.swing.JPanel {
     }
 
     public float getDados1() {
-        return (float) js_dados1.getValue();
+        return ((Integer) js_dados1.getValue()).floatValue();
     }
     
     public float getDados2(){
-        return (float) js_dados2.getValue();
+        return ((Integer) js_dados2.getValue()).floatValue();
     }
 
     public TransformacoesImagemEnum getTipoAlgoritimo() {
@@ -114,9 +114,19 @@ public class PanelMenuTransf extends javax.swing.JPanel {
 
         gBtn_filtros.add(rb_faixaDinamica);
         rb_faixaDinamica.setText("Faixa dinâmica");
+        rb_faixaDinamica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtroSelect(evt);
+            }
+        });
 
         gBtn_filtros.add(rb_transferenciaLinear);
         rb_transferenciaLinear.setText("Transferência linear");
+        rb_transferenciaLinear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtroSelect(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,6 +166,7 @@ public class PanelMenuTransf extends javax.swing.JPanel {
         lab_dados1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lab_dados1.setText("c = 1 e y = (0 <= y <= 1)");
 
+        lab_dados2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lab_dados2.setText("jLabel1");
 
         javax.swing.GroupLayout panel_configGammaLayout = new javax.swing.GroupLayout(panel_configGamma);
