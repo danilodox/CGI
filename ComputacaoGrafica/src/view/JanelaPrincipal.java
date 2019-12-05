@@ -30,7 +30,9 @@ import panels.PanelOperacoes;
 import panels.PanelTransformacoes;
 import panels.PanelMenu2D;
 import panels.PanelMenuMorfologia;
+import panels.PanelMenuMorfologiaBin;
 import panels.PanelMorfologia;
+import panels.PanelMorfologiaBin;
 import transformacoes.Transformacoes2D;
 import transformacoes.Transformacoes3D;
 
@@ -52,6 +54,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private final PanelMenuRecorteReta panelMenuRecorteReta;
     private final PanelMenuMorfologia panelMenuMorfologia;
     private final PanelMorfologia panelMorfologia;
+    private final PanelMenuMorfologiaBin panelMenuMorfologiaBin;
+    private final PanelMorfologiaBin panelMorfologiaBin;
     /**
      * Creates new form JanelaGrafica
      */
@@ -71,6 +75,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         panelMenuRecorteReta = PanelMenuRecorteReta.getInstance();
         panelMenuMorfologia = PanelMenuMorfologia.getInstance();
         panelMorfologia = PanelMorfologia.getInstance();
+        panelMenuMorfologiaBin = PanelMenuMorfologiaBin.getInstance();
+        panelMorfologiaBin = PanelMorfologiaBin.getInstance();
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         //openMenuReta(null);
@@ -416,6 +422,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jMenu2.add(menu_nivelCinzar);
 
         menu_binario.setText("Binario");
+        menu_binario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_binarioActionPerformed(evt);
+            }
+        });
         jMenu2.add(menu_binario);
 
         jMenuBar1.add(jMenu2);
@@ -564,6 +575,15 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         changePanelCentral(panelMorfologia);
         changePanMenu(panelMenuMorfologia);
     }//GEN-LAST:event_menu_nivelCinzarActionPerformed
+
+    private void menu_binarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_binarioActionPerformed
+        panelFooter.setVisible(false);
+        panMenu.setVisible(true);
+        panelBox.removeAll();
+
+        changePanelCentral(panelMorfologiaBin);
+        changePanMenu(panelMenuMorfologiaBin);
+    }//GEN-LAST:event_menu_binarioActionPerformed
     
     private void coordinatesSystem(){
         panelGrafic.addMouseMotionListener(new MouseMotionAdapter(){
