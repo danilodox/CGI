@@ -14,9 +14,9 @@ import operacoes.PlanoCartesiano;
 import transformacoes.Transformacoes2D;
 import view.JanelaPrincipal;
 
-public class SubMenuTransfor2d extends javax.swing.JPanel {
+public class PanelMenu2D extends javax.swing.JPanel {
     
-    private static SubMenuTransfor2d instance;
+    private static PanelMenu2D instance;
     public static double[][] matrizObject;
     public Stack<double[][]> listaDeTransformacoes;
 
@@ -30,9 +30,9 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
     private TransformEnum tipoAlgoritimo;
     private final DefaultListModel<String> modelList;
     
-    public static synchronized SubMenuTransfor2d getInstance() {
+    public static synchronized PanelMenu2D getInstance() {
         if (instance == null) {
-            instance = new SubMenuTransfor2d();
+            instance = new PanelMenu2D();
         }
         return instance;
     }
@@ -40,7 +40,7 @@ public class SubMenuTransfor2d extends javax.swing.JPanel {
     /**
      * Creates new form PanelMenuRaster
      */
-    public SubMenuTransfor2d() {
+    public PanelMenu2D() {
         modelList = new DefaultListModel();
         listaDeTransformacoes = new Stack<>();
         initComponents();
