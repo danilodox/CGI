@@ -85,7 +85,7 @@ public class SubMenu2d extends javax.swing.JInternalFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 352, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

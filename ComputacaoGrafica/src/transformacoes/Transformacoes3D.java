@@ -1,7 +1,6 @@
 /*
  * Essa classe realiza as transformações 3D como translação, rotação, reflexão e cisalhamento.
  */
-
 package transformacoes;
 
 import enums.Eixo;
@@ -10,6 +9,7 @@ import operacaoMatrizes.Matriz;
 import panels.PanelMenu3D;
 
 public class Transformacoes3D {
+
     private static Transformacoes3D instance;
     private double[][] matrizM;
 
@@ -160,13 +160,13 @@ public class Transformacoes3D {
         try {
             // (Matriz translação posição inicial) X (Matriz Cisalhamento)
             matrizM = Matriz.multiplicaMatrizes(geraMatrizTranslacao(tx, ty, tz), geraMatrizCisalhamento(a, b, eixo));
-            
+
             // (Matriz M) X (Matriz translação para origem)
             matrizM = Matriz.multiplicaMatrizes(matrizM, geraMatrizTranslacao(-tx, -ty, -tz));
-            
+
             // (Matriz M) X (Matriz objeto)
             matrizResult = Matriz.multiplicaMatrizes(matrizM, matrizObjeto);
-            
+
             // Atualiza matriz objeto global.
             PanelMenu3D.matrizObjeto3D = matrizResult;
         } catch (Exception e) {
